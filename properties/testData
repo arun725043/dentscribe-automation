@@ -1,0 +1,33 @@
+_____________________patient details_________________
+patientName=Bidwal Rohit
+patientPhone=4085822521
+dob=1994-10-16
+insurance= Delta Dental Plan Of Ca. 
+lastVisit=2023-10-24
+
+______________practice form__________
+state=Alabama
+country=United States
+
+//_____________payment details_____
+cardNo=4242 4242 4242 4242
+expiry=12/34
+cvc=567
+zipcode=12345
+
+//______________signup details__________
+countryCode=+91
+countryName=India
+otp=839389
+pmsName=Eaglesoft
+
+//_____________calendar_____________
+calendarTestDate=06-08-2024
+
+
+//____________recordings date_____________
+recording11mintsDate=11-07-2023
+recording21mintsDate=12-07-2023
+recording31mintsDate=13-07-2023
+recording51mintsDate=17-07-2023
+recordingTestDate=31-07-2023

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+		<listener class-name="com.dentscribe.ExtentReport.TestListeners" />
+	</listeners>
+	<test thread-count="5" name="Test">
+		<classes>
+
+			<class name="com.dentscribe.testCases.DS_001_008_LoginTest" />
+			<class name="com.dentscribe.testCases.DS_002_ForgotPasswordTest" />
+			<class name="com.dentscribe.testCases.DS_003_VerifySignupPageMandatoryFields" />
+			<class name="com.dentscribe.testCases.DS_004_SignupSmsVerificationTest" />
+			<class name="com.dentscribe.testCases.DS_005_SignupUserTest" />
+			<class name="com.dentscribe.testCases.DS_006_010_013_014_015_ExisitingSikkaUserApplicationFlow" />
+			<class name="com.dentscribe.testCases.DS_011_012_FreeTrialTest" />
+			<class name="com.dentscribe.testCases.DS_016_TourPagesTest" />
+			<class name="com.dentscribe.testCases.DS_017_SearchPatientTest" />
+			<class name="com.dentscribe.testCases.DS_019_ChangePassword" />
+			<class name="com.dentscribe.testCases.DS_020_021_HelpAndLogoutTest" />
+			<class name="com.dentscribe.testCases.DS_022_023_024_updateNotificationAccountAndPracticeInfo" />
+			<class name="com.dentscribe.testCases.DS_026_RecordingTest" />
+			<class name="com.dentscribe.testCases.DS_028_SettingPageTest" />
+			<class name="com.dentscribe.testCases.DS_029_CalendarTest" />
+			<class name="com.dentscribe.testCases.DS_030_LoginSmsVerificationTest" />
+			<class name="com.dentscribe.testCases.DS_031_RecordingTest_with11mints" />
+			<class name="com.dentscribe.testCases.DS_032_RecordingTest_with21mints" />
+			<class name="com.dentscribe.testCases.DS_033_RecordingTest_with31mints" />
+			<class name="com.dentscribe.testCases.DS_034_RecordingTest_with51mints" />
+			<class name="com.dentscribe.testCases.DS_07_11_NewSikkaUserApplicationFlow" />
+			<class name="com.dentscribe.testCases.DS_SoapReportTest" />	
+			
+		</classes>
+	</test>
+</suite>

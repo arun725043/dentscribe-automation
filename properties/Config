@@ -1,0 +1,10 @@
+_________________App launching details________________
+ipAddress=127.0.0.1
+port=4723
+deviceType=Android
+deviceName=47544c4538573398
+packageName=com.dentscribe.dev
+activityName=com.dentscribe.dev.MainActivity
+appURL=http://127.0.0.1:4723
+emmulator=no
+biometric=on
