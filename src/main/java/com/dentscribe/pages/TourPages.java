@@ -3,11 +3,13 @@ package com.dentscribe.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
 import com.dentscribe.utils.AndroidActions;
+import com.google.common.collect.ImmutableMap;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -36,10 +38,22 @@ public class TourPages extends AndroidActions {
 		this.driver = driver;
 	}
 
+	// _________validate whether user is on tour page or not_______
+	public boolean verifyTourLandingPage()
+	{
+		if (IsElementPresent(driver, textCalendarSchecule, "Calendar Schedue View")) {
+			ExtentManager.logInfoDetails("User is now on <b> Calendar Schedue View tour page <b> as expected");
+			return true;
+		} else {
+			ExtentManager.logFailureDetails("Either expected Signup page verified element not found or not exists. please check");
+			return false;
+		}
+	}
+	
 	// _________skip tour pages______
 	public void skipTourPages() {
 		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(linkSkip));
-		click(linkSkip, driver);
+		click(driver, linkSkip, "Skip link");
 		ExtentManager.logInfoDetails("Clicked on <b>Skip</b> on Tour page");
 	}
 
@@ -47,24 +61,24 @@ public class TourPages extends AndroidActions {
 	public boolean verifyTourPagesOnNextButton(String operation) {
 		switch (operation) {
 		case "calendar":
-			click(buttonNext, driver);
-			return IsElementPresent(textParentListView, driver);
+			click(driver, buttonNext, "Calendar Schedule View");
+			return IsElementPresent(driver, textParentListView, "Patient List View");
 
 		case "patient view":
-			click(buttonNext, driver);
-			return IsElementPresent(textPatientProfile, driver);
+			click(driver, buttonNext, "Patient List View");
+			return IsElementPresent(driver, textPatientProfile, "Patient Profile");
 
 		case "patient profile":
-			click(buttonNext, driver);
-			return IsElementPresent(textRecording, driver);
+			click(driver, buttonNext, "Patient Profile");
+			return IsElementPresent(driver, textRecording, "Recording");
 
 		case "recording":
-			click(buttonNext, driver);
-			return IsElementPresent(textSoapReport, driver);
+			click(driver, buttonNext, "Recording");
+			return IsElementPresent(driver, textSoapReport, "SOAP Report");
 
 		case "soap report":
-			click(buttonNext, driver);
-			return IsElementPresent(textPatientDatabase, driver);
+			click(driver, buttonNext, "SOAP Report");
+			return IsElementPresent(driver, textPatientDatabase, "Patient Database Integration");
 
 		default:
 			System.out.println("please enter valid name");
@@ -78,24 +92,24 @@ public class TourPages extends AndroidActions {
 
 		switch (operation) {
 		case "patientDatabase":
-			click(buttonBack, driver);
-			return IsElementPresent(textSoapReport, driver);
+			click(driver, buttonBack, "Patient Database Integration");
+			return IsElementPresent(driver, textSoapReport, "SOAP Report");
 
 		case "soap report":
-			click(buttonBack, driver);
-			return IsElementPresent(textRecording, driver);
+			click(driver, buttonBack, "SOAP Report");
+			return IsElementPresent(driver, textRecording, "Recording");
 
 		case "recording":
-			click(buttonBack, driver);
-			return IsElementPresent(textPatientProfile, driver);
+			click(driver, buttonBack, "Recording");
+			return IsElementPresent(driver, textPatientProfile, "Patient Profile");
 
 		case "patient profile":
-			click(buttonBack, driver);
-			return IsElementPresent(textParentListView, driver);
+			click(driver, buttonBack, "Patient profile");
+			return IsElementPresent(driver, textParentListView, "Patient List View");
 
 		case "patient view":
-			click(buttonBack, driver);
-			return IsElementPresent(textCalendarSchecule, driver);
+			click(driver, buttonBack, "Patient List View");
+			return IsElementPresent(driver, textCalendarSchecule, "Calendar Schedule View");
 
 		default:
 			System.out.println("please enter valid name");
@@ -104,7 +118,11 @@ public class TourPages extends AndroidActions {
 
 	}
 
-
+	public void swipe(String direction) {
+		// Java
+		((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of("left", 100, "top", 1000,
+				"width", 800, "height", 200, "direction", direction, "percent", 0.75));
+	}
 
 	@SuppressWarnings("deprecation")
 	public void swipeTourScreen(AndroidDriver driver) {

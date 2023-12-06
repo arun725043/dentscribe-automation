@@ -1,31 +1,32 @@
 package com.dentscribe.testCases;
 
 import static org.testng.Assert.assertTrue;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.dentscribe.ExtentReport.ExtentManager;
-import com.dentscribe.api.GenerateOtp;
+import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
-import com.dentscribe.common.CommonLocators;
 
-public class DS_016_TourPagesTest extends AndroidBase {
-
+public class DS_016_TourPagesTest extends AndroidBase 
+{
 	@Test
 	public void tourPageTest() throws InterruptedException {
-		GenerateOtp getOtp = new GenerateOtp(driver);
-
 		try 
 		{
+			// ______________verify home page_____________________
+			assertTrue(loginPage.validateLoginPageNote());
+			ExtentManager.logInfoDetails("Application launched successfully");
+			
+			// ______________verify login with valid credentials______________
+			Thread.sleep(10000);
 			assertTrue(loginPage.loginApplication(readData("userDetails", "username"), readData("userDetails", "password"), "valid"));
-
-			// ___________Click on Skip and verify calendar schedule page screen_______________
+	
+			// Click skip and verify tour page
 			assertTrue(loginPage.clickBiometricPopupButton("skip"));
-			ExtentManager.logInfoDetails("Clicked on <b>Skip</b> button , <b>SMS Verification</b> screen is displayed as expected");
-
-			getOtp.fillOtp();
-			click(CommonLocators.continueButton, driver);
-			ExtentManager.logInfoDetails("Clicked on <b> Continue </b> after entering the OTP");
+	
+			//______________validate otp and verify expected opened page______________
+			String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+			smsVerificationPage.validateValidOTP(getOtp, "Tour Screen");
 			
 			assertTrue(tourPages.verifyTourPagesOnNextButton("calendar"));
 			ExtentManager.logInfoDetails("Clicked on 'Next', <b>Paitent List View</b> screen is displayed as expected");
@@ -60,56 +61,62 @@ public class DS_016_TourPagesTest extends AndroidBase {
 
 			// ________________________swipe left functionality___________________________
 
-			tourPages.swipeTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textParentListView, driver));
+//			tourPages.swipeTourScreen(driver);
+			tourPages.swipe("left");
+			assertTrue(IsElementPresent(driver, tourPages.textParentListView, ""));
 			ExtentManager.logInfoDetails("Swipe left and verify <b>Paitent List View</b> screen is displayed as expected");
 
-			tourPages.swipeTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textPatientProfile, driver));
+//			tourPages.swipeTourScreen(driver);
+			tourPages.swipe("left");
+			assertTrue(IsElementPresent(driver, tourPages.textPatientProfile, ""));
 			ExtentManager.logInfoDetails("Swipe left and verify <b>Paitent Profile</b> screen is displayed as expected");
 
-			tourPages.swipeTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textRecording, driver));
+//			tourPages.swipeTourScreen(driver);
+			tourPages.swipe("left");
+			assertTrue(IsElementPresent(driver, tourPages.textRecording, ""));
 			ExtentManager.logInfoDetails("Swipe left and verify <b>Recording</b> screen is displayed as expected");
 
-			tourPages.swipeTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textSoapReport, driver));
+//			tourPages.swipeTourScreen(driver);
+			tourPages.swipe("left");
+			assertTrue(IsElementPresent(driver, tourPages.textSoapReport, ""));
 			ExtentManager.logInfoDetails("Swipe left and verify <b>SOAP Report</b> screen is displayed as expected");
 
-			tourPages.swipeTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textPatientDatabase, driver));
+//			tourPages.swipeTourScreen(driver);
+			tourPages.swipe("left");
+			assertTrue(IsElementPresent(driver, tourPages.textPatientDatabase, ""));
 			ExtentManager.logInfoDetails("Swipe left and verify <b>Patient Database Integration</b> screen is displayed as expected");
 
-			tourPages.swipeTourScreen(driver);
+//			tourPages.swipeTourScreen(driver);
+			tourPages.swipe("left");
 			Thread.sleep(3000);
-			assertTrue(IsElementPresent(tourPages.textPatientDatabase, driver));
+			assertTrue(IsElementPresent(driver, tourPages.textPatientDatabase, ""));
 			ExtentManager.logInfoDetails("Swipe left, Still user is on <b>Patient Database Integration</b> screen as expected");
 
 			// ________________________swipe right functionality___________________________
 
-			tourPages.swipeRightTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textSoapReport, driver));
+			tourPages.swipe("right");
+			assertTrue(IsElementPresent(driver, tourPages.textSoapReport, ""));
 			ExtentManager.logInfoDetails("Swipe right and verify <b>SOAP Report</b> screen is displayed as expected");
 
-			tourPages.swipeRightTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textRecording, driver));
+			tourPages.swipe("right");
+			assertTrue(IsElementPresent(driver, tourPages.textRecording, ""));
 			ExtentManager.logInfoDetails("Swipe right and verify <b>Recording</b> screen is displayed as expected");
 
-			tourPages.swipeRightTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textPatientProfile, driver));
+			tourPages.swipe("right");
+			assertTrue(IsElementPresent(driver, tourPages.textPatientProfile, ""));
 			ExtentManager.logInfoDetails("Swipe right and verify <b>Paitent Profile</b> screen is displayed as expected");
 
-			tourPages.swipeRightTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textParentListView, driver));
+			tourPages.swipe("right");
+			assertTrue(IsElementPresent(driver, tourPages.textParentListView, ""));
 			ExtentManager.logInfoDetails("Swipe right and verify <b>Paitent List View</b> screen is displayed as expected");
 
-			tourPages.swipeRightTourScreen(driver);
-			assertTrue(IsElementPresent(tourPages.textCalendarSchecule, driver));
+			tourPages.swipe("right");
+			assertTrue(IsElementPresent(driver, tourPages.textCalendarSchecule, ""));
 			ExtentManager.logInfoDetails("Swipe right and verify <b>Calendar schedule</b> screen is displayed as expected");
 
-			tourPages.swipeRightTourScreen(driver);
+			tourPages.swipe("right");
 			Thread.sleep(3000);
-			assertTrue(IsElementPresent(tourPages.textCalendarSchecule, driver));
+			assertTrue(IsElementPresent(driver, tourPages.textCalendarSchecule, ""));
 			ExtentManager.logInfoDetails("Swipe right, Still user is on <b>Calendar schedule view</b> screen as expected");
 
 		} catch (Exception e) {
@@ -118,4 +125,67 @@ public class DS_016_TourPagesTest extends AndroidBase {
 		}
 	}
 
+//	@Test (priority = 0)
+//	public void verifyTourPagesUsingNextButtonClick() throws InterruptedException {
+//		try 
+//		{
+//			// ______________verify home page_____________________
+//			assertTrue(loginPage.validateLoginPageNote());
+//			ExtentManager.logInfoDetails("Application launched successfully");
+//			
+//			// ______________verify login with valid credentials______________
+//			Thread.sleep(10000);
+//			assertTrue(loginPage.loginApplication(readData("userDetails", "username"), readData("userDetails", "password"), "valid"));
+//	
+//			// Click skip and verify tour page
+//			assertTrue(loginPage.clickBiometricPopupButton("skip"));
+//	
+//			//______________validate otp and verify expected opened page______________
+//			String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+//			smsVerification.validateValidOTP(getOtp, "Tour Screen");
+//
+//			// _______________verify next button functionality____________________
+//			tourPages.verifyTourPagesOnNextButton("no");
+//		} catch (Exception e) {
+//			e.getMessage();
+//			Assert.fail();
+//		}
+//	}
+//	
+//	@Test (priority = 2)
+//	public void verifyTourPagesUsingLeftSwipe() throws InterruptedException {
+//		try 
+//		{
+//			// ________________________swipe left functionality__________________
+//			tourPages.verifyTourPagesWithBackwardSwipe();
+//		} catch (Exception e) {
+//			e.getMessage();
+//			Assert.fail();
+//		}
+//	}
+//	
+//	@Test (priority = 3)
+//	public void verifyTourPagesUsingRightSwipe() throws InterruptedException {
+//		try 
+//		{		
+//			// ________________________swipe right functionality___________________
+//			tourPages.verifyTourPagesWithForwardSwipe();
+//		} catch (Exception e) {
+//			e.getMessage();
+//			Assert.fail();
+//		}
+//	}
+//	
+//	@Test (priority = 4)
+//	public void verifyTourPagesUsingBackButtonClick() throws InterruptedException {
+//		try 
+//		{
+//			// _______________verify back button functionality____________________
+//			tourPages.verifyTourPagesOnBackButton();
+//			tourPages.verifyTourPagesOnNextButton("yes");
+//		} catch (Exception e) {
+//			e.getMessage();
+//			Assert.fail();
+//		}
+//	}
 }

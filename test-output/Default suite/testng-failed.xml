@@ -3,15 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.dentscribe.testCases.DS_026_RecordingTest">
+      <class name="com.dentscribe.testCases.DS_028_SettingPageTest">
         <methods>
           <include name="tearDown"/>
-          <include name="startServer"/>
-          <include name="signIn"/>
-          <include name="stopService"/>
-          <include name="recordingTest"/>
+          <include name="verifyIsSettingsPageExists"/>
+          <include name="launchApplication"/>
         </methods>
-      </class> <!-- com.dentscribe.testCases.DS_026_RecordingTest -->
+      </class> <!-- com.dentscribe.testCases.DS_028_SettingPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

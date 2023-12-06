@@ -47,10 +47,10 @@ public class AndroidActions extends CommonMethods {
 	// _________Scroll to element
 	public void scrollableClick(String text) {
 		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"" + text + "\"));")).click();
-		ExtentManager.logInfoDetails("Clicked on <b>" + text + "</b>");
+//		ExtentManager.logInfoDetails("Clicked on button <b>" + text + "</b>");
 	}
 
-	public void scrollByElement(String locator) {
+	public void scrollByElement(By locator) {
 		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(" + "new UiSelector().description(\"" + locator + "\"))"));
 	}
 

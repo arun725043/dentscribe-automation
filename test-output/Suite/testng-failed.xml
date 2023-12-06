@@ -6,15 +6,32 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.dentscribe.testCases.DS_026_RecordingTest">
+      <class name="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser">
+        <methods>
+          <include name="signupUserTest"/>
+          <include name="tearDown"/>
+          <include name="verifyLoginAcceptEulaAgreement"/>
+          <include name="verifyUserCanBuyPaidPlan"/>
+          <include name="verifyUserCanCancelSubscription"/>
+          <include name="practiceInfoTest"/>
+          <include name="launchApplication"/>
+          <include name="verifyUserCarBuyPaidPlanAfterCancelOnce"/>
+        </methods>
+      </class> <!-- com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser -->
+      <class name="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest">
         <methods>
           <include name="tearDown"/>
-          <include name="startServer"/>
-          <include name="signIn"/>
-          <include name="stopService"/>
-          <include name="recordingTest"/>
+          <include name="verifyIsAddPaymentPageExists"/>
+          <include name="verifyUserCanBuyPaidPlan"/>
+          <include name="signupUserTest"/>
+          <include name="verifyPaymentMethodWithInvalidCardDetails"/>
+          <include name="launchApplication"/>
+          <include name="verifyBackIconAddPaymentMethodPage"/>
+          <include name="verifyUserCanTake30DaysFreeTrialPlan"/>
+          <include name="verifyLogout"/>
+          <include name="verifyPaymentMethodMandatoryFields"/>
         </methods>
-      </class> <!-- com.dentscribe.testCases.DS_026_RecordingTest -->
+      </class> <!-- com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

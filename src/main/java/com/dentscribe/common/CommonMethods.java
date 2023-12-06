@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -16,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
 import com.github.javafaker.Faker;
 
@@ -30,6 +33,7 @@ public class CommonMethods {
 	static CommonMethods utils;
 	static Faker faker = new Faker();
 	static int MAX = 26;
+	public static String otpTextboxes = "android.widget.EditText";
 
 	public AppiumDriverLocalService startAppiumServer(String ipAddress, int port) {
 
@@ -43,27 +47,45 @@ public class CommonMethods {
 	}
 
 	// To return element present
-	public boolean IsElementPresent(By by, AppiumDriver driver) {
+	public boolean IsElementPresent(AppiumDriver driver, By locator, String expectedElement) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		try {
-			driver.findElement(by);
+			driver.findElement(locator);
+			ExtentManager.logInfoDetails("Expected element found :: - <b>'" + expectedElement + "'<b>.");
 			return true; // Success!
-		} catch (Exception ignored) {
+		} catch (Exception e) {
+			ExtentManager.logFailureDetails("Please check because expected element not found ::- <b>'" + expectedElement + "'<b>.");
+			e.getMessage();
 			return false;
 		}
 	}
-
+	
+	public static void fillOTPBoxes(AppiumDriver driver, String otp)
+	{
+		char[] ch = otp.toCharArray();
+		List<WebElement> elements = driver.findElements(By.className(otpTextboxes));
+//		ExtentManager.logInfoDetails(String.valueOf(elements.size()));
+		for (int i = 0; i < elements.size();) 
+        {
+			elements.get(i).click();
+			elements.get(i).sendKeys(String.valueOf(ch));
+			ExtentManager.logInfoDetails("SMS OTP Entered successfully");
+			break;
+        }
+	}
+	
 	public String getAttribute(By locator) {
 		return AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getAttribute("name");
 	}
 
-	public void waitForElementToAppear(WebElement ele, AppiumDriver driver) {
+	public void waitForElementToAppear(AppiumDriver driver, WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-		wait.until(ExpectedConditions.attributeContains((ele), "text", "Cart"));
+		wait.until(ExpectedConditions.attributeContains((element), "text", "Cart"));
 	}
 
-	public void click(By element, AppiumDriver driver) {
-		AndroidBase.wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(element))).click();
+	public void click(AppiumDriver driver, By locator, String buttonName) {
+		AndroidBase.wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator))).click();
+		ExtentManager.logInfoDetails("Clicked on <b>" + buttonName + "<b>");
 	}
 
 	// To perform clear operation
@@ -73,31 +95,40 @@ public class CommonMethods {
 
 	// return text of element
 	public String getText(By locator) {
-		return AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+		String actualText = null;
+		try {
+			actualText = AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+			ExtentManager.logInfoDetails("Actual text found <b>" + actualText);
+		}
+		catch (Exception e) {
+			ExtentManager.logFailureDetails("Either expected element not found or not exists. Please check");
+			Assert.fail();
+		}
+		return actualText;
 	}
 
 	// To perform send keys operation (i.e to enter text in a field)
-	public static void sendKeys(By element, String value, AppiumDriver driver) {
-		AndroidBase.wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(element))).sendKeys(value);
+	public void sendKeys(AppiumDriver driver, By locator, String fieldName, String value) {
+		AndroidBase.wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator))).sendKeys(value);
+		ExtentManager.logInfoDetails("Entered value into textbox <b>" + fieldName + "<b> ::- <b>" + value + "<b>");
 	}
 
-	public void explicitWait(AppiumDriver driver, By locator, int d) {
-		new WebDriverWait(driver, Duration.ofSeconds(d)).until(ExpectedConditions.visibilityOfElementLocated(locator));
+	public void explicitWait(AppiumDriver driver, By locator, int duration) {
+		new WebDriverWait(driver, Duration.ofSeconds(duration)).until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	public void back(AppiumDriver driver) {
 		driver.navigate().back();
 	}
 
-	public boolean equals(String actual, String expected) {
-		boolean flag = false;
-		if (actual.equals(expected)) {
-			flag = true;
+	public void verifyTexts(String actualText, String expectedText) {
+		if (actualText.trim().equals(expectedText.trim())) 
+		{
+			ExtentManager.logInfoDetails("Actual and Expected text matched as expected.");
 		} else {
-			flag = false;
+			ExtentManager.logFailureDetails("Expected text is :- " + expectedText + " but actual text found :- " + actualText);
+			Assert.fail();
 		}
-		return flag;
-
 	}
 
 	public boolean contains(String actual, String expected) {
@@ -111,9 +142,8 @@ public class CommonMethods {
 
 	}
 
-	static String value;
-
 	public static String readData(String file, String key) {
+		String value = null;
 		try {
 			FileInputStream in = new FileInputStream(CommonVariables.configPath + file);
 			Properties properties = new Properties();
@@ -152,19 +182,6 @@ public class CommonMethods {
 		randomInt = randomGenerator.nextInt(1000);
 		return randomInt;
 	}
-
-//	 To create random integer of length
-//	public static int GenerateRandomNumber(int length) {
-//		try {
-//
-//			String RandomNumber = RandomStringUtils.randomNumeric(length);
-//			int no = Integer.parseInt(RandomNumber);
-//			return no;
-//		} catch (Exception ex) {
-//
-//		}
-//		return -1;
-//	}
 
 	public static String GenerateRandomNumber(int length) {
 		Random random = new Random();
@@ -253,5 +270,28 @@ public class CommonMethods {
 		}
 		return time;
     }
-
+	
+	public static String currentMonthYear()
+	{
+		 DateFormat df = new SimpleDateFormat("dd-MMMM-yyyy");
+	     String formattedDate = df.format(new Date());
+	     
+	     System.out.println("Formated Date:" + formattedDate);
+	     
+	     String[] seperateDate = formattedDate.split("-");
+	     String day = seperateDate[0];
+	     String month = seperateDate[1];
+	     String year = seperateDate[2];
+	     
+	     
+		String monthYear = month + " " + year;
+		return monthYear;
+	}
+	
+	public static void recordingTime(int minutes) throws InterruptedException
+	{
+		long time = 1000 * 60 * minutes;
+		Thread.sleep(time);
+		ExtentManager.logInfoDetails("<b>Recording is running for " + minutes + " minutes");
+	}
 }

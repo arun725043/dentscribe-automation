@@ -1,0 +1,15 @@
+_____________invalid user credentials__________________
+invalidUsername=arunr@gmail.com
+invalidPassword=kapoor
+
+_____________________valid user details_________________
+username=kapoor.arun+dev001@thinksys.com
+password=Pass@1234
+mobile=9990417876
+
+//____________sikka_____________
+existingSikkaUser=kapoor.arun+sikka@thinksys.com
+existingSikkaPwd=Kapoor@1234
+
+//___________forgot password___________
+forgotPasswordUser=rahul@thinksys.com

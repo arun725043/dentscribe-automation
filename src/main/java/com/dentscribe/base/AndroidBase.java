@@ -5,24 +5,26 @@ import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Random;
 
+import org.testng.annotations.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 
 import com.dentscribe.common.CommonMethods;
 import com.dentscribe.pages.CalendarPage;
 import com.dentscribe.pages.ForgotPasswordPage;
 import com.dentscribe.pages.LoginPage;
 import com.dentscribe.pages.ManageSubscriptionPage;
+import com.dentscribe.pages.PatientProfilePage;
 import com.dentscribe.pages.PatientSearchPage;
 import com.dentscribe.pages.PracticeInfoPage;
-import com.dentscribe.pages.SettingPage;
+import com.dentscribe.pages.RecordingPage;
+import com.dentscribe.pages.SettingsPage;
 import com.dentscribe.pages.SignUpPage;
+import com.dentscribe.pages.SikkaWebviewPage;
+import com.dentscribe.pages.SmsVerification;
+import com.dentscribe.pages.SoapReportPage;
 import com.dentscribe.pages.TourPages;
 import com.dentscribe.utils.AndroidActions;
-
+import java.net.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -41,26 +43,34 @@ public class AndroidBase extends CommonMethods {
 	public PracticeInfoPage practiceInfoPage;
 	public TourPages tourPages;
 	public PatientSearchPage searchPage;
-	public SettingPage settingPage;
-	public ManageSubscriptionPage manageSubscription;
+	public SettingsPage settingPage;
+	public ManageSubscriptionPage manageSubscriptionPage;
 	public CalendarPage calendarPage;
 	public ForgotPasswordPage forgotPasswordPage;
+	public SmsVerification smsVerificationPage;
+	public PatientProfilePage profilePage;
+	public RecordingPage recordingPage;
+	public SoapReportPage soapReportPage;
+	public SikkaWebviewPage sikkaWebviewPage;
 
-	@BeforeTest
+//	@BeforeTest
 	public void startServer() {
 		service = startAppiumServer(readData("Config", "ipAddress"), Integer.parseInt(readData("Config", "port")));
 	}
 
-	@BeforeMethod
-	public void signIn() {
+	@BeforeClass
+	public void launchApplication() {
 		try {
+			service = startAppiumServer(readData("Config", "ipAddress"), Integer.parseInt(readData("Config", "port")));
 			UiAutomator2Options options = new UiAutomator2Options();
 			options.setDeviceName(readData("Config", "deviceName")); // emulator
 			options.setPlatformName(readData("Config", "deviceType"));
 			options.setAppPackage(readData("Config", "packageName")).setAppActivity(readData("Config", "activityName"));
 //			options.setNoReset(true);
 //			options.setApp(System.getProperty("user.dir") + "//apk_files//app-release.apk");
-			driver = new AndroidDriver(service.getUrl(), options);
+//			driver = new AndroidDriver(service.getUrl(), options);
+			driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 			initializeObjects();
@@ -70,13 +80,15 @@ public class AndroidBase extends CommonMethods {
 		}
 	}
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
-		driver.quit();
-
+		if (driver != null) {
+            driver.quit();
+            stopService();
+        }
 	}
 
-	@AfterTest
+//	@AfterTest
 	public void stopService() {
 		service.stop();
 	}
@@ -84,14 +96,18 @@ public class AndroidBase extends CommonMethods {
 	public void initializeObjects() {
 		actions = new AndroidActions(driver);
 		signUpPage = new SignUpPage(driver);
-		loginPage = new LoginPage(driver);
 		practiceInfoPage = new PracticeInfoPage(driver);
-		tourPages = new TourPages(driver);
-		searchPage = new PatientSearchPage(driver);
-		settingPage = new SettingPage(driver);
-		manageSubscription = new ManageSubscriptionPage(driver);
-		calendarPage = new CalendarPage(driver);
 		forgotPasswordPage = new ForgotPasswordPage(driver);
+		loginPage = new LoginPage(driver);
+		smsVerificationPage = new SmsVerification(driver);
+		manageSubscriptionPage = new ManageSubscriptionPage(driver);
+		tourPages = new TourPages(driver);
+		calendarPage = new CalendarPage(driver);
+		recordingPage = new RecordingPage(driver);
+		soapReportPage = new SoapReportPage(driver);
+		searchPage = new PatientSearchPage(driver);
+		profilePage = new PatientProfilePage(driver);
+		settingPage = new SettingsPage(driver);
+		sikkaWebviewPage = new SikkaWebviewPage(driver);
 	}
-
 }

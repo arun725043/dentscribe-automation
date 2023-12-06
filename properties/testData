@@ -1,12 +1,18 @@
+__________Forgot Password__________
+wrongEmailId=kapoor.arun
+nonExistingEmailId=kapoor.arun@gmail.com
+
 _____________________patient details_________________
-patientName=Bidwal Rohit
-patientPhone=4085822521
-dob=1994-10-16
-insurance= Delta Dental Plan Of Ca. 
-lastVisit=2023-10-24
+patientName=Johnson Alastair
+patientPhone=6506900785
+dobSearchPage=1984-06-12
+dobProfilePage=06/12/1984
+insurance=MetLife
+lastVisitSearchPage=2023-10-30
+lastVisitProfilePage=10/30/2023
 
 ______________practice form__________
-state=Alabama
+state=Alaska
 country=United States
 
 //_____________payment details_____
@@ -18,16 +24,23 @@ zipcode=12345
 //______________signup details__________
 countryCode=+91
 countryName=India
+mobile=9990417876
+title=MDS
 otp=839389
-pmsName=Eaglesoft
+pmsName=Dentrix
 
 //_____________calendar_____________
 calendarTestDate=06-08-2024
 
 
 //____________recordings date_____________
+recordingTestDate=07-08-2023
 recording11mintsDate=11-07-2023
 recording21mintsDate=12-07-2023
 recording31mintsDate=13-07-2023
 recording51mintsDate=17-07-2023
-recordingTestDate=31-07-2023
+
+//__________Office Ids___________________
+eaglesoft=D22072
+dentrix=D46381
+opendental=D46103

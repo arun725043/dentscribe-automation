@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="15" passed="3" failed="3" skipped="9">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-11-03T17:52:36 IST" name="Default suite" finished-at="2023-11-03T17:53:00 IST" duration-ms="23267">
+  <suite started-at="2023-12-06T16:10:37 IST" name="Suite" finished-at="2023-12-06T16:24:58 IST" duration-ms="861562">
     <groups>
     </groups>
-    <test started-at="2023-11-03T17:52:36 IST" name="Default test" finished-at="2023-11-03T17:53:00 IST" duration-ms="23267">
-      <class name="com.dentscribe.testCases.DS_026_RecordingTest">
-        <test-method is-config="true" signature="startServer()[pri:0, instance:com.dentscribe.testCases.DS_026_RecordingTest@14656be5]" started-at="2023-11-03T17:52:36 IST" name="startServer" finished-at="2023-11-03T17:52:43 IST" duration-ms="6145" status="PASS">
+    <test started-at="2023-12-06T16:10:37 IST" name="Test" finished-at="2023-12-06T16:24:58 IST" duration-ms="861562">
+      <class name="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2]" started-at="2023-12-06T16:18:09 IST" name="launchApplication" finished-at="2023-12-06T16:18:31 IST" duration-ms="22035" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- startServer -->
-        <test-method is-config="true" signature="signIn()[pri:0, instance:com.dentscribe.testCases.DS_026_RecordingTest@14656be5]" started-at="2023-11-03T17:52:43 IST" name="signIn" finished-at="2023-11-03T17:52:51 IST" duration-ms="8040" status="PASS">
+        </test-method> <!-- launchApplication -->
+        <test-method signature="signupUserTest()[pri:0, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2]" started-at="2023-12-06T16:18:31 IST" name="signupUserTest" finished-at="2023-12-06T16:19:54 IST" duration-ms="83005" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- signIn -->
-        <test-method signature="recordingTest()[pri:0, instance:com.dentscribe.testCases.DS_026_RecordingTest@14656be5]" started-at="2023-11-03T17:52:51 IST" name="recordingTest" finished-at="2023-11-03T17:52:59 IST" duration-ms="8701" status="FAIL">
+        </test-method> <!-- signupUserTest -->
+        <test-method signature="practiceInfoTest()[pri:1, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2]" started-at="2023-12-06T16:19:54 IST" name="practiceInfoTest" finished-at="2023-12-06T16:21:10 IST" depends-on-methods="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.signupUserTest" duration-ms="76115" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- practiceInfoTest -->
+        <test-method signature="verifyWebviewAndRegisterUser()[pri:2, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2]" started-at="2023-12-06T16:21:10 IST" name="verifyWebviewAndRegisterUser" finished-at="2023-12-06T16:24:13 IST" depends-on-methods="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.practiceInfoTest" duration-ms="182917" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyWebviewAndRegisterUser -->
+        <test-method signature="verifyLoginAcceptEulaAgreement()[pri:3, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2]" started-at="2023-12-06T16:24:13 IST" name="verifyLoginAcceptEulaAgreement" finished-at="2023-12-06T16:24:57 IST" depends-on-methods="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.practiceInfoTest" duration-ms="44296" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[null]]>
@@ -24,7 +32,7 @@
               <![CDATA[java.lang.AssertionError: null
 at org.testng.Assert.fail(Assert.java:99)
 at org.testng.Assert.fail(Assert.java:106)
-at com.dentscribe.testCases.DS_026_RecordingTest.recordingTest(DS_026_RecordingTest.java:85)
+at com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyLoginAcceptEulaAgreement(DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.java:106)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -58,16 +66,425 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- recordingTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.DS_026_RecordingTest@14656be5]" started-at="2023-11-03T17:52:59 IST" name="tearDown" finished-at="2023-11-03T17:53:00 IST" duration-ms="287" status="PASS">
+        </test-method> <!-- verifyLoginAcceptEulaAgreement -->
+        <test-method signature="verifyUserCanBuyPaidPlan()[pri:4, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2]" started-at="2023-12-06T16:24:58 IST" name="verifyUserCanBuyPaidPlan" finished-at="2023-12-06T16:24:58 IST" depends-on-methods="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyLoginAcceptEulaAgreement" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyUserCanBuyPaidPlan()[pri:4, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyUserCanBuyPaidPlan()[pri:4, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserCanBuyPaidPlan -->
+        <test-method signature="verifyUserCanCancelSubscription()[pri:5, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2]" started-at="2023-12-06T16:24:58 IST" name="verifyUserCanCancelSubscription" finished-at="2023-12-06T16:24:58 IST" depends-on-methods="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyUserCanBuyPaidPlan" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyUserCanCancelSubscription()[pri:5, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyUserCanCancelSubscription()[pri:5, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserCanCancelSubscription -->
+        <test-method signature="verifyUserCarBuyPaidPlanAfterCancelOnce()[pri:6, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2]" started-at="2023-12-06T16:24:58 IST" name="verifyUserCarBuyPaidPlanAfterCancelOnce" finished-at="2023-12-06T16:24:58 IST" depends-on-methods="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyUserCanCancelSubscription" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyUserCarBuyPaidPlanAfterCancelOnce()[pri:6, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser.verifyUserCarBuyPaidPlanAfterCancelOnce()[pri:6, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserCarBuyPaidPlanAfterCancelOnce -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser@8d810f2]" started-at="2023-12-06T16:24:58 IST" name="tearDown" finished-at="2023-12-06T16:24:58 IST" duration-ms="534" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="stopService()[pri:0, instance:com.dentscribe.testCases.DS_026_RecordingTest@14656be5]" started-at="2023-11-03T17:53:00 IST" name="stopService" finished-at="2023-11-03T17:53:00 IST" duration-ms="57" status="PASS">
+      </class> <!-- com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser -->
+      <class name="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:10:37 IST" name="launchApplication" finished-at="2023-12-06T16:11:02 IST" duration-ms="24880" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- stopService -->
-      </class> <!-- com.dentscribe.testCases.DS_026_RecordingTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+        </test-method> <!-- launchApplication -->
+        <test-method signature="signupUserTest()[pri:0, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:11:02 IST" name="signupUserTest" finished-at="2023-12-06T16:18:02 IST" duration-ms="420130" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: null
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.fail(Assert.java:106)
+at com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest.signupUserTest(DS_011_012_021_FreeTrialAndLogoutTest.java:86)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- signupUserTest -->
+        <test-method signature="verifyIsAddPaymentPageExists()[pri:1, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:18:02 IST" name="verifyIsAddPaymentPageExists" finished-at="2023-12-06T16:18:02 IST" depends-on-methods="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest.signupUserTest" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method DS_011_012_021_FreeTrialAndLogoutTest.verifyIsAddPaymentPageExists()[pri:1, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method DS_011_012_021_FreeTrialAndLogoutTest.verifyIsAddPaymentPageExists()[pri:1, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyIsAddPaymentPageExists -->
+        <test-method signature="verifyPaymentMethodMandatoryFields()[pri:2, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:18:02 IST" name="verifyPaymentMethodMandatoryFields" finished-at="2023-12-06T16:18:02 IST" depends-on-methods="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest.verifyIsAddPaymentPageExists" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method DS_011_012_021_FreeTrialAndLogoutTest.verifyPaymentMethodMandatoryFields()[pri:2, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method DS_011_012_021_FreeTrialAndLogoutTest.verifyPaymentMethodMandatoryFields()[pri:2, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPaymentMethodMandatoryFields -->
+        <test-method signature="verifyPaymentMethodWithInvalidCardDetails()[pri:3, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:18:02 IST" name="verifyPaymentMethodWithInvalidCardDetails" finished-at="2023-12-06T16:18:02 IST" depends-on-methods="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest.verifyIsAddPaymentPageExists" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method DS_011_012_021_FreeTrialAndLogoutTest.verifyPaymentMethodWithInvalidCardDetails()[pri:3, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method DS_011_012_021_FreeTrialAndLogoutTest.verifyPaymentMethodWithInvalidCardDetails()[pri:3, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPaymentMethodWithInvalidCardDetails -->
+        <test-method signature="verifyBackIconAddPaymentMethodPage()[pri:4, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:18:02 IST" name="verifyBackIconAddPaymentMethodPage" finished-at="2023-12-06T16:18:02 IST" depends-on-methods="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest.verifyIsAddPaymentPageExists" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method DS_011_012_021_FreeTrialAndLogoutTest.verifyBackIconAddPaymentMethodPage()[pri:4, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method DS_011_012_021_FreeTrialAndLogoutTest.verifyBackIconAddPaymentMethodPage()[pri:4, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyBackIconAddPaymentMethodPage -->
+        <test-method signature="verifyUserCanTake30DaysFreeTrialPlan()[pri:5, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:18:02 IST" name="verifyUserCanTake30DaysFreeTrialPlan" finished-at="2023-12-06T16:18:02 IST" depends-on-methods="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest.verifyBackIconAddPaymentMethodPage" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method DS_011_012_021_FreeTrialAndLogoutTest.verifyUserCanTake30DaysFreeTrialPlan()[pri:5, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method DS_011_012_021_FreeTrialAndLogoutTest.verifyUserCanTake30DaysFreeTrialPlan()[pri:5, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserCanTake30DaysFreeTrialPlan -->
+        <test-method signature="verifyUserCanBuyPaidPlan()[pri:6, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:18:02 IST" name="verifyUserCanBuyPaidPlan" finished-at="2023-12-06T16:18:02 IST" depends-on-methods="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest.verifyUserCanTake30DaysFreeTrialPlan" duration-ms="0" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method DS_011_012_021_FreeTrialAndLogoutTest.verifyUserCanBuyPaidPlan()[pri:6, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method DS_011_012_021_FreeTrialAndLogoutTest.verifyUserCanBuyPaidPlan()[pri:6, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a] depends on not successfully finished methods
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserCanBuyPaidPlan -->
+        <test-method signature="verifyLogout()[pri:7, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:18:02 IST" name="verifyLogout" finished-at="2023-12-06T16:18:07 IST" duration-ms="5110" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [2ea57802-f266-4e16-bba2-d96a43605ea8, findElement {using=xpath, value=//android.widget.TextView[@text='Log Out']}]
+Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 2ea57802-f266-4e16-bba2-d96a43605ea8]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.13.0', revision: 'ba948ece5b*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [2ea57802-f266-4e16-bba2-d96a43605ea8, findElement {using=xpath, value=//android.widget.TextView[@text='Log Out']}]
+Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 2ea57802-f266-4e16-bba2-d96a43605ea8
+at jdk.internal.reflect.GeneratedConstructorAccessor21.newInstance(Unknown Source)
+at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+at com.dentscribe.common.CommonMethods.click(CommonMethods.java:87)
+at com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest.verifyLogout(DS_011_012_021_FreeTrialAndLogoutTest.java:167)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:794)
+at org.testng.TestRunner.run(TestRunner.java:596)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+at org.testng.TestNG.runSuites(TestNG.java:1063)
+at org.testng.TestNG.run(TestNG.java:1031)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLogout -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest@65ef9a0a]" started-at="2023-12-06T16:18:08 IST" name="tearDown" finished-at="2023-12-06T16:18:09 IST" duration-ms="610" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>
