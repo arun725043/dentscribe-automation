@@ -1,10 +1,8 @@
 package com.dentscribe.pages;
 
 import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.common.CommonLocators;
@@ -56,33 +54,27 @@ public class SmsVerification extends AndroidActions {
 	}
 	
 	// _____________validate OTP with valid values_____________
-	public void validateValidOTP(String otp_value, String expectedScreen) throws InterruptedException 
+	public void enterOtpAndClickContinueButton(String otp_value) throws InterruptedException 
 	{
 		if (otp_value != "")
 		{
 			CommonMethods.fillOTPBoxes(driver, otp_value);
 		}
 		click(driver, CommonLocators.continueButton, "Continue button on sms verification page");
-		Thread.sleep(5000);
-		if (expectedScreen.equalsIgnoreCase("TOUR SCREEN"))
-		{
-			assertTrue(IsElementPresent(driver, CommonLocators.pageCalendarScheduleViewText, "Calendar Schedule View"));
-			ExtentManager.logInfoDetails("User is now on <b>Calendar Schedule View</b> tour page as expected");
-		}
-		else if (expectedScreen.equalsIgnoreCase("EULA SCREEN"))
-		{
-			assertTrue(IsElementPresent(driver, CommonLocators.pageEulaAgreementHeader, "EULA Agreement screen"));
-			ExtentManager.logInfoDetails("User is now on <b>EULA Agreement</b> page as expected");
-		}
-		else if (expectedScreen.equalsIgnoreCase("PRACTICE FORM"))
-		{
-			assertTrue(IsElementPresent(driver, CommonLocators.pagePracticeInfoHeader, "Practice Info form"));
-			ExtentManager.logInfoDetails("User is now on <b>Practice Info</b> page as expected");
-		}
-		else {
-			ExtentManager.logFailureDetails("Please enter valid expected screen/element name");
-			Assert.fail();
-		}	
+//		if (expectedScreen.equalsIgnoreCase("TOUR SCREEN"))
+//		{
+//			assertTrue(IsElementPresent(driver, CommonLocators.pageCalendarScheduleViewText, "Calendar Schedule View"));
+//			ExtentManager.logInfoDetails("User is now on <b>Calendar Schedule View</b> tour page as expected");
+//		}
+//		else if (expectedScreen.equalsIgnoreCase("EULA SCREEN"))
+//		{
+//			assertTrue(IsElementPresent(driver, CommonLocators.pageEulaAgreementHeader, "EULA Agreement screen"));
+//			ExtentManager.logInfoDetails("User is now on <b>EULA Agreement</b> page as expected");
+//		}
+//		else {
+//			ExtentManager.logFailureDetails("Please enter valid expected screen/element name");
+//			Assert.fail();
+//		}	
 	}
 	
 	// ___________________validate ReSend link_______________________

@@ -42,6 +42,7 @@ public class RecordingPage extends AndroidActions {
 	public By recordingPageHeader = By.xpath("//android.widget.TextView[@text='Record']");
 	public By recordingRunningText = By.xpath("//android.widget.TextView[@text='• Recording']");
 	public By iconBackRecordingPage = By.xpath("//android.widget.TextView[@text='Record']//preceding-sibling::android.view.ViewGroup//android.widget.ImageView[@index=0]");
+	public By textPatientName = By.xpath("//android.widget.TextView[@text='Record']//parent::android.view.ViewGroup//following-sibling::android.view.ViewGroup//android.view.ViewGroup[@index=1]//android.widget.TextView");
 	
 	public By pauseButton = By.xpath("//android.widget.TextView[@text='Pause']");
 	public By stopButton = By.xpath("//android.widget.TextView[@text='Stop']");
@@ -65,14 +66,14 @@ public class RecordingPage extends AndroidActions {
 	}
 	
 	// _________verify recording page for patient name, start, pause buttons_______
-	public void verifyRecordingPageDetails() 
+	public void verifyRecordingPageFields(String expectedPatientName) 
 	{
-//		ExtentManager.logInfoDetails("Expected Patient Name ::- " + CommonVariables.patientDeatilsPopupPatientName);
-		String nameXPath = "//android.widget.TextView[@text='" + CommonVariables.patientDeatilsPopupPatientName.trim() + "']";
+//		String nameXPath = "//android.widget.TextView[@text='" + CommonVariables.patientDeatilsPopupPatientName.trim() + "']";
 		//read and verify patient name
-		String actualPatientName = getText(By.xpath(nameXPath));
-//		ExtentManager.logInfoDetails("ACTUAL PATIENT NAME FOUND::- " + actualPatientName);
-		assertEquals(actualPatientName.trim(), CommonVariables.patientDeatilsPopupPatientName.trim());
+		String actualPatientName = getText(textPatientName);
+		System.out.println(actualPatientName + "::" + expectedPatientName);
+		assertEquals(actualPatientName.trim(), expectedPatientName.trim());
+		ExtentManager.logInfoDetails("Recording page opened for patient - " + actualPatientName);
 		verifyStopPauseButtons();
 	}
 	

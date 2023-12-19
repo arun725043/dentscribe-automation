@@ -15,17 +15,20 @@ import com.dentscribe.common.CommonLocators;
 import com.dentscribe.common.CommonMethods;
 import com.dentscribe.common.CommonVariables;
 
-public class DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser extends AndroidBase {
+public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 
 	String getOtp = null;
 	String email = "kapoor.arun+" + CommonMethods.GenerateRandomNumber(4) + "@thinksys.com";
 	
 	@Test(priority = 0)
-	public void signupUserTest() throws InterruptedException {
+	public void verifySignupNewUser() throws InterruptedException {
 		try {
 			// ___________Application launched_______________
-			ExtentManager.logInfoDetails("Application is launched successfully");
+			loginPage.verifyIsApplicationLaunched();
+
+			// _______________Click Signup tab and verify it_______________
 			click(driver, signUpPage.signupButton, "Signup tab");
+			signUpPage.validateSignupPage();
 
 			// ____________________Fill signup form and verify confirmation popup button_________________
 			signUpPage.fillSignupForm(signUpPage.getSignupDetail(), email);
@@ -35,42 +38,44 @@ public class DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser ext
 			// ________________Enter OTP__________________
 			assertTrue(signUpPage.clickSignupConfirmationPopupButtons("continue"));
 			getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
-			smsVerificationPage.validateValidOTP(getOtp, "Practice form");
+			smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
+			assertTrue(practiceInfoPage.validatePracticeInfoPage());
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
 
-	@Test(priority = 1, dependsOnMethods = { "signupUserTest" })
-	public void practiceInfoTest() throws IOException, InterruptedException {
+	@Test(priority = 1, dependsOnMethods = { "verifySignupNewUser" })
+	public void verifyCreatePracticeInfo() throws IOException, InterruptedException {
 		try {
 			// _________________fill Practice form and Navigate to Sikka page________________________
 			practiceInfoPage.fillPracticeInfo(readData("testData", "state"), readData("testData", "country"));
-			practiceInfoPage.clickPracticeContinueButton();
+			practiceInfoPage.clickContinueButtonPracticeInfo();
 			Thread.sleep(20000);
+			assertTrue(sikkaWebviewPage.validateSikkaWebViewPage());
 			actions.scrollableClick("Proceed");
-			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(practiceInfoPage.buttonRegister));	
+//			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(sikkaWebviewPage.buttonRegister));	
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
 	
-	@Test(priority = 2, dependsOnMethods = { "practiceInfoTest" })
-	public void verifyWebviewAndRegisterUser() throws InterruptedException
+	@Test(priority = 2, dependsOnMethods = { "verifyCreatePracticeInfo" })
+	public void verifyWebViewRegisteration() throws InterruptedException
 	{
-		click(driver, practiceInfoPage.buttonRegister, "Register button");
-		explicitWait(driver, practiceInfoPage.textYourOrder, 30);
+		click(driver, sikkaWebviewPage.buttonRegister, "Register button");
+		explicitWait(driver, sikkaWebviewPage.textYourOrder, 30);
 
 		actions.scrollUntilElementIsVisible("Next");
 		Thread.sleep(2000);
-		click(driver, practiceInfoPage.buttonNext, "Next button");
+		click(driver, sikkaWebviewPage.buttonNext, "Next button");
 		actions.scrollUntilElementIsVisible("Yes");
 		Thread.sleep(10000);
 
-		click(driver, practiceInfoPage.RadioYes, "Yes radio button");
-		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(practiceInfoPage.textTermsOfService));
+		click(driver, sikkaWebviewPage.RadioYes, "Yes radio button");
+		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(sikkaWebviewPage.textTermsOfService));
 //		actions.scrollToPartialText("Agree");
 
 		// ___________________Scroll Terms of Service page____________________________
@@ -81,40 +86,54 @@ public class DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser ext
 
 		// __________________Fill the confirmation page______________________________
 		sikkaWebviewPage.enterExistingSikkaCredentials(readData("userDetails", "existingSikkaUser"), readData("userDetails", "existingSikkaPwd"));
-		explicitWait(driver, CommonLocators.inputTxtUsername, 30);
-		assertTrue(IsElementPresent(driver, CommonLocators.inputTxtUsername, "Username label"));
+		explicitWait(driver, CommonLocators.inputTxtUsername, 60);
+		assertTrue(loginPage.validateLoginPage());
 		ExtentManager.logInfoDetails("<b>Practice created successfully");
 	}
 	
-	@Test(priority = 3, dependsOnMethods = { "practiceInfoTest" })
-	public void verifyLoginAcceptEulaAgreement() throws IOException, InterruptedException {
+	@Test(priority = 3, dependsOnMethods = { "verifyWebViewRegisteration" })
+	public void verifySpuInstallPopupAndRefreshData() throws IOException, InterruptedException {
 		try {
-			// ___________refreshing sikka data and login_________________
-			assertTrue(loginPage.loginApplication(email, CommonVariables.actualPass, "spu popup"));	
-			GetOtp.updateOfficeId(email, "D46381");
-			assertTrue(loginPage.loginApplication(email, CommonVariables.actualPass, "valid"));
-			assertTrue(loginPage.verifyBiometricPopupButton());
-			// Click skip and verify tour page
-			assertTrue(loginPage.clickBiometricPopupButton("skip"));
+			// _______________login application and verify SPU Install popup_______________
+			assertTrue(loginPage.loginApplication(email, CommonVariables.actualPass, "spu popup"));
 			
-			getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
-			smsVerificationPage.validateValidOTP(getOtp, "EULA Screen");
-			actions.scrollableClick("Continue");
-			ExtentManager.logInfoDetails("Clicked on EULA agreement <b>Continue button");
+			// _______________By pass the manual sikka refresh steps and refreshing sikka data_______________
+			GetOtp.updateOfficeId(email, readData("testData", "dentrix"));
+			ExtentManager.logInfoDetails("Sikka refresh done");
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
 	
-	@Test(priority = 4, dependsOnMethods = { "verifyLoginAcceptEulaAgreement" })
-	public void verifyUserCanBuyPaidPlan() throws InterruptedException
+	@Test(priority = 4, dependsOnMethods = { "verifyWebViewRegisteration" })
+	public void verifyEulaAgreementPageAndAcceptAgreement() throws IOException, InterruptedException {
+		try {
+			// ___________login application again_________________
+			assertTrue(loginPage.loginApplication(email, CommonVariables.actualPass, "valid"));
+			assertTrue(loginPage.verifyBiometricPopupButton());
+			// Click skip and verify tour page
+			assertTrue(loginPage.clickBiometricPopupButton("skip"));
+			
+			getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+			smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
+			eulaPage.validateEulaAgreementPage();
+			eulaPage.clickContinueButtonEulaAgreementPage();
+		} catch (Exception e) {
+			e.printStackTrace();
+			Assert.fail();
+		}
+	}
+	
+	@Test(priority = 5, dependsOnMethods = { "verifyEulaAgreementPageAndAccept" })
+	public void verifyCanUserBuyPaidPlan() throws InterruptedException
 	{
 		// _____________select paid plan_____________
-		manageSubscriptionPage.verifySubscriptionLandingPage();
+		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
 		manageSubscriptionPage.selectPlan("paid");
 
 		// ______________Fill payment details__________________
+		manageSubscriptionPage.clickVerifyAddPaymentMethodButton();
 		String cardHolderName = CommonMethods.genrateRandomFirstName();
 		manageSubscriptionPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
 				readData("testData", "cvc"), readData("testData", "zipcode"));
@@ -128,24 +147,22 @@ public class DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser ext
 			ExtentManager.logFailureDetails("<b>Either payment method not added or cardholder name not matched. please check");
 			Assert.fail();
 		}
-		
-		actions.scrollToText("Continue");
-		click(driver, CommonLocators.continueButton, "Continue button");
-		tourPages.verifyTourLandingPage();
+		manageSubscriptionPage.clickContinueButtonSubscriptionPage();
+		assertTrue(tourPages.validateTourPageCalendarScheduleView());
 
 		// ___________________Navigate to setting page_____________
 		tourPages.skipTourPages();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(CommonLocators.textWelcomeUser));
-		click(driver, calendarPage.iconSetting, "Settings icon");
-		ExtentManager.logInfoDetails("Clicked on <b>Setting</b> icon");
+		calendarPage.validateCalendarPage();
+		click(driver, calendarPage.iconSetting, "Settings icon on calendar page");
+		settingPage.validateSettingsPage();
 
 		// ____________________Verify cancel button and plan_______________
 		assertTrue(IsElementPresent(driver, settingPage.buttonCancel, "Cancel button") && IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
 	}
-
-	@Test(priority = 5, dependsOnMethods = { "verifyUserCanBuyPaidPlan" })
-	public void verifyUserCanCancelSubscription() throws IOException, InterruptedException {
-
+	
+	@Test(priority = 6, dependsOnMethods = { "verifyUserCanBuyPaidPlan" })
+	public void verifyCanUserCancelSubscription() throws InterruptedException 
+	{
 		// ________________Cancel subscription________________
 		click(driver, settingPage.buttonCancel, "Cancel button");
 		
@@ -155,32 +172,67 @@ public class DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser ext
 		ExtentManager.logInfoDetails("Able to select the reason from reason dropdown successfully");
 		
 		sendKeys(driver, manageSubscriptionPage.inputAddDescription, "Reason details field", "Cancelling subscription for testing");
-//		ExtentManager.logInfoDetails("Entered value in description field : " + getAttribute(manageSubscription.inputAddDescription));
+//				ExtentManager.logInfoDetails("Entered value in description field : " + getAttribute(manageSubscription.inputAddDescription));
 
 		click(driver, manageSubscriptionPage.buttonSubmit, "Submit button cancel subscription popup");
 		ExtentManager.logInfoDetails(getText(CommonLocators.successMessageCancelSubscription));
 		Thread.sleep(5000);
+		loginPage.validateLoginPage();
+	}
+
+	@Test(priority = 7, dependsOnMethods = { "verifyCancelSubscriptionPopup" })
+	public void verifyCanUserUpdatePaymentMethod() throws IOException, InterruptedException {
 		// ___________________login, skip tour pages and verify subscription cancelled or not________________
 		assertTrue(loginPage.loginApplication(email, CommonVariables.actualPass, "valid"));
 		// Click skip and verify tour page
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
-		smsVerificationPage.validateValidOTP(getOtp, "Tour Screen");
+		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
+		assertTrue(tourPages.validateTourPageCalendarScheduleView());
 		
 		tourPages.skipTourPages();
-		wait.until(ExpectedConditions.visibilityOfElementLocated(CommonLocators.textWelcomeUser));
-		ExtentManager.logInfoDetails("Skipped the tour pages");
+		assertTrue(calendarPage.validateCalendarPage());
 
-		// __________________Navigate to setting________________
+		// __________________Navigate to setting page and verify cancelled plan________________
 		click(driver, calendarPage.iconSetting, "Settings icon");
-
 		assertTrue(IsElementPresent(driver, manageSubscriptionPage.buttonManageSubscription, "Manage Subscription button") && 
 				IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
+
+		// _____________select paid plan_____________
+		click(driver, settingPage.buttonManageSubscription, "Manage subscription button on settings page");
+		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
+
+		// ______________Fill payment details__________________
+		manageSubscriptionPage.clickVerifyAddPaymentMethodButton();
+		String cardHolderName = CommonMethods.genrateRandomFirstName();
+		manageSubscriptionPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
+				readData("testData", "cvc"), readData("testData", "zipcode"));
+		manageSubscriptionPage.clickContinueButtonAddPaymentMethod();
+		explicitWait(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), 30);
+		if (IsElementPresent(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), "Cardholder Name"))
+		{
+			ExtentManager.logInfoDetails("<b>paymentMethod updated successfully.");
+		}
+		else {
+			ExtentManager.logFailureDetails("<b>Either payment method not added or cardholder name not matched. please check");
+			Assert.fail();
+		}
+		manageSubscriptionPage.clickContinueButtonSubscriptionPage();
+		assertTrue(tourPages.validateTourPageCalendarScheduleView());
+
+		// ___________________Navigate to setting page_____________
+		tourPages.skipTourPages();
+		calendarPage.validateCalendarPage();
+		click(driver, calendarPage.iconSetting, "Settings icon on calendar page");
+		settingPage.validateSettingsPage();
+
+		// ____________________Verify cancel button and plan_______________
+		assertTrue(IsElementPresent(driver, settingPage.buttonCancel, "Cancel button") && IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
 	}
 
-	@Test(priority = 6, dependsOnMethods = { "verifyUserCanCancelSubscription" })
-	public void verifyUserCarBuyPaidPlanAfterCancelOnce() throws IOException, InterruptedException {
+	@Test(priority = 9, dependsOnMethods = { "verifyUserCanCancelSubscription" })
+	public void verifyCanUserBuyPaidPlanAgainAfterCancelOnce() throws IOException, InterruptedException {
 		click(driver, manageSubscriptionPage.buttonManageSubscription, "Manage Subscription button");
 
 		manageSubscriptionPage.selectPlan("paid");

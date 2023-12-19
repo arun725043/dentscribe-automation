@@ -6,32 +6,21 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser">
+      <class name="com.dentscribe.testCases.TestAllAppointmentStatuses">
         <methods>
-          <include name="signupUserTest"/>
+          <include name="verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt"/>
           <include name="tearDown"/>
-          <include name="verifyLoginAcceptEulaAgreement"/>
-          <include name="verifyUserCanBuyPaidPlan"/>
-          <include name="verifyUserCanCancelSubscription"/>
-          <include name="practiceInfoTest"/>
+          <include name="verifyIsPatientPopupAppearingOnContinueButtonClick"/>
+          <include name="verifyContinueRecordingButtonOnPatientDetailsPopupAndClick"/>
+          <include name="verifyIsAppointmentStatusReviewAfterStopRecording"/>
           <include name="launchApplication"/>
-          <include name="verifyUserCarBuyPaidPlanAfterCancelOnce"/>
+          <include name="verifyIsPatientPopupAppearingOnStartButtonClick"/>
+          <include name="verifyStartRecordingButtonOnPatientDetailsPopupAndClick"/>
+          <include name="addSignatureInSoapReportAndSubmit"/>
+          <include name="goToCalendarPageAndSelectAppointmentDate"/>
+          <include name="verifyIsAppointmentStatusContinueAfterPauseRecording"/>
         </methods>
-      </class> <!-- com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUser -->
-      <class name="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest">
-        <methods>
-          <include name="tearDown"/>
-          <include name="verifyIsAddPaymentPageExists"/>
-          <include name="verifyUserCanBuyPaidPlan"/>
-          <include name="signupUserTest"/>
-          <include name="verifyPaymentMethodWithInvalidCardDetails"/>
-          <include name="launchApplication"/>
-          <include name="verifyBackIconAddPaymentMethodPage"/>
-          <include name="verifyUserCanTake30DaysFreeTrialPlan"/>
-          <include name="verifyLogout"/>
-          <include name="verifyPaymentMethodMandatoryFields"/>
-        </methods>
-      </class> <!-- com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest -->
+      </class> <!-- com.dentscribe.testCases.TestAllAppointmentStatuses -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

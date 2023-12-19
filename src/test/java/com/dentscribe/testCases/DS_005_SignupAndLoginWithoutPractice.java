@@ -12,7 +12,7 @@ import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
 import com.dentscribe.common.CommonVariables;
 
-public class DS_005_SignupWithoutPractice extends AndroidBase {
+public class DS_005_SignupAndLoginWithoutPractice extends AndroidBase {
 
 	@Test (priority = 0)
 	public void verifyWishToContinuePopupBackButton() {

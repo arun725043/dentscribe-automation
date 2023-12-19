@@ -57,7 +57,7 @@ public class CalendarPage extends AndroidActions {
 	public By textFirstDate = By
 			.xpath("//android.view.ViewGroup[@index=5]//android.view.ViewGroup[@index=1]/android.widget.TextView");
 	public By doneButtonCalendarPopup = By.xpath("//android.widget.TextView[@text='Done']");
-	public By iconDropdownCalendar = By.xpath("//android.view.ViewGroup[@content-desc='downarrow-icon-button']");
+	public By iconDropdownCalendar = By.xpath("//android.view.ViewGroup[@resource-id='calendar-strip-view']//android.view.ViewGroup[@index=0]//android.widget.ImageView[1]");
 	public By buttonStartRecording = By.xpath("//android.widget.TextView[@text='Start Recording']");
 	public By buttonContinueRecording = By.xpath("//android.widget.TextView[@text='Continue Recording']");
 	public By buttonWhileUsingThisApp = By.xpath("//android.widget.Button[@text='While using the app']");
@@ -69,7 +69,7 @@ public class CalendarPage extends AndroidActions {
 	public By twelvePM = By.xpath("//android.widget.ScrollView[@resource-id='calendar-schedule-view']//android.widget.TextView[@text=' 12:00']"); 
 
 	// _________verify calendar page exists or not_______
-	public void validateCalendarPage()
+	public boolean validateCalendarPage()
 	{
 		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(iconDropdownCalendar));
 		ExtentManager.logInfoDetails(getText(CommonLocators.textWelcomeUser) + " on calendar view page");
@@ -77,10 +77,11 @@ public class CalendarPage extends AndroidActions {
 		if(IsElementPresent(driver, iconDropdownCalendar, "Calendar dropdown icon"))
 		{
 			ExtentManager.logInfoDetails("User is now on <b> Calendar page <b> as expected");
+			return true;
 		}
 		else {
 			ExtentManager.logFailureDetails("Expected current Month Year on calendar page is - " + currentMMYY + " but either expected Month Year not available on Calendar page or not found. please check");
-			Assert.fail();
+			return false;
 		}
 	}
 	
@@ -104,11 +105,11 @@ public class CalendarPage extends AndroidActions {
 	
 	public void selectAppointmentsDate(String appointmentDate) throws InterruptedException
 	{
+		click(driver, iconDropdownCalendar, "Calendar dropdown icon");
+		
 		int[] date = getDateMonthYear(appointmentDate);
 		Month month = Month.of(date[1]);
-
 		String monthName = month.toString();
-		click(driver, iconDropdownCalendar, "Calendar dropdown");
 
 		selectMonthYearCalendar(date[0], date[1], date[2]);
 		ExtentManager.logInfoDetails("Day, Month and year is selected successfully");
@@ -173,7 +174,6 @@ public class CalendarPage extends AndroidActions {
 
 		}
 
-//			int expectedMonth = Month.valueOf(month.toUpperCase()).getValue() - 1;
 		String monthName = getTextUsingResourceId(calendarHeaderTitle).split(" ")[0];
 		int actualMonth = Month.valueOf(monthName.toUpperCase()).getValue();
 		while (actualMonth != month - 1) {
@@ -237,35 +237,7 @@ public class CalendarPage extends AndroidActions {
 					ExtentManager.logInfoDetails("Clicked on patient name : <b> " + patientName + " </b>");
 					break;
 				}
-
 			}
-//			List<WebElement> listOfPatient = driver.findElements(By.xpath(startStatusPatients));
-//			ExtentManager.logInfoDetails("Available Start status appointments = " + listOfPatient.size());
-//			if (listOfPatient.size() >= 0)
-//			{
-//				for (int i = 0; i < listOfPatient.size(); i++) {
-//					patientName = listOfPatient.get(i).getText();
-//					ExtentManager.logInfoDetails("PATIENT NAME IS ::- <b>" + patientName);
-//					if (patientName.equals("Start")) {
-//						continue;
-//					} else {
-//						listOfPatient.get(i).click();
-//						ExtentManager.logInfoDetails("Clicked on Start button of patient name : <b> " + patientName + " </b>");
-//						if (IsElementPresent(driver, popupPatientDetails, "Patient Details popup") && patientName.equalsIgnoreCase(getPatientNameFromPatientDetailsPopup()))
-//						{
-//							ExtentManager.logInfoDetails("Expected <b>Patient Deatils<b> popup opened as expected for patient name - <b>" + patientName);
-//						}
-//						else {
-//							ExtentManager.logFailureDetails("Either <Patient Deatils' popup not opened/found or Patient Name not matched. please check");
-//							Assert.fail();
-//						}
-//						break;
-//					}
-//				}
-//			}
-//			else {
-//				ExtentManager.logFailureDetails("No appointment found with status 'Start' in given date. please check");
-//			}
 		}
 		catch (Exception e) {
 			ExtentManager.logFailureDetails("Either no appointments avalaible in calendar view or given locator is no more valid. please check");
@@ -279,12 +251,12 @@ public class CalendarPage extends AndroidActions {
 //		ExtentManager.logInfoDetails(buttonName + " button click for patient name - " + pName);
 		if (buttonName == "Continue")
 		{
-			if (IsElementPresent(driver, popupPatientDetails, "Patient Details popup") && patientName.equalsIgnoreCase(getPatientNameFromPatientDetailsPopup()))
+			if (IsElementPresent(driver, popupPatientDetails, "Patient Details popup"))
 			{
 				ExtentManager.logInfoDetails("Expected <b>Patient Deatils<b> popup opened for patient name - <b>" + patientName);
 			}
 			else {
-				ExtentManager.logFailureDetails("Either <b>Patient Deatils<b> popup not opened/found or Patient Name not matched. please check");
+				ExtentManager.logFailureDetails("Either <b>Patient Deatils<b> popup not opened/found or verifying value not matched. please check");
 				Assert.fail();
 			}
 		}
@@ -302,21 +274,6 @@ public class CalendarPage extends AndroidActions {
 			}
 		}
 	}
-
-	public String getPatientNameFromPatientDetailsPopup()
-	{
-		if(IsElementPresent(driver, popupPatientDetails, "Patient Details popup"))
-		{
-			CommonVariables.patientDeatilsPopupPatientName = getText(popupPatientDetailsPatientName);
-			ExtentManager.logInfoDetails("Patient name found on Patient Details popup is - <b>" + CommonVariables.patientDeatilsPopupPatientName);
-		}
-		else {
-			ExtentManager.logFailureDetails("Either expected <b>Patient Deatils<b> popup not opened or not found. please check");
-			Assert.fail();
-		}
-		return CommonVariables.patientDeatilsPopupPatientName.trim();
-		
-	}
 	
 	// verify patient button name
 	public void verifyPatientButton(String patient, String buttonName) {
@@ -331,6 +288,21 @@ public class CalendarPage extends AndroidActions {
 		}
 	}
 	
+	// _________verify patient details popup opened or not_______
+	public void verifyIsPatientDetailsPopupOpenedForExpectedPatient(String expectedPatientName)
+	{
+		if(IsElementPresent(driver, popupPatientDetails, "Patient Details popup"))
+		{
+			String actualPatient = getText(popupPatientDetailsPatientName).trim();
+			assertEquals(actualPatient, expectedPatientName);
+			ExtentManager.logInfoDetails("<b>Patient Details popup opened as expected for patient - " + actualPatient);
+		}
+		else {
+			ExtentManager.logFailureDetails("Either patient details popup not exisst or opened or verifying element not found. please check");
+			Assert.fail();
+		}
+	}
+		
 	// ______________click start/continue recording button on Patient Details popup___________
 	public void clickVerifyPatientDetailsPopupButton(String operation, String buttonName) {
 		if (operation == "click") {

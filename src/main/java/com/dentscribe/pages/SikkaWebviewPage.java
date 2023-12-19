@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
+import com.dentscribe.common.CommonLocators;
+import com.dentscribe.common.CommonVariables;
 import com.dentscribe.utils.AndroidActions;
 import com.google.common.collect.ImmutableMap;
 
@@ -28,8 +30,30 @@ public class SikkaWebviewPage extends AndroidActions {
 		this.driver = driver;
 	}
 	
-	public By agreeButton = By.xpath("//android.widget.Button[@resource-id='btnTOSagree'][@text='Agree'][@enabled='true']");
+	// _______________________________sikka________________________
+	public By buttonRegister = By.xpath("//*[@text='Register']");
+	public By buttonProceed = By.xpath("//*[@text='Proceed']");
+	public By buttonNext = By.xpath("//*[@text='Next']");
+	public By RadioNo = By.xpath("//android.widget.TextView[@text='No']");
+	public By RadioYes = By.xpath("//android.widget.TextView[@text='Yes']");
+	public By textYourOrder = By.xpath("//*[@text='Your Order']");
+	public By textTermsOfService = By.xpath("//*[contains(@text,'Terms of Service')]");
+	public By textConfirmation = By.xpath("//*[@text='Confirmation']");
+	public By buttonAgree = By.xpath("//android.widget.Button[@resource-id='btnTOSagree'][@text='Agree'][@enabled='true']");
 
+	
+	// _______________verify whether signup page exists or not_______________
+	public boolean validateSikkaWebViewPage()
+	{
+		if (IsElementPresent(driver, buttonRegister, "Register button on webview") && IsElementPresent(driver, buttonProceed, "Proceed button on webview")) {
+			ExtentManager.logInfoDetails("<b>User is now on Sikka Webview page as expected");
+			return true;
+		} else {
+			ExtentManager.logFailureDetails("Either expected Sikka Webview page verified element not found or page not exists. please check");
+			return false;
+		}
+	}
+	
 	// _______________Enter existing sikka detail_________________
 	public void enterExistingSikkaCredentials(String username, String pwd) throws InterruptedException {
 		String resourceId = "signatureL";
@@ -68,8 +92,8 @@ public class SikkaWebviewPage extends AndroidActions {
 		{
 			((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of("left", 200, "top", 1000,
 					"width", 800, "height", 900, "direction", "up", "percent", 0.75));
-//			Thread.sleep(3000);
-			if(IsElementPresent(driver, agreeButton, "Agree button"))
+			Thread.sleep(3000);
+			if(IsAgreeButtonPresent(driver, buttonAgree, "Agree button"))
 			{
 				break;
 			}

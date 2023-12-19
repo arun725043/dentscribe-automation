@@ -170,7 +170,7 @@ public class SettingsPage extends AndroidActions {
 	{
 		if (practiceName != "")
 		{
-			scrollToPartialText("Name");
+			scrollToText("Address Line 1");
 			clear(inputPracticeName);
 			sendKeys(driver, inputPracticeName, "Practice name", practiceName);
 		}
@@ -180,7 +180,7 @@ public class SettingsPage extends AndroidActions {
 		
 		if (address1 != "")
 		{
-			scrollToPartialText("Address Line 1");
+//			scrollToPartialText("Address Line 1");
 			clear(inputAddressLine1);
 			sendKeys(driver, inputAddressLine1, "Address Line 1", address1);
 		}

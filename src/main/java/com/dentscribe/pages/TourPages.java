@@ -1,5 +1,7 @@
 package com.dentscribe.pages;
 
+import static org.testng.Assert.assertTrue;
+
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -39,7 +41,7 @@ public class TourPages extends AndroidActions {
 	}
 
 	// _________validate whether user is on tour page or not_______
-	public boolean verifyTourLandingPage()
+	public boolean validateTourPageCalendarScheduleView()
 	{
 		if (IsElementPresent(driver, textCalendarSchecule, "Calendar Schedue View")) {
 			ExtentManager.logInfoDetails("User is now on <b> Calendar Schedue View tour page <b> as expected");
@@ -54,68 +56,113 @@ public class TourPages extends AndroidActions {
 	public void skipTourPages() {
 		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(linkSkip));
 		click(driver, linkSkip, "Skip link");
-		ExtentManager.logInfoDetails("Clicked on <b>Skip</b> on Tour page");
+		ExtentManager.logInfoDetails("Clicked on <b>Skip</b> link on Tour page");
 	}
-
+	
 	// ________________verify tour pages on next button____________
-	public boolean verifyTourPagesOnNextButton(String operation) {
-		switch (operation) {
-		case "calendar":
-			click(driver, buttonNext, "Calendar Schedule View");
-			return IsElementPresent(driver, textParentListView, "Patient List View");
+	public void verifyTourPagesOnNextButton(String operation) 
+	{
+		click(driver, buttonNext, "Next button on Calendar Schedule View slide");
+		IsElementPresent(driver, textParentListView, "Patient List View slide");
 
-		case "patient view":
-			click(driver, buttonNext, "Patient List View");
-			return IsElementPresent(driver, textPatientProfile, "Patient Profile");
-
-		case "patient profile":
-			click(driver, buttonNext, "Patient Profile");
-			return IsElementPresent(driver, textRecording, "Recording");
-
-		case "recording":
-			click(driver, buttonNext, "Recording");
-			return IsElementPresent(driver, textSoapReport, "SOAP Report");
-
-		case "soap report":
-			click(driver, buttonNext, "SOAP Report");
-			return IsElementPresent(driver, textPatientDatabase, "Patient Database Integration");
-
-		default:
-			System.out.println("please enter valid name");
+		click(driver, buttonNext, "Next button on Patient List View slide");
+		IsElementPresent(driver, textPatientProfile, "Patient Profile slide");
+		
+		click(driver, buttonNext, "Next button on Patient Profile slide");
+		IsElementPresent(driver, textRecording, "Recording slide");
+		
+		click(driver, buttonNext, "Next button on Recording slide");
+		IsElementPresent(driver, textSoapReport, "SOAP Report slide");
+		
+		click(driver, buttonNext, "Next button on SOAP Report slide");
+		IsElementPresent(driver, textPatientDatabase, "Patient Database Integration slide");
+		if(operation.equalsIgnoreCase("yes"))
+		{
+			click(driver, buttonNext, "Next button on Patient Database Integration slide");
 		}
-		return false;
-
 	}
 
 	// __________________verify tour pages on back button_____________
-	public boolean verifyTourPagesOnBackButton(String operation) {
+	public void verifyTourPagesOnBackButton() {
 
-		switch (operation) {
-		case "patientDatabase":
-			click(driver, buttonBack, "Patient Database Integration");
-			return IsElementPresent(driver, textSoapReport, "SOAP Report");
+		click(driver, buttonBack, "Back button on Patient Database Integration slide");
+		IsElementPresent(driver, textSoapReport, "SOAP Report slide");
 
-		case "soap report":
-			click(driver, buttonBack, "SOAP Report");
-			return IsElementPresent(driver, textRecording, "Recording");
+		click(driver, buttonBack, "Back button on SOAP Report slide");
+		IsElementPresent(driver, textRecording, "Recording slide");
 
-		case "recording":
-			click(driver, buttonBack, "Recording");
-			return IsElementPresent(driver, textPatientProfile, "Patient Profile");
+		click(driver, buttonBack, "Back button on Recording slide");
+		IsElementPresent(driver, textPatientProfile, "Patient Profile slide");
 
-		case "patient profile":
-			click(driver, buttonBack, "Patient profile");
-			return IsElementPresent(driver, textParentListView, "Patient List View");
+		click(driver, buttonBack, "Back button on Patient profile slide");
+		IsElementPresent(driver, textParentListView, "Patient List View slide");
 
-		case "patient view":
-			click(driver, buttonBack, "Patient List View");
-			return IsElementPresent(driver, textCalendarSchecule, "Calendar Schedule View");
+		click(driver, buttonBack, "Patient List View slide");
+		IsElementPresent(driver, textCalendarSchecule, "Calendar Schedule View slide");
+	}
+	
+	//____________________verify left right swipe______________
+	public void swipeTourPages() throws InterruptedException
+	{
+		// ________________________swipe left functionality___________________________
 
-		default:
-			System.out.println("please enter valid name");
-		}
-		return false;
+//		swipeTourScreen(driver);
+		swipe("left");
+		assertTrue(IsElementPresent(driver, textParentListView, ""));
+		ExtentManager.logInfoDetails("Swipe left and verify <b>Paitent List View</b> screen is displayed as expected");
 
+//		swipeTourScreen(driver);
+		swipe("left");
+		assertTrue(IsElementPresent(driver, textPatientProfile, ""));
+		ExtentManager.logInfoDetails("Swipe left and verify <b>Paitent Profile</b> screen is displayed as expected");
+
+//		swipeTourScreen(driver);
+		swipe("left");
+		assertTrue(IsElementPresent(driver, textRecording, ""));
+		ExtentManager.logInfoDetails("Swipe left and verify <b>Recording</b> screen is displayed as expected");
+
+//		swipeTourScreen(driver);
+		swipe("left");
+		assertTrue(IsElementPresent(driver, textSoapReport, ""));
+		ExtentManager.logInfoDetails("Swipe left and verify <b>SOAP Report</b> screen is displayed as expected");
+
+//		swipeTourScreen(driver);
+		swipe("left");
+		assertTrue(IsElementPresent(driver, textPatientDatabase, ""));
+		ExtentManager.logInfoDetails("Swipe left and verify <b>Patient Database Integration</b> screen is displayed as expected");
+
+//		swipeTourScreen(driver);
+		swipe("left");
+		Thread.sleep(3000);
+		assertTrue(IsElementPresent(driver, textPatientDatabase, ""));
+		ExtentManager.logInfoDetails("Swipe left, Still user is on <b>Patient Database Integration</b> screen as expected");
+
+		// ________________________swipe right functionality___________________________
+
+		swipe("right");
+		assertTrue(IsElementPresent(driver, textSoapReport, ""));
+		ExtentManager.logInfoDetails("Swipe right and verify <b>SOAP Report</b> screen is displayed as expected");
+
+		swipe("right");
+		assertTrue(IsElementPresent(driver, textRecording, ""));
+		ExtentManager.logInfoDetails("Swipe right and verify <b>Recording</b> screen is displayed as expected");
+
+		swipe("right");
+		assertTrue(IsElementPresent(driver, textPatientProfile, ""));
+		ExtentManager.logInfoDetails("Swipe right and verify <b>Paitent Profile</b> screen is displayed as expected");
+
+		swipe("right");
+		assertTrue(IsElementPresent(driver, textParentListView, ""));
+		ExtentManager.logInfoDetails("Swipe right and verify <b>Paitent List View</b> screen is displayed as expected");
+
+		swipe("right");
+		assertTrue(IsElementPresent(driver, textCalendarSchecule, ""));
+		ExtentManager.logInfoDetails("Swipe right and verify <b>Calendar schedule</b> screen is displayed as expected");
+
+		swipe("right");
+		Thread.sleep(3000);
+		assertTrue(IsElementPresent(driver, textCalendarSchecule, ""));
+		ExtentManager.logInfoDetails("Swipe right, Still user is on <b>Calendar schedule view</b> screen as expected");
 	}
 
 	public void swipe(String direction) {

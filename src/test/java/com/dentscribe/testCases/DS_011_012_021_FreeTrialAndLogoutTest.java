@@ -20,7 +20,7 @@ public class DS_011_012_021_FreeTrialAndLogoutTest extends AndroidBase {
 	String email = "kapoor.arun+" + CommonMethods.GenerateRandomNumber(4) + "@thinksys.com";	
 	
 	@Test(priority = 0)
-	public void signupUserTest() throws InterruptedException {
+	public void registerNewUserAndGoToManageSubscriptionPage() throws InterruptedException {
 		try 
 		{
 			// ___________Application launched_______________
@@ -81,38 +81,41 @@ public class DS_011_012_021_FreeTrialAndLogoutTest extends AndroidBase {
 			smsVerificationPage.validateValidOTP(getOtp, "EULA Screen");
 			actions.scrollableClick("Continue");
 			ExtentManager.logInfoDetails("Clicked on EULA agreement <b>Continue button");
+			manageSubscriptionPage.verifySubscriptionLandingPage();
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
 		}
 	}
 	
-	@Test(priority = 1, dependsOnMethods = { "signupUserTest" })
-	public void verifyIsAddPaymentPageExists() throws InterruptedException
+	@Test(priority = 1, dependsOnMethods = { "registerNewUserAndGoToManageSubscriptionPage" })
+	public void verifyIsAddPaymentMethodPageExists() throws InterruptedException
 	{
 		manageSubscriptionPage.clickVerifyAddPaymentMethodButton();
 	}
 	
-	@Test(priority = 2, dependsOnMethods = { "verifyIsAddPaymentPageExists" })
+	@Test(priority = 2, dependsOnMethods = { "verifyIsAddPaymentMethodPageExists" })
 	public void verifyPaymentMethodMandatoryFields() throws InterruptedException
 	{
 		manageSubscriptionPage.validateMandatoryFieldsErrorMessages();
 	}
 	
-	@Test(priority = 3, dependsOnMethods = { "verifyIsAddPaymentPageExists" })
+	@Test(priority = 3, dependsOnMethods = { "verifyIsAddPaymentMethodPageExists" })
 	public void verifyPaymentMethodWithInvalidCardDetails() throws InterruptedException
 	{
 		String cardHolderName = CommonMethods.genrateRandomFirstName();
 		manageSubscriptionPage.addPaymentMethod(cardHolderName, "4242 4242 4242 4243", readData("testData", "expiry"), readData("testData", "cvc"), readData("testData", "zipcode"));
 		manageSubscriptionPage.clickContinueButtonAddPaymentMethod();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(CommonLocators.errorMessageCardDetailsNotAdded));
 		verifyTexts(getText(CommonLocators.errorMessageCardDetailsNotAdded), CommonVariables.errorMsgTextCardDetailsNotAdded);
 		
 		manageSubscriptionPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), "12/75", readData("testData", "cvc"), readData("testData", "zipcode"));
 		manageSubscriptionPage.clickContinueButtonAddPaymentMethod();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(CommonLocators.errorMessageInvalidCardExpiry));
 		verifyTexts(getText(CommonLocators.errorMessageInvalidCardExpiry), CommonVariables.errorMsgTextInvalidCardExpiry);
 	}
 	
-	@Test(priority = 4, dependsOnMethods = { "verifyIsAddPaymentPageExists" })
+	@Test(priority = 4)
 	public void verifyBackIconAddPaymentMethodPage() throws InterruptedException
 	{
 		click(driver, manageSubscriptionPage.iconBackAddPayemntMethodPage, "Back icon on Add payment method page");

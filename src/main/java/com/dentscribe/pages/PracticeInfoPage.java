@@ -1,11 +1,16 @@
 package com.dentscribe.pages;
 
+import static org.testng.Assert.assertTrue;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.dentscribe.ExtentReport.ExtentManager;
+import com.dentscribe.base.AndroidBase;
 import com.dentscribe.common.CommonLocators;
 import com.dentscribe.common.CommonMethods;
+import com.dentscribe.common.CommonVariables;
 import com.dentscribe.utils.AndroidActions;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -20,6 +25,7 @@ public class PracticeInfoPage extends AndroidActions {
 	}
 
 	// __________________________________locators_______________________
+	public By headerPracticeInfoPage = By.xpath("//android.widget.TextView[@text='Practice Info ']");
 	public By inputName = By.xpath("//android.widget.TextView[@text='Name']" + CommonLocators.fixPath);
 	public By inputAddress1 = By.xpath("//android.widget.TextView[@text='Address Line 1']" + CommonLocators.fixPath);
 	public By inputAddress2 = By.xpath("//android.widget.TextView[@text='Address Line 2']" + CommonLocators.fixPath);
@@ -31,15 +37,6 @@ public class PracticeInfoPage extends AndroidActions {
 	public By inputOfficeMobile = By.xpath("//android.widget.TextView[@text='Office Phone Number']//parent::android.view.ViewGroup//following-sibling::android.view.ViewGroup/android.widget.EditText");
 	public By textIndia = By.xpath("//android.widget.TextView[contains(@text,'India')]");
 	public By inputOfficeId = By.xpath("//android.widget.TextView[@text='Office Id']" + CommonLocators.fixPath);
-
-	// _______________________________sikka________________________
-	public By buttonRegister = By.xpath("//*[@text='Register']");
-	public By buttonNext = By.xpath("//*[@text='Next']");
-	public By RadioNo = By.xpath("//android.widget.TextView[@text='No']");
-	public By RadioYes = By.xpath("//android.widget.TextView[@text='Yes']");
-	public By textYourOrder = By.xpath("//*[@text='Your Order']");
-	public By textTermsOfService = By.xpath("//*[contains(@text,'Terms of Service')]");
-	public By textConfirmation = By.xpath("//*[@text='Confirmation']");
 	
 	// validation messages
 	public By validationMsgName = By.xpath("//android.widget.TextView[@text='Name is required.']");
@@ -50,6 +47,22 @@ public class PracticeInfoPage extends AndroidActions {
 	public By validationMsgCountry = By.xpath("//android.widget.TextView[@text='Country is required.']");
 	public By validationMsgOfficePhoneNumber = By.xpath("//android.widget.TextView[@text='Phone number is required.']");
 
+	// _______________verify whether Practice Info page exists or not_______________
+	public boolean validatePracticeInfoPage()
+	{
+		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(headerPracticeInfoPage));
+		String headerText = getText(headerPracticeInfoPage);
+		if(headerText.trim().equalsIgnoreCase("Practice Info"))
+		{
+			ExtentManager.logInfoDetails("<b>User is now on Practice Info page as expected");
+			return true;
+		}
+		else {
+			ExtentManager.logFailureDetails("Either expected Practice Info page verified element not found or page not exists. please check");
+			return false;
+		}
+	}
+		
 	// ______________fill practice info_______________
 	public void fillPracticeInfo(String state, String country) throws InterruptedException {
 		sendKeys(driver, inputName, "Name", CommonMethods.genrateRandomFirstName());
@@ -84,7 +97,7 @@ public class PracticeInfoPage extends AndroidActions {
 		}
 	}
 	
-	public void clickPracticeContinueButton()
+	public void clickContinueButtonPracticeInfo()
 	{
 		scrollToText("Continue");
 		click(driver, CommonLocators.continueButton, "Continue button");

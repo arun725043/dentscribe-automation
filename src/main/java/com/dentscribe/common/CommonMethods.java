@@ -60,6 +60,18 @@ public class CommonMethods {
 		}
 	}
 	
+	// To return element present in sikka webview
+	public boolean IsAgreeButtonPresent(AppiumDriver driver, By locator, String expectedElement) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		try {
+			driver.findElement(locator);
+			ExtentManager.logInfoDetails("Expected element found :: - <b>'" + expectedElement + "'<b>.");
+			return true; // Success!
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 	public static void fillOTPBoxes(AppiumDriver driver, String otp)
 	{
 		char[] ch = otp.toCharArray();
@@ -294,4 +306,9 @@ public class CommonMethods {
 		Thread.sleep(time);
 		ExtentManager.logInfoDetails("<b>Recording is running for " + minutes + " minutes");
 	}
+	
+	//perform wait till loader disappear
+//	public void waitUntilLoaderDisappear(AppiumDriver driver) {
+//		new WebDriverWait(driver, Duration.ofSeconds(120)).until(ExpectedConditions.invisibilityOfElementLocated(locator));
+//	}
 }

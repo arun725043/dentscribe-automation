@@ -29,7 +29,7 @@ public class DS_003_SignupPageTest extends AndroidBase {
 	{
 		// __________refreshing signup page______________
 		click(driver, loginPage.buttonLogin, "Login tab");
-		click(driver, loginPage.signupButton, "Sign Up tab");
+		click(driver, loginPage.buttonSignup, "Sign Up tab");
 		
 		// _________fill only mandatory values and verify continue button click_________
 		String password = "Pass@" + GenerateRandomNumber(4);
@@ -49,7 +49,7 @@ public class DS_003_SignupPageTest extends AndroidBase {
 		try {
 			// __________refreshing signup page______________
 			click(driver, loginPage.buttonLogin, "Login tab");
-			click(driver, loginPage.signupButton, "Sign Up tab");
+			click(driver, loginPage.buttonSignup, "Sign Up tab");
 			
 			// __________verify invalid email error should display______________
 			signUpPage.validateWrongEmailId("kapoor.arun@gmail.c");

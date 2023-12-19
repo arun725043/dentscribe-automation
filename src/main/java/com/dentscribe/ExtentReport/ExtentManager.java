@@ -31,7 +31,10 @@ public class ExtentManager {
 		extentSparkReporter.config().setEncoding("utf-8");
 		extent = new ExtentReports(); 		
 		extent.attachReporter(extentSparkReporter);
-		extent.setSystemInfo("Organisation", "ThinkSys"); // General information related to application		
+		extent.setSystemInfo("Organisation", "ThinkSys"); // General information related to application
+		extent.setSystemInfo("Device Type", "Android");
+		extent.setSystemInfo("Device Name", "Samsung Galaxy S9");
+		extent.setSystemInfo("OS Version", "12");
 		return extent;
 	}
 

@@ -1,7 +1,6 @@
 package com.dentscribe.pages;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 
@@ -29,9 +28,9 @@ public class LoginPage extends AndroidActions {
 	
 	// _________locators______
 	public By buttonLogin = By.xpath("//android.widget.TextView[@text='Login']");
-	public By signupButton = By.xpath("//android.widget.TextView[@text='Sign Up']");
+	public By buttonSignup = By.xpath("//android.widget.TextView[@text='Sign Up']");
 	public By linkSetUpBiometric = By.xpath("//android.widget.TextView[@text='Set Up Biometrics']");
-	public By continueButton = By.xpath("//android.widget.TextView[@text='Continue']");
+	public By buttonContinue = By.xpath("//android.widget.TextView[@text='Continue']");
 	public By buttonSkip = By.xpath("//android.widget.TextView[@text='Skip']");
 	public By buttonEnable = By.xpath("//android.widget.TextView[@text='Enable']");	
 	public By textCalendarSchecule = By.xpath("//android.widget.TextView[@text='Calendar Schedule View']");
@@ -43,17 +42,23 @@ public class LoginPage extends AndroidActions {
 	public By validationMsgPassword = By.xpath("//android.view.ViewGroup[@resource-id='password-input']//android.view.ViewGroup[@index=3]//android.widget.TextView[@index=0]");
 	
 	
-	// __________verify welcome to dentscribe heading_________
-	public boolean verifyLoginLandingPage() {
-		return IsElementPresent(driver, CommonLocators.textWelcomeDentScribe, "Welcome to Dentscribe!");
+	// __________verify whether application launched or not__________
+	public void verifyIsApplicationLaunched() {
+		if(IsElementPresent(driver, CommonLocators.textWelcomeDentScribe, "Welcome to Dentscribe!"))
+		{
+			ExtentManager.logInfoDetails("Application launched successfully");
+		}
+		else {
+			ExtentManager.logFailureDetails("Either application not opened or verifying Welcome text not matched. please check");
+			Assert.fail();
+		}
 	}
 
-	// _________verify login note to validate login page exists or not_______
-	public boolean validateLoginPageNote() 
+	// __________verify whether login page exists or not__________
+	public boolean validateLoginPage() 
 	{
-		verifyLoginLandingPage();
 		if (IsElementPresent(driver, CommonLocators.loginNote, "text - " + CommonVariables.loginNoteText)) {
-			ExtentManager.logInfoDetails("User is now on <b> Login page <b> as expected");
+			ExtentManager.logInfoDetails("<b>User is now on Login page as expected");
 			return true;
 		} else {
 			ExtentManager.logFailureDetails("Either expected Login page verified element not found or not exists. please check");
@@ -73,7 +78,7 @@ public class LoginPage extends AndroidActions {
 	public boolean loginApplication(String username, String password, String operation) throws IOException, InterruptedException {
 		enterUsernamePassword(username, password);
 		scrollToText("Continue");
-		click(driver, continueButton, "Continue button on login page");
+		click(driver, buttonContinue, "Continue button on login page");
 		switch (operation) {
 		case "valid":
 			if (readData("Config", "emmulator").equalsIgnoreCase("no") && readData("Config", "biometric").equalsIgnoreCase("on")) {
@@ -130,8 +135,7 @@ public class LoginPage extends AndroidActions {
 	// ________verify home page elements_______
 	public void verifyHomePageElement() {
 		IsElementPresent(driver, buttonLogin, "Login tab");
-		IsElementPresent(driver, signupButton, "Sign Up tab");
-		validateLoginPageNote();
+		IsElementPresent(driver, buttonSignup, "Sign Up tab");
 		IsElementPresent(driver, CommonLocators.labelUsername, "Username");
 		IsElementPresent(driver, CommonLocators.labelPassword, "Password");
 		IsElementPresent(driver, CommonLocators.linkForgotPassword, "Forgot Password link");
@@ -160,7 +164,7 @@ public class LoginPage extends AndroidActions {
 
 	// ____________verify user name and password is required should display after clicking on continue_________
 	public void verifyLoginMandatoryField() {
-		click(driver, continueButton, "Continue button");
+		click(driver, buttonContinue, "Continue button");
 		IsElementPresent(driver, validationMsgUsername, "Username validation");
 		getText(validationMsgUsername);
 		IsElementPresent(driver, validationMsgPassword, "Password validation");

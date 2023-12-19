@@ -9,7 +9,9 @@ import org.testng.annotations.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.dentscribe.common.CommonMethods;
+import com.dentscribe.pages.AddPaymentMethodPage;
 import com.dentscribe.pages.CalendarPage;
+import com.dentscribe.pages.EulaAgreementPage;
 import com.dentscribe.pages.ForgotPasswordPage;
 import com.dentscribe.pages.LoginPage;
 import com.dentscribe.pages.ManageSubscriptionPage;
@@ -24,6 +26,8 @@ import com.dentscribe.pages.SmsVerification;
 import com.dentscribe.pages.SoapReportPage;
 import com.dentscribe.pages.TourPages;
 import com.dentscribe.utils.AndroidActions;
+import com.github.dockerjava.core.dockerfile.DockerfileStatement.Add;
+
 import java.net.*;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -52,6 +56,8 @@ public class AndroidBase extends CommonMethods {
 	public RecordingPage recordingPage;
 	public SoapReportPage soapReportPage;
 	public SikkaWebviewPage sikkaWebviewPage;
+	public EulaAgreementPage eulaPage;
+	public AddPaymentMethodPage addPaymentMethodPage;
 
 //	@BeforeTest
 	public void startServer() {
@@ -109,5 +115,7 @@ public class AndroidBase extends CommonMethods {
 		profilePage = new PatientProfilePage(driver);
 		settingPage = new SettingsPage(driver);
 		sikkaWebviewPage = new SikkaWebviewPage(driver);
+		eulaPage = new EulaAgreementPage(driver);
+		addPaymentMethodPage = new AddPaymentMethodPage(driver);
 	}
 }

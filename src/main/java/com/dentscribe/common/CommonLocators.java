@@ -48,8 +48,6 @@ public class CommonLocators {
 	
 	// Page locators to verify its exists or not
 	public static By pageCalendarScheduleViewText = By.xpath("//android.widget.TextView[@text='Calendar Schedule View']");
-	public static By pageEulaAgreementHeader = By.xpath("//android.widget.TextView[@text='End-User License Agreement (EULA)']");
-	public static By pagePracticeInfoHeader = By.xpath("//android.widget.TextView[@text='Practice Info ']");
 	
 	//SOAP Report page locators
 	public static By soapReportHeader = By.xpath("//android.widget.TextView[@text='SOAP Report']");

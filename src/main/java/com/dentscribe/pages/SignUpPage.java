@@ -62,15 +62,15 @@ public class SignUpPage extends AndroidActions {
 	public By validationMsgConfirmPassword = By.xpath("//android.widget.TextView[@text='Confirm password is required.']");
 	
 
-	// _________verify signup note to validate whether user is on signup page or not_______
-	public boolean verifySignupLandingPage()
+	// _______________verify whether signup page exists or not_______________
+	public boolean validateSignupPage()
 	{
 		click(driver, signupButton, "Signup tab");
 		if (IsElementPresent(driver, CommonLocators.signupNote, "text - " + CommonVariables.signupNoteText)) {
-			ExtentManager.logInfoDetails("User is now on <b> Signup page <b> as expected");
+			ExtentManager.logInfoDetails("<b>User is now on Signup page as expected");
 			return true;
 		} else {
-			ExtentManager.logFailureDetails("Either expected Signup page verified element not found or not exists. please check");
+			ExtentManager.logFailureDetails("Either expected Signup page verified element not found or page not exists. please check");
 			return false;
 		}
 	}
@@ -215,7 +215,7 @@ public class SignUpPage extends AndroidActions {
 			ExtentManager.logInfoDetails("Expected <b>Back<b> and <b> Continue<b> appearing on Confirmation popup");
 			return true;
 		} else {
-			ExtentManager.logInfoDetails("Expected <b>Back<b> and <b> Continue<b> buttons but not found on Confirmation popup. please check");
+			ExtentManager.logFailureDetails("Expected <b>Back<b> and <b> Continue<b> buttons but not found on Confirmation popup. please check");
 			return false;
 		}
 	}
