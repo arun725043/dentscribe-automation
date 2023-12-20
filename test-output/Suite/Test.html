@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>9/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>7/1/1</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Dec 19 17:50:54 IST 2023</td>
+<td>Started on:</td><td>Wed Dec 20 11:24:47 IST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>242 seconds (242397 ms)</td>
+<tr><td>Total time:</td><td>435 seconds (435915 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,96 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyCanUserUpdatePaymentMethod()'><b>verifyCanUserUpdatePaymentMethod</b><br>Test class: com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [12beecc1-048c-48dd-8082-89be15aa78f6, findElement {using=-android uiautomator, value=new UiScrollable(new UiSelector()).scrollIntoView(text(&quot;Add Payment Method&quot;));}]
+Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 12beecc1-048c-48dd-8082-89be15aa78f6
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at com.dentscribe.utils.AndroidActions.scrollToText(AndroidActions.java:38)
+	at com.dentscribe.pages.ManageSubscriptionPage.clickPaymentMethodButton(ManageSubscriptionPage.java:63)
+	at com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyCanUserUpdatePaymentMethod(TestCreateUserBuyPaidPlanAndCancelPaidPlan.java:207)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace546484338", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace546484338'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [12beecc1-048c-48dd-8082-89be15aa78f6, findElement {using=-android uiautomator, value=new UiScrollable(new UiSelector()).scrollIntoView(text(&quot;Add Payment Method&quot;));}]
+Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 12beecc1-048c-48dd-8082-89be15aa78f6
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at com.dentscribe.utils.AndroidActions.scrollToText(AndroidActions.java:38)
+	at com.dentscribe.pages.ManageSubscriptionPage.clickPaymentMethodButton(ManageSubscriptionPage.java:63)
+	at com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyCanUserUpdatePaymentMethod(TestCreateUserBuyPaidPlanAndCancelPaidPlan.java:207)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>23</td>
+<td>com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -75,50 +165,76 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsPatientPopupAppearingOnContinueButtonClick()'><b>verifyIsPatientPopupAppearingOnContinueButtonClick</b><br>Test class: com.dentscribe.testCases.TestAllAppointmentStatuses</td>
+<td title='com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyCanUserBuyPaidPlan()'><b>verifyCanUserBuyPaidPlan</b><br>Test class: com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan</td>
 <td></td>
-<td>1</td>
-<td>com.dentscribe.testCases.TestAllAppointmentStatuses@75e4fe3c</td></tr>
+<td>29</td>
+<td>com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14</td></tr>
 <tr>
-<td title='com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsPatientPopupAppearingOnStartButtonClick()'><b>verifyIsPatientPopupAppearingOnStartButtonClick</b><br>Test class: com.dentscribe.testCases.TestAllAppointmentStatuses</td>
+<td title='com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyCanUserCancelSubscription()'><b>verifyCanUserCancelSubscription</b><br>Test class: com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan</td>
 <td></td>
 <td>11</td>
-<td>com.dentscribe.testCases.TestAllAppointmentStatuses@75e4fe3c</td></tr>
+<td>com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14</td></tr>
 <tr>
-<td title='com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewAfterStopRecording()'><b>verifyIsAppointmentStatusReviewAfterStopRecording</b><br>Test class: com.dentscribe.testCases.TestAllAppointmentStatuses</td>
+<td title='com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyCreatePracticeInfo()'><b>verifyCreatePracticeInfo</b><br>Test class: com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan</td>
 <td></td>
-<td>56</td>
-<td>com.dentscribe.testCases.TestAllAppointmentStatuses@75e4fe3c</td></tr>
+<td>77</td>
+<td>com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14</td></tr>
 <tr>
-<td title='com.dentscribe.testCases.TestAllAppointmentStatuses.addSignatureInSoapReportAndSubmit()'><b>addSignatureInSoapReportAndSubmit</b><br>Test class: com.dentscribe.testCases.TestAllAppointmentStatuses</td>
+<td title='com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyWebViewRegistration()'><b>verifyWebViewRegistration</b><br>Test class: com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan</td>
 <td></td>
-<td>34</td>
-<td>com.dentscribe.testCases.TestAllAppointmentStatuses@75e4fe3c</td></tr>
+<td>164</td>
+<td>com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14</td></tr>
 <tr>
-<td title='com.dentscribe.testCases.TestAllAppointmentStatuses.goToCalendarPageAndSelectAppointmentDate()'><b>goToCalendarPageAndSelectAppointmentDate</b><br>Test class: com.dentscribe.testCases.TestAllAppointmentStatuses</td>
+<td title='com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyEulaAgreementPageAndAcceptAgreement()'><b>verifyEulaAgreementPageAndAcceptAgreement</b><br>Test class: com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan</td>
 <td></td>
-<td>54</td>
-<td>com.dentscribe.testCases.TestAllAppointmentStatuses@75e4fe3c</td></tr>
+<td>18</td>
+<td>com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14</td></tr>
 <tr>
-<td title='com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsAppointmentStatusContinueAfterPauseRecording()'><b>verifyIsAppointmentStatusContinueAfterPauseRecording</b><br>Test class: com.dentscribe.testCases.TestAllAppointmentStatuses</td>
+<td title='com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifySpuInstallPopupAndRefreshData()'><b>verifySpuInstallPopupAndRefreshData</b><br>Test class: com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan</td>
 <td></td>
-<td>35</td>
-<td>com.dentscribe.testCases.TestAllAppointmentStatuses@75e4fe3c</td></tr>
+<td>6</td>
+<td>com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14</td></tr>
 <tr>
-<td title='com.dentscribe.testCases.TestAllAppointmentStatuses.verifyContinueRecordingButtonOnPatientDetailsPopupAndClick()'><b>verifyContinueRecordingButtonOnPatientDetailsPopupAndClick</b><br>Test class: com.dentscribe.testCases.TestAllAppointmentStatuses</td>
+<td title='com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifySignupNewUser()'><b>verifySignupNewUser</b><br>Test class: com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan</td>
 <td></td>
-<td>15</td>
-<td>com.dentscribe.testCases.TestAllAppointmentStatuses@75e4fe3c</td></tr>
+<td>85</td>
+<td>com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
 <tr>
-<td title='com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt()'><b>verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt</b><br>Test class: com.dentscribe.testCases.TestAllAppointmentStatuses</td>
-<td></td>
-<td>2</td>
-<td>com.dentscribe.testCases.TestAllAppointmentStatuses@75e4fe3c</td></tr>
-<tr>
-<td title='com.dentscribe.testCases.TestAllAppointmentStatuses.verifyStartRecordingButtonOnPatientDetailsPopupAndClick()'><b>verifyStartRecordingButtonOnPatientDetailsPopupAndClick</b><br>Test class: com.dentscribe.testCases.TestAllAppointmentStatuses</td>
-<td></td>
-<td>11</td>
-<td>com.dentscribe.testCases.TestAllAppointmentStatuses@75e4fe3c</td></tr>
+<td title='com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyCanUserBuyPaidPlanAgainAfterCancelOnce()'><b>verifyCanUserBuyPaidPlanAgainAfterCancelOnce</b><br>Test class: com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan</td>
+<td><div><pre>java.lang.Throwable: Method TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyCanUserBuyPaidPlanAgainAfterCancelOnce()[pri:9, instance:com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1251896999", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1251896999'><pre>java.lang.Throwable: Method TestCreateUserBuyPaidPlanAndCancelPaidPlan.verifyCanUserBuyPaidPlanAgainAfterCancelOnce()[pri:9, instance:com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14] depends on not successfully finished methods
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan@6d31f14</td></tr>
 </table><p>
 </body>
 </html>

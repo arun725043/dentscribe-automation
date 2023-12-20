@@ -4,14 +4,8 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.dentscribe.ExtentReport.ExtentManager;
-import com.dentscribe.base.AndroidBase;
-import com.dentscribe.common.CommonLocators;
-import com.dentscribe.common.CommonVariables;
 import com.dentscribe.utils.AndroidActions;
 import com.google.common.collect.ImmutableMap;
 
@@ -45,7 +39,9 @@ public class SikkaWebviewPage extends AndroidActions {
 	// _______________verify whether signup page exists or not_______________
 	public boolean validateSikkaWebViewPage()
 	{
-		if (IsElementPresent(driver, buttonRegister, "Register button on webview") && IsElementPresent(driver, buttonProceed, "Proceed button on webview")) {
+		IsElementPresent(driver, buttonProceed, "Proceed button on webview");
+		scrollableClick("Proceed");
+		if (IsElementPresent(driver, buttonRegister, "Register button on webview")) {
 			ExtentManager.logInfoDetails("<b>User is now on Sikka Webview page as expected");
 			return true;
 		} else {

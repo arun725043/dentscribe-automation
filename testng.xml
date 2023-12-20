@@ -7,13 +7,23 @@
 	<test thread-count="5" name="Test">
 		<classes>	
 		
-			<class name="com.dentscribe.testCases.TestAllAppointmentStatuses" />
+			<class name="com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan" />
 			
 		
 		
 				
 			<!-- DONE TEST CASES -->
 			<!-- 
+			
+			<class name="com.dentscribe.testCases.TestAllAppointmentStatuses" />
+			
+			
+			
+			
+			
+			
+			
+			
 			<class name="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUserAndBuPaidPlan" />
 			<class name="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest" />
 			<class name="com.dentscribe.testCases.DS_002_ForgotPasswordTest" />

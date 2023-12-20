@@ -26,7 +26,6 @@ import com.dentscribe.pages.SmsVerification;
 import com.dentscribe.pages.SoapReportPage;
 import com.dentscribe.pages.TourPages;
 import com.dentscribe.utils.AndroidActions;
-import com.github.dockerjava.core.dockerfile.DockerfileStatement.Add;
 
 import java.net.*;
 import io.appium.java_client.android.AndroidDriver;

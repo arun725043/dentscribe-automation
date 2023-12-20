@@ -5,7 +5,6 @@ import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.common.CommonLocators;
-import com.dentscribe.common.CommonVariables;
 import com.dentscribe.utils.AndroidActions;
 
 import io.appium.java_client.android.AndroidDriver;

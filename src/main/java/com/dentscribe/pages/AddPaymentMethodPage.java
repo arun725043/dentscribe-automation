@@ -1,7 +1,6 @@
 package com.dentscribe.pages;
 
 import org.openqa.selenium.By;
-import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.common.CommonLocators;
@@ -20,6 +19,8 @@ public class AddPaymentMethodPage extends AndroidActions {
 	}
 
 	// __________locators________________
+	public By headerTextPaymentMethodPage = By.xpath("//android.widget.TextView[@text='Add Payment Method']");
+	public By headerCardDetailsSection = By.xpath("//android.widget.TextView[@text='Card Details ']");
 	public By inputCardholderName = By.xpath("//android.widget.TextView[contains(@text,'Cardholder Name')]" + CommonLocators.fixPath);
 	public By inputCardNo = By.id("com.dentscribe.dev:id/et_card_number");
 	public By inputExpiry = By.id("com.dentscribe.dev:id/et_expiry");
@@ -27,14 +28,7 @@ public class AddPaymentMethodPage extends AndroidActions {
 	public By inputZipCode = By.id("com.dentscribe.dev:id/postal_code");
 	public By textCardDetail = By.xpath("//android.widget.TextView[contains(@text,'Card Details')]");
 	public By iconBackAddPayemntMethodPage = By.xpath("//android.widget.TextView[@text='Add Payment Method']//preceding-sibling::android.view.ViewGroup//android.widget.ImageView");
-
-	// ________________Cancel subscription____________
-	public By dropdownReason = By.xpath("//android.widget.TextView[contains(@text,'Reason')]//following-sibling::android.view.ViewGroup//android.widget.EditText");
-	public By listOfReason = By.xpath("//android.widget.TextView[contains(@text,'Reason')]//parent::android.view.ViewGroup//android.widget.ScrollView//android.widget.TextView");
-	public By inputAddDescription = By.xpath("//android.widget.EditText[contains(@text,'Add description here')]");
-	public By buttonSubmit = By.xpath("//android.widget.TextView[@text='Submit']");
-	public By headerCancelSubscriptionPage = By.xpath("//android.widget.TextView[@text='Cancel Subscriptions']");
-	public By buttonSubmitCancelSubscription = By.xpath("//android.view.View//android.widget.TextView[@text='Submit']");
+	
 	public By iconEditPaymentMethod = By.xpath("//android.widget.TextView[@text='Payment Method']//following-sibling::android.view.ViewGroup//android.widget.ImageView");
 	
 	//validation messages locators
@@ -44,30 +38,13 @@ public class AddPaymentMethodPage extends AndroidActions {
 	// _________verify whether user is on Add Payment Method page or not_______
 	public boolean validateAddPaymentMethodPage()
 	{
-		explicitWait(driver, textSelectSubscription, 10);
-		if (IsElementPresent(driver, textSelectSubscription, "text - Select Subscription Tier")) {
-			ExtentManager.logInfoDetails("User is now on <b> Manage Subscription page as expected");
+		if (IsElementPresent(driver, headerTextPaymentMethodPage, "Add Payment Method header") && IsElementPresent(driver, headerCardDetailsSection, "Card Details section header")) 
+		{
+			ExtentManager.logInfoDetails("<b>User is now on Add Payement Method page as expected");
 			return true;
 		} else {
-			ExtentManager.logFailureDetails("Either expected Manage Subscription page verified element not found or not exists. please check");
+			ExtentManager.logFailureDetails("Either expected Add Payement Method verified element not found or not exists. please check");
 			return false;
-		}
-	}
-	
-	//________________select plan___________________
-	public void selectPlan(String planName)
-	{
-		if (planName.equalsIgnoreCase("FREE TRIAL"))
-		{
-			scrollToText("30-Day Free Trial");
-			click(driver, textFreeTrial, "$30Days Free Trial plan option");
-		}
-		else if (planName.equalsIgnoreCase("PAID")) {
-			click(driver, text699Month, "$699/Month plan option");
-		}
-		else {
-			ExtentManager.logFailureDetails("Plan could be FREE TRIAL or PAID");
-			Assert.fail();
 		}
 	}
 	
@@ -88,30 +65,6 @@ public class AddPaymentMethodPage extends AndroidActions {
 	{
 		scrollToText("Continue");
 		click(driver, CommonLocators.continueButton, "Continue button");
-	}
-	
-	//________click Add Payment Method button and verify 'Add Payment Method' screen_____
-	public void clickVerifyAddPaymentMethodButton() throws InterruptedException
-	{
-		scrollableClick("Add Payment Method");
-		ExtentManager.logInfoDetails("<b>Add Payment Method button clicked");
-		if (IsElementPresent(driver, buttonAddPayment, "Add payment method header") && IsElementPresent(driver, textCardDetail, "Crad details header")) {
-			ExtentManager.logInfoDetails("User is now on <b> Add payment method <b> as expected");
-		} else {
-			ExtentManager.logFailureDetails("Either expected Signup page verified element not found or not exists. please check");
-			Assert.fail();
-		}
-	}
-	
-	//________click Add Payment Method button and verify 'Add Payment Method' screen_____
-	public void clickEditIconPaymentMethod() throws InterruptedException
-	{
-		if (IsElementPresent(driver, iconEditPaymentMethod, "Edit icon payment method")) {
-			click(driver, iconEditPaymentMethod, "Edit icon payment method on subscription page");
-		} else {
-			ExtentManager.logFailureDetails("Either edit icon not found or not exists on manage subscription page. please check");
-			Assert.fail();
-		}
 	}
 
 	// __________verifying validation message for mandatory fields________________

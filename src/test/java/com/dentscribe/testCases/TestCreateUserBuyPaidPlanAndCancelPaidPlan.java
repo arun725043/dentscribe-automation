@@ -54,7 +54,6 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 			practiceInfoPage.clickContinueButtonPracticeInfo();
 			Thread.sleep(20000);
 			assertTrue(sikkaWebviewPage.validateSikkaWebViewPage());
-			actions.scrollableClick("Proceed");
 //			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(sikkaWebviewPage.buttonRegister));	
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,7 +62,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 	}
 	
 	@Test(priority = 2, dependsOnMethods = { "verifyCreatePracticeInfo" })
-	public void verifyWebViewRegisteration() throws InterruptedException
+	public void verifyWebViewRegistration() throws InterruptedException
 	{
 		click(driver, sikkaWebviewPage.buttonRegister, "Register button");
 		explicitWait(driver, sikkaWebviewPage.textYourOrder, 30);
@@ -91,7 +90,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		ExtentManager.logInfoDetails("<b>Practice created successfully");
 	}
 	
-	@Test(priority = 3, dependsOnMethods = { "verifyWebViewRegisteration" })
+	@Test(priority = 3, dependsOnMethods = { "verifyWebViewRegistration" })
 	public void verifySpuInstallPopupAndRefreshData() throws IOException, InterruptedException {
 		try {
 			// _______________login application and verify SPU Install popup_______________
@@ -106,7 +105,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		}
 	}
 	
-	@Test(priority = 4, dependsOnMethods = { "verifyWebViewRegisteration" })
+	@Test(priority = 4, dependsOnMethods = { "verifySpuInstallPopupAndRefreshData" })
 	public void verifyEulaAgreementPageAndAcceptAgreement() throws IOException, InterruptedException {
 		try {
 			// ___________login application again_________________
@@ -125,7 +124,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		}
 	}
 	
-	@Test(priority = 5, dependsOnMethods = { "verifyEulaAgreementPageAndAccept" })
+	@Test(priority = 5, dependsOnMethods = { "verifyEulaAgreementPageAndAcceptAgreement" })
 	public void verifyCanUserBuyPaidPlan() throws InterruptedException
 	{
 		// _____________select paid plan_____________
@@ -133,11 +132,13 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		manageSubscriptionPage.selectPlan("paid");
 
 		// ______________Fill payment details__________________
-		manageSubscriptionPage.clickVerifyAddPaymentMethodButton();
+		manageSubscriptionPage.clickPaymentMethodButton("add");
+		
+		
 		String cardHolderName = CommonMethods.genrateRandomFirstName();
-		manageSubscriptionPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
+		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
 				readData("testData", "cvc"), readData("testData", "zipcode"));
-		manageSubscriptionPage.clickContinueButtonAddPaymentMethod();
+		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
 		explicitWait(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), 30);
 		if (IsElementPresent(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), "Cardholder Name"))
 		{
@@ -160,27 +161,26 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		assertTrue(IsElementPresent(driver, settingPage.buttonCancel, "Cancel button") && IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
 	}
 	
-	@Test(priority = 6, dependsOnMethods = { "verifyUserCanBuyPaidPlan" })
+	@Test(priority = 6, dependsOnMethods = { "verifyCanUserBuyPaidPlan" })
 	public void verifyCanUserCancelSubscription() throws InterruptedException 
 	{
 		// ________________Cancel subscription________________
 		click(driver, settingPage.buttonCancel, "Cancel button");
 		
-		click(driver, manageSubscriptionPage.dropdownReason, "Reason dropdown");
+		click(driver, settingPage.dropdownReason, "Reason dropdown");
 
-		click(driver, manageSubscriptionPage.listOfReason, "Reason dropdownlist");
+		click(driver, settingPage.listOfReason, "Reason dropdownlist");
 		ExtentManager.logInfoDetails("Able to select the reason from reason dropdown successfully");
 		
-		sendKeys(driver, manageSubscriptionPage.inputAddDescription, "Reason details field", "Cancelling subscription for testing");
-//				ExtentManager.logInfoDetails("Entered value in description field : " + getAttribute(manageSubscription.inputAddDescription));
+		sendKeys(driver, settingPage.inputAddDescription, "Reason details field", "Cancelling subscription for testing");
 
-		click(driver, manageSubscriptionPage.buttonSubmit, "Submit button cancel subscription popup");
+		click(driver, settingPage.buttonSubmit, "Submit button cancel subscription popup");
 		ExtentManager.logInfoDetails(getText(CommonLocators.successMessageCancelSubscription));
 		Thread.sleep(5000);
 		loginPage.validateLoginPage();
 	}
 
-	@Test(priority = 7, dependsOnMethods = { "verifyCancelSubscriptionPopup" })
+	@Test(priority = 7, dependsOnMethods = { "verifyCanUserCancelSubscription" })
 	public void verifyCanUserUpdatePaymentMethod() throws IOException, InterruptedException {
 		// ___________________login, skip tour pages and verify subscription cancelled or not________________
 		assertTrue(loginPage.loginApplication(email, CommonVariables.actualPass, "valid"));
@@ -196,7 +196,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 
 		// __________________Navigate to setting page and verify cancelled plan________________
 		click(driver, calendarPage.iconSetting, "Settings icon");
-		assertTrue(IsElementPresent(driver, manageSubscriptionPage.buttonManageSubscription, "Manage Subscription button") && 
+		assertTrue(IsElementPresent(driver, settingPage.buttonManageSubscription, "Manage Subscription button") && 
 				IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
 
 		// _____________select paid plan_____________
@@ -204,11 +204,11 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
 
 		// ______________Fill payment details__________________
-		manageSubscriptionPage.clickVerifyAddPaymentMethodButton();
+		manageSubscriptionPage.clickPaymentMethodButton("add");
 		String cardHolderName = CommonMethods.genrateRandomFirstName();
-		manageSubscriptionPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
+		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
 				readData("testData", "cvc"), readData("testData", "zipcode"));
-		manageSubscriptionPage.clickContinueButtonAddPaymentMethod();
+		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
 		explicitWait(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), 30);
 		if (IsElementPresent(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), "Cardholder Name"))
 		{
@@ -223,24 +223,21 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 
 		// ___________________Navigate to setting page_____________
 		tourPages.skipTourPages();
-		calendarPage.validateCalendarPage();
+		assertTrue(calendarPage.validateCalendarPage());
 		click(driver, calendarPage.iconSetting, "Settings icon on calendar page");
-		settingPage.validateSettingsPage();
+		assertTrue(settingPage.validateSettingsPage());
 
 		// ____________________Verify cancel button and plan_______________
 		assertTrue(IsElementPresent(driver, settingPage.buttonCancel, "Cancel button") && IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
 	}
 
-	@Test(priority = 9, dependsOnMethods = { "verifyUserCanCancelSubscription" })
+	@Test(priority = 9, dependsOnMethods = { "verifyCanUserUpdatePaymentMethod" })
 	public void verifyCanUserBuyPaidPlanAgainAfterCancelOnce() throws IOException, InterruptedException {
-		click(driver, manageSubscriptionPage.buttonManageSubscription, "Manage Subscription button");
+		click(driver, settingPage.buttonManageSubscription, "Manage Subscription button");
 
 		manageSubscriptionPage.selectPlan("paid");
 		click(driver, CommonLocators.continueButton, "Continue button");
 		getText(CommonLocators.successMessageBuyPaidPlan);
-		
-		explicitWait(driver, settingPage.buttonLogOut, 20);
-
 		// ____________________Verify cancel button_______________
 		assertTrue(IsElementPresent(driver, settingPage.buttonCancel, "Cancel button") && IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
 	}

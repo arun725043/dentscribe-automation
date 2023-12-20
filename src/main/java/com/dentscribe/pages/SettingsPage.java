@@ -71,19 +71,28 @@ public class SettingsPage extends AndroidActions {
 	public By backIconHelpPage = By.xpath("//android.widget.TextView[@text='Help']//preceding-sibling::android.view.ViewGroup//android.widget.ImageView[@index=0]");
 	public By textFaqs = By.xpath("//android.widget.TextView[@text='FAQs']");
 
+	// ________________Cancel subscription____________
+	public By dropdownReason = By.xpath("//android.widget.TextView[contains(@text,'Reason')]//following-sibling::android.view.ViewGroup//android.widget.EditText");
+	public By listOfReason = By.xpath("//android.widget.TextView[contains(@text,'Reason')]//parent::android.view.ViewGroup//android.widget.ScrollView//android.widget.TextView");
+	public By inputAddDescription = By.xpath("//android.widget.EditText[contains(@text,'Add description here')]");
+	public By buttonSubmit = By.xpath("//android.widget.TextView[@text='Submit']");
+	public By headerCancelSubscriptionPage = By.xpath("//android.widget.TextView[@text='Cancel Subscriptions']");
+	public By buttonSubmitCancelSubscription = By.xpath("//android.view.View//android.widget.TextView[@text='Submit']");
+		
 	
 	// _________verify settings page exists or not_______
-	public void validateSettingsPage()
+	public boolean validateSettingsPage()
 	{
 		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(headerSettingsPage));
 		String headerText = getText(headerSettingsPage);
 		if(headerText.trim().equalsIgnoreCase("settings"))
 		{
 			ExtentManager.logInfoDetails("User is now on <b> Settings page <b> as expected");
+			return true;
 		}
 		else {
 			ExtentManager.logFailureDetails("Expected Settings page either not found or header not matched. please check");
-			Assert.fail();
+			return false;
 		}
 	}
 	

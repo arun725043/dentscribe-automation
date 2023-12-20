@@ -6,21 +6,21 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.dentscribe.testCases.TestAllAppointmentStatuses">
+      <class name="com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan">
         <methods>
-          <include name="verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt"/>
+          <include name="verifyCanUserBuyPaidPlanAgainAfterCancelOnce"/>
           <include name="tearDown"/>
-          <include name="verifyIsPatientPopupAppearingOnContinueButtonClick"/>
-          <include name="verifyContinueRecordingButtonOnPatientDetailsPopupAndClick"/>
-          <include name="verifyIsAppointmentStatusReviewAfterStopRecording"/>
+          <include name="verifyCanUserUpdatePaymentMethod"/>
+          <include name="verifyCanUserCancelSubscription"/>
+          <include name="verifyEulaAgreementPageAndAcceptAgreement"/>
           <include name="launchApplication"/>
-          <include name="verifyIsPatientPopupAppearingOnStartButtonClick"/>
-          <include name="verifyStartRecordingButtonOnPatientDetailsPopupAndClick"/>
-          <include name="addSignatureInSoapReportAndSubmit"/>
-          <include name="goToCalendarPageAndSelectAppointmentDate"/>
-          <include name="verifyIsAppointmentStatusContinueAfterPauseRecording"/>
+          <include name="verifySignupNewUser"/>
+          <include name="verifyCanUserBuyPaidPlan"/>
+          <include name="verifyWebViewRegistration"/>
+          <include name="verifySpuInstallPopupAndRefreshData"/>
+          <include name="verifyCreatePracticeInfo"/>
         </methods>
-      </class> <!-- com.dentscribe.testCases.TestAllAppointmentStatuses -->
+      </class> <!-- com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
