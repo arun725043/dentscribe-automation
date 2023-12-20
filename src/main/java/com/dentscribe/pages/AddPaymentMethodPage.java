@@ -64,7 +64,7 @@ public class AddPaymentMethodPage extends AndroidActions {
 	public void clickContinueButtonAddPaymentMethod()
 	{
 		scrollToText("Continue");
-		click(driver, CommonLocators.continueButton, "Continue button");
+		click(driver, CommonLocators.continueButton, "Continue button on Add Payment Method page");
 	}
 
 	// __________verifying validation message for mandatory fields________________

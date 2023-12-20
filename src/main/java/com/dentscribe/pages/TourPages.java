@@ -44,7 +44,7 @@ public class TourPages extends AndroidActions {
 	public boolean validateTourPageCalendarScheduleView()
 	{
 		if (IsElementPresent(driver, textCalendarSchecule, "Calendar Schedue View")) {
-			ExtentManager.logInfoDetails("User is now on <b> Calendar Schedue View tour page <b> as expected");
+			ExtentManager.logInfoDetails("<b>User is now on Calendar Schedue View tour page as expected");
 			return true;
 		} else {
 			ExtentManager.logFailureDetails("Either expected Signup page verified element not found or not exists. please check");

@@ -55,6 +55,19 @@ public class ManageSubscriptionPage extends AndroidActions {
 		}
 	}
 	
+	public void verifyCardHolderName(String cardHolderName)
+	{
+		explicitWait(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), 30);
+		if (IsElementPresent(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), "Cardholder Name"))
+		{
+			ExtentManager.logInfoDetails("<b>paymentMethod updated successfully.");
+		}
+		else {
+			ExtentManager.logFailureDetails("<b>Either payment method not added or cardholder name not matched. please check");
+			Assert.fail();
+		}
+	}
+	
 	//________click Add Payment Method button and verify 'Add Payment Method' screen_____
 	public void clickPaymentMethodButton(String buttonName) throws InterruptedException
 	{

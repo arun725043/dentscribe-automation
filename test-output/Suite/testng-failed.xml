@@ -6,21 +6,18 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan">
+      <class name="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan">
         <methods>
-          <include name="verifyCanUserBuyPaidPlanAgainAfterCancelOnce"/>
+          <include name="verifyBackIconAddPaymentMethodPage"/>
           <include name="tearDown"/>
-          <include name="verifyCanUserUpdatePaymentMethod"/>
-          <include name="verifyCanUserCancelSubscription"/>
-          <include name="verifyEulaAgreementPageAndAcceptAgreement"/>
+          <include name="verifyIsAddPaymentMethodPageExists"/>
+          <include name="verifyCanUserBuyPaidPlanAfterFreeTrialPlan"/>
+          <include name="verifyAddPaymentMethodMandatoryFields"/>
           <include name="launchApplication"/>
-          <include name="verifySignupNewUser"/>
-          <include name="verifyCanUserBuyPaidPlan"/>
-          <include name="verifyWebViewRegistration"/>
-          <include name="verifySpuInstallPopupAndRefreshData"/>
-          <include name="verifyCreatePracticeInfo"/>
+          <include name="createNewUserAndGoToManageSubscriptionPage"/>
+          <include name="verifyCanUserTake30DaysFreeTrialPlan"/>
         </methods>
-      </class> <!-- com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan -->
+      </class> <!-- com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

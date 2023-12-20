@@ -1,5 +1,7 @@
 package com.dentscribe.pages;
 
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -116,8 +118,20 @@ public class SettingsPage extends AndroidActions {
 		click(driver, buttonLogOut, "Logout button");
 	}
 
-	// ____________verify free trial text_____________
-	public boolean verifyFreeTrialSelectedText() {
+	// ____________verify whether selected plan and its related button exists or not_____________
+	public boolean verifyBuyPlanOnSettingsPage(String plan) {
+		switch (plan) {
+		case "free":
+			assertTrue(IsElementPresent(driver, buttonManageSubscription, "Manage Subscription button"));
+			assertTrue(IsElementPresent(driver, textFreeTrial, "30-Day Free Trial option"));
+			break;
+		case "paid":
+			assertTrue(IsElementPresent(driver, buttonCancel, "Cancel button"));
+			assertTrue(IsElementPresent(driver, text699Selected, "$699/Month plan option"));
+			break;
+		default:
+			break;
+		}
 		return IsElementPresent(driver, textFreeTrial, "Free Trial text");
 	}
 

@@ -39,7 +39,6 @@ public class SikkaWebviewPage extends AndroidActions {
 	// _______________verify whether signup page exists or not_______________
 	public boolean validateSikkaWebViewPage()
 	{
-		IsElementPresent(driver, buttonProceed, "Proceed button on webview");
 		scrollableClick("Proceed");
 		if (IsElementPresent(driver, buttonRegister, "Register button on webview")) {
 			ExtentManager.logInfoDetails("<b>User is now on Sikka Webview page as expected");

@@ -4,7 +4,6 @@ import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,8 +16,8 @@ import com.dentscribe.common.CommonVariables;
 
 public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 
-	String getOtp = null;
 	String email = "kapoor.arun+" + CommonMethods.GenerateRandomNumber(4) + "@thinksys.com";
+	String getOtp = null;
 	
 	@Test(priority = 0)
 	public void verifySignupNewUser() throws InterruptedException {
@@ -54,7 +53,6 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 			practiceInfoPage.clickContinueButtonPracticeInfo();
 			Thread.sleep(20000);
 			assertTrue(sikkaWebviewPage.validateSikkaWebViewPage());
-//			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(sikkaWebviewPage.buttonRegister));	
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
@@ -139,15 +137,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
 				readData("testData", "cvc"), readData("testData", "zipcode"));
 		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
-		explicitWait(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), 30);
-		if (IsElementPresent(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), "Cardholder Name"))
-		{
-			ExtentManager.logInfoDetails("<b>paymentMethod updated successfully.");
-		}
-		else {
-			ExtentManager.logFailureDetails("<b>Either payment method not added or cardholder name not matched. please check");
-			Assert.fail();
-		}
+		manageSubscriptionPage.verifyCardHolderName(cardHolderName);
 		manageSubscriptionPage.clickContinueButtonSubscriptionPage();
 		assertTrue(tourPages.validateTourPageCalendarScheduleView());
 
@@ -158,7 +148,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		settingPage.validateSettingsPage();
 
 		// ____________________Verify cancel button and plan_______________
-		assertTrue(IsElementPresent(driver, settingPage.buttonCancel, "Cancel button") && IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
+		settingPage.verifyBuyPlanOnSettingsPage("paid");
 	}
 	
 	@Test(priority = 6, dependsOnMethods = { "verifyCanUserBuyPaidPlan" })
@@ -196,6 +186,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 
 		// __________________Navigate to setting page and verify cancelled plan________________
 		click(driver, calendarPage.iconSetting, "Settings icon");
+		settingPage.validateSettingsPage();
 		assertTrue(IsElementPresent(driver, settingPage.buttonManageSubscription, "Manage Subscription button") && 
 				IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
 
@@ -204,41 +195,23 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
 
 		// ______________Fill payment details__________________
-		manageSubscriptionPage.clickPaymentMethodButton("add");
+		manageSubscriptionPage.clickPaymentMethodButton("edit");
 		String cardHolderName = CommonMethods.genrateRandomFirstName();
 		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
 				readData("testData", "cvc"), readData("testData", "zipcode"));
 		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
-		explicitWait(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), 30);
-		if (IsElementPresent(driver, By.xpath("//android.widget.TextView[@text='" + cardHolderName + "']"), "Cardholder Name"))
-		{
-			ExtentManager.logInfoDetails("<b>paymentMethod updated successfully.");
-		}
-		else {
-			ExtentManager.logFailureDetails("<b>Either payment method not added or cardholder name not matched. please check");
-			Assert.fail();
-		}
-		manageSubscriptionPage.clickContinueButtonSubscriptionPage();
-		assertTrue(tourPages.validateTourPageCalendarScheduleView());
+		manageSubscriptionPage.verifyCardHolderName(cardHolderName);
+	}
 
-		// ___________________Navigate to setting page_____________
-		tourPages.skipTourPages();
-		assertTrue(calendarPage.validateCalendarPage());
-		click(driver, calendarPage.iconSetting, "Settings icon on calendar page");
+	@Test(priority = 2, dependsOnMethods = { "verifyCanUserUpdatePaymentMethod" })
+	public void verifyCanUserBuyPaidPlanAgainAfterCancelOnce() throws IOException, InterruptedException {
+		manageSubscriptionPage.validateManageSubscriptionPage();
+		manageSubscriptionPage.selectPlan("paid");
+		manageSubscriptionPage.clickContinueButtonSubscriptionPage();
+		ExtentManager.logInfoDetails("payment successful! subscription active.");
 		assertTrue(settingPage.validateSettingsPage());
 
 		// ____________________Verify cancel button and plan_______________
-		assertTrue(IsElementPresent(driver, settingPage.buttonCancel, "Cancel button") && IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
-	}
-
-	@Test(priority = 9, dependsOnMethods = { "verifyCanUserUpdatePaymentMethod" })
-	public void verifyCanUserBuyPaidPlanAgainAfterCancelOnce() throws IOException, InterruptedException {
-		click(driver, settingPage.buttonManageSubscription, "Manage Subscription button");
-
-		manageSubscriptionPage.selectPlan("paid");
-		click(driver, CommonLocators.continueButton, "Continue button");
-		getText(CommonLocators.successMessageBuyPaidPlan);
-		// ____________________Verify cancel button_______________
-		assertTrue(IsElementPresent(driver, settingPage.buttonCancel, "Cancel button") && IsElementPresent(driver, settingPage.text699Selected, "$699/Month plan option"));
+		settingPage.verifyBuyPlanOnSettingsPage("paid");
 	}
 }

@@ -7,14 +7,14 @@
 	<test thread-count="5" name="Test">
 		<classes>	
 		
-			<class name="com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan" />
+			<class name="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan" />
 			
 		
 		
 				
 			<!-- DONE TEST CASES -->
 			<!-- 
-			
+			<class name="com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan" />
 			<class name="com.dentscribe.testCases.TestAllAppointmentStatuses" />
 			
 			
