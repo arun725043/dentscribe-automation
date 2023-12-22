@@ -5,36 +5,35 @@
 		<listener class-name="com.dentscribe.ExtentReport.TestListeners" />
 	</listeners>
 	<test thread-count="5" name="Test">
-		<classes>	
+		<classes>		
 		
-			<class name="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan" />
+			<class name="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup" />
 			
-		
-		
-				
 			<!-- DONE TEST CASES -->
 			<!-- 
 			<class name="com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan" />
+			<class name="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan" />
 			<class name="com.dentscribe.testCases.TestAllAppointmentStatuses" />
+			<class name="com.dentscribe.testCases.TestLoginPage" />
+			<class name="com.dentscribe.testCases.TestSmsVerificationPageAfterLogin" />
+			<class name="com.dentscribe.testCases.TestSignUpPage" />
 			
+			-->
 			
+			<!-- 
+			iOS XML FILE
+			<class name="com.dentscribe.testCases_iOS.TestSmsVerificationPageAfterSignup" />
+			<class name="com.dentscribe.testCases_iOS.TestSignupAndLoginWithoutRegisterPractice" />
+			<class name="com.dentscribe.testCases_iOS.TestTourPages" />
+			<class name="com.dentscribe.testCases_iOS.TestPatientSearchPage" />
+			<class name="com.dentscribe.testCases_iOS.TestForgotPassowrdPage" />
+			<class name="com.dentscribe.testCases_iOS.TestSettingsPage" />
+			<class name="com.dentscribe.testCases_iOS.TestChangePassword" />
+			<class name="com.dentscribe.testCases_iOS.TestFeedbackAndNewFeedbackPages" />
+			<class name="com.dentscribe.testCases_iOS.TestRecordingfor10mintsAndGenerateSoapReport" />
 			
-			
-			
-			
-			
-			
-			<class name="com.dentscribe.testCases.DS_006_009_010_013_014_015_PracticeInfoTestForExistingSikkaUserAndBuPaidPlan" />
-			<class name="com.dentscribe.testCases.DS_011_012_021_FreeTrialAndLogoutTest" />
-			<class name="com.dentscribe.testCases.DS_002_ForgotPasswordTest" />
-			<class name="com.dentscribe.testCases.DS_001_008_030_LoginSmsVerificationTest" />
-			<class name="com.dentscribe.testCases.DS_016_TourPagesTest" />
-			<class name="com.dentscribe.testCases.DS_003_SignupPageTest" />
-			<class name="com.dentscribe.testCases.DS_004_SignupSmsVerificationTest" />
-			<class name="com.dentscribe.testCases.DS_005_SignupAndLoginWithoutPractice" />
-			<class name="com.dentscribe.testCases.DS_017_018_SearchPatientAndProfileTest" />
-			<class name="com.dentscribe.testCases.DS_019_ChangePassword" />
-			<class name="com.dentscribe.testCases.DS_020_022_023_024_028_SettingsPageTest" />
+			<class name="com.dentscribe.testCases_iOS.TestRecordingfor30mintsAndGenerateSoapReport" /> 
+			<class name="com.dentscribe.testCases_iOS.TestRecordingfor50mintsAndGenerateSoapReport" />
 			-->
 			
 		</classes>

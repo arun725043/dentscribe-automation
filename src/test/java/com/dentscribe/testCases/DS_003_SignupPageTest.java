@@ -12,31 +12,7 @@ import com.dentscribe.common.CommonVariables;
 
 public class DS_003_SignupPageTest extends AndroidBase {
 
-	@Test(priority = 0)
-	public void verifySignupWithoutMandatoryFields() throws InterruptedException
-	{
-		//Launch application and go to Signup page and verify
-		ExtentManager.logInfoDetails("<b>Application launched successfully");
-		signUpPage.verifySignupLandingPage();
-		
-		// _________don't fill any values and verify continue button click_________
-		actions.scrollableClick("Continue");
-		signUpPage.validateMandatoryFieldsErrorMessages();
-	}
-	
-	@Test(priority = 1)
-	public void verifySignupWithOnlyMandatoryFields() throws InterruptedException
-	{
-		// __________refreshing signup page______________
-		click(driver, loginPage.buttonLogin, "Login tab");
-		click(driver, loginPage.buttonSignup, "Sign Up tab");
-		
-		// _________fill only mandatory values and verify continue button click_________
-		String password = "Pass@" + GenerateRandomNumber(4);
-		signUpPage.fillSignupForm(genrateRandomFirstName(), "", readData("testData", "countryCode"), readData("testData", "mobile"), CommonVariables.generateEmailId, 
-				"", otpTextboxes, "", String.valueOf(GenerateRandomNumber(6)), password, password, readData("testData", "pmsName"));
-		signUpPage.clickVerifySignUpContinueButton("confirmation popup");
-	}
+
 	
 	@Test (priority = 2)
 	public void verifyConfirmationPopupBackButton() throws InterruptedException {

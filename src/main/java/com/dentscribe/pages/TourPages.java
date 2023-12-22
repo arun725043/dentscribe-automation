@@ -7,6 +7,7 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
@@ -41,14 +42,13 @@ public class TourPages extends AndroidActions {
 	}
 
 	// _________validate whether user is on tour page or not_______
-	public boolean validateTourPageCalendarScheduleView()
+	public void validateTourPageCalendarScheduleView()
 	{
 		if (IsElementPresent(driver, textCalendarSchecule, "Calendar Schedue View")) {
 			ExtentManager.logInfoDetails("<b>User is now on Calendar Schedue View tour page as expected");
-			return true;
 		} else {
 			ExtentManager.logFailureDetails("Either expected Signup page verified element not found or not exists. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	

@@ -26,6 +26,7 @@ public class SignUpPage extends AndroidActions {
 
 	public By signupButton = By.xpath("//android.widget.TextView[@text='Sign Up']");
 	public By textPhone = By.xpath("//android.widget.TextView[@text='Phone Number']");
+	
 	public By inputFirstName = By.xpath("//android.widget.TextView[@text='First Name']" + CommonLocators.fixPath);
 	public By inputTitle = By.xpath("//android.widget.TextView[@text='Title']" + CommonLocators.fixPath);
 	public By inputLastName = By.xpath("//android.widget.TextView[@text='Last Name']" + CommonLocators.fixPath);
@@ -35,6 +36,9 @@ public class SignUpPage extends AndroidActions {
 	public By valueDentistDropdown = By.xpath("//android.widget.TextView[@text='Your Role']//parent::android.view.ViewGroup//parent::android.view.ViewGroup//following-sibling::android.view.ViewGroup//android.widget.TextView");
 	public By inputLicenseNumber = By.xpath("//android.widget.TextView[@text='License Number']" + CommonLocators.fixPath);
 	public By inputPhoneNumber = By.xpath("//android.widget.TextView[@text='Phone Number']//parent::android.view.ViewGroup//following-sibling::android.view.ViewGroup/android.widget.EditText");
+	public By inputPassword = By.xpath("//android.view.ViewGroup[@resource-id='password-input']//android.widget.EditText[@index=1]");
+	public By inputConfirmPassword = By.xpath("//android.view.ViewGroup[@resource-id='confirmpassword-input']//android.widget.EditText[@index=1]");
+	
 	public By textPasswordIsRequired = By.xpath("//android.widget.TextView[@text='Password is required.']");
 	public By textCpasswordIsRequired = By.xpath("//android.widget.TextView[@text='Confirm password is required.']");
 	public By textAskForContinue = By.xpath("//android.widget.TextView[@text='Do you wish to continue?']");
@@ -49,6 +53,7 @@ public class SignUpPage extends AndroidActions {
 	public By textEmailAlreadyExist = By.xpath("//android.widget.TextView[@text='User with email id already exists.']");
 	public By textAccountSuccessfullyCreated = By.xpath("//android.widget.TextView[@text='Your account has been successfully verified!']");
 	public By labelPMSDropdown = By.xpath("//android.widget.TextView[@text='Select Your Practice Management Software']");
+	
 	public By ErrorMsgInvalidEmail = By.xpath("//android.view.ViewGroup[@resource-id='email-input']//android.view.ViewGroup[@index=2]//android.widget.TextView[@index=0]");
 	public By ErrorMsgInvalidPassword = By.xpath("//android.view.ViewGroup[@resource-id='password-input']//android.view.ViewGroup[@index=3]//android.widget.TextView[@index=0]");
 	public By ErrorMsgInvalidConfirmPassword = By.xpath("//android.view.ViewGroup[@resource-id='confirmpassword-input']//android.view.ViewGroup[@index=3]//android.widget.TextView[@index=0]");
@@ -63,15 +68,14 @@ public class SignUpPage extends AndroidActions {
 	
 
 	// _______________verify whether signup page exists or not_______________
-	public boolean validateSignupPage()
+	public void validateSignupPage()
 	{
 		click(driver, signupButton, "Signup tab");
 		if (IsElementPresent(driver, CommonLocators.signupNote, "text - " + CommonVariables.signupNoteText)) {
 			ExtentManager.logInfoDetails("<b>User is now on Signup page as expected");
-			return true;
 		} else {
 			ExtentManager.logFailureDetails("Either expected Signup page verified element not found or page not exists. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	
@@ -147,7 +151,8 @@ public class SignUpPage extends AndroidActions {
 	}
 
 	// __________________fill signup form_____________________
-	public void fillSignupForm(String firstName, String lastName, String countryCode, String phoneNumber, String email, String title, String role, String licenseState, String licenseNumber, String password, String confirmPassword, String pms) throws InterruptedException 
+	public void fillSignupForm(String firstName, String lastName, String countryCode, String phoneNumber, String email, String title, 
+			String role, String licenseState, String licenseNumber, String password, String confirmPassword, String pms) throws InterruptedException 
 	{
 		try {
 			if (firstName != "")
@@ -186,7 +191,6 @@ public class SignUpPage extends AndroidActions {
 			scrollToText("Continue");
 			click(driver, pmsDrpdwn, "PMS dropdown");
 			scrollableClick(pms);
-			click(driver, CommonLocators.continueButton, "Continue button");
 		}
 		catch (Exception e) {
 			ExtentManager.logFailureDetails("Mandatory fields cannot be empty. please check any field value is missing");
@@ -227,13 +231,13 @@ public class SignUpPage extends AndroidActions {
 			click(driver, buttonBack, "Back button on Confimation popup");
 			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(labelPMSDropdown));
 			flag = IsElementPresent(driver, labelPMSDropdown, "PMS Field");
-			ExtentManager.logInfoDetails("User come back to <b>Signup<b> page as expected");
+			ExtentManager.logInfoDetails("<b>User come back to Signup page as expected");
 			break;
 		case "continue":
 			click(driver, buttonContinue, "Continue button on Confimation popup");
 			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(textSmsVerification));
 			flag = IsElementPresent(driver, textSmsVerification, "SMS Verification screen");
-			ExtentManager.logInfoDetails("User is now on <b>SMS Verification<b> page as expected");
+			ExtentManager.logInfoDetails("<b>User is now on SMS Verification page as expected");
 			break;
 		default:
 			break;
@@ -287,11 +291,11 @@ public class SignUpPage extends AndroidActions {
 	public void validatePasswordStrength(String password) throws InterruptedException
 	{
 		scrollUntilElementIsVisible("Password");
-		sendKeys(driver, CommonLocators.inputTxtPassword, "Password", password);
+		sendKeys(driver, inputPassword, "Password", password);
 		if (getText(ErrorMsgInvalidPassword).equals(CommonVariables.errorMsgTextInvalidPassword))
 		{
 			ExtentManager.logInfoDetails("Expected validation message found : <b>" + CommonVariables.errorMsgTextInvalidPassword);
-			clear(CommonLocators.inputTxtPassword);
+			clear(inputPassword);
 		}
 		else {
 			ExtentManager.logFailureDetails("Expected validation message is : <b>" + CommonVariables.errorMsgTextInvalidPassword + " but actual message found : <b>" + getText(ErrorMsgInvalidPassword));
@@ -303,11 +307,11 @@ public class SignUpPage extends AndroidActions {
 	public void validateConfirmPassword(String password) throws InterruptedException
 	{
 		scrollUntilElementIsVisible("Continue");
-		sendKeys(driver, CommonLocators.txtConfirmPassword, "Confirm Password", password);
+		sendKeys(driver, inputConfirmPassword, "Confirm Password", password);
 		if (getText(ErrorMsgInvalidConfirmPassword).equals(CommonVariables.errorMsgTextWrongConfirmPassword))
 		{
 			ExtentManager.logInfoDetails("<b>Password and Confirm password not matched validation appeared as expected.");
-			clear(CommonLocators.txtConfirmPassword);
+			clear(inputConfirmPassword);
 		}
 		else {
 			ExtentManager.logFailureDetails("<b>Confirm password validation not found or not as expected. please check");

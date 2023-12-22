@@ -7,7 +7,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 
-import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.common.CommonMethods;
 import com.google.common.collect.ImmutableMap;
 

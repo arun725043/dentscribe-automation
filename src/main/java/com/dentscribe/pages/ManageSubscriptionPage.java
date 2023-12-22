@@ -39,18 +39,19 @@ public class ManageSubscriptionPage extends AndroidActions {
 	}
 	
 	//________________select plan___________________
-	public void selectPlan(String planName)
+	public void selectPlan(String planName) throws InterruptedException
 	{
-		if (planName.equalsIgnoreCase("FREE TRIAL"))
+		if (planName.equalsIgnoreCase("FREE"))
 		{
-			scrollToText("30-Day Free Trial");
-			click(driver, textFreeTrial, "$30Days Free Trial plan option");
+			System.out.println("in free case");
+			scrollUntilElementIsVisible("30-Day Free Trial");
+			click(driver, textFreeTrial, "30-Day Free Trial plan option");
 		}
 		else if (planName.equalsIgnoreCase("PAID")) {
 			click(driver, text699Month, "$699/Month plan option");
 		}
 		else {
-			ExtentManager.logFailureDetails("Plan could be FREE TRIAL or PAID");
+			ExtentManager.logFailureDetails("Plan could be FREE or PAID");
 			Assert.fail();
 		}
 	}

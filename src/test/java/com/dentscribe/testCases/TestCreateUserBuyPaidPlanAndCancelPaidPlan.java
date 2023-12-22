@@ -84,7 +84,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		// __________________Fill the confirmation page______________________________
 		sikkaWebviewPage.enterExistingSikkaCredentials(readData("userDetails", "existingSikkaUser"), readData("userDetails", "existingSikkaPwd"));
 		explicitWait(driver, CommonLocators.inputTxtUsername, 60);
-		assertTrue(loginPage.validateLoginPage());
+		loginPage.validateLoginPage();
 		ExtentManager.logInfoDetails("<b>Practice created successfully");
 	}
 	
@@ -92,7 +92,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 	public void verifySpuInstallPopupAndRefreshData() throws IOException, InterruptedException {
 		try {
 			// _______________login application and verify SPU Install popup_______________
-			assertTrue(loginPage.loginApplication(email, CommonVariables.actualPass, "spu popup"));
+			loginPage.loginApplication(email, CommonVariables.actualPass, "spu popup");
 			
 			// _______________By pass the manual sikka refresh steps and refreshing sikka data_______________
 			GetOtp.updateOfficeId(email, readData("testData", "dentrix"));
@@ -107,8 +107,8 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 	public void verifyEulaAgreementPageAndAcceptAgreement() throws IOException, InterruptedException {
 		try {
 			// ___________login application again_________________
-			assertTrue(loginPage.loginApplication(email, CommonVariables.actualPass, "valid"));
-			assertTrue(loginPage.verifyBiometricPopupButton());
+			loginPage.loginApplication(email, CommonVariables.actualPass, "valid");
+			loginPage.verifyBiometricPopupButton();
 			// Click skip and verify tour page
 			assertTrue(loginPage.clickBiometricPopupButton("skip"));
 			
@@ -139,7 +139,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
 		manageSubscriptionPage.verifyCardHolderName(cardHolderName);
 		manageSubscriptionPage.clickContinueButtonSubscriptionPage();
-		assertTrue(tourPages.validateTourPageCalendarScheduleView());
+		tourPages.validateTourPageCalendarScheduleView();
 
 		// ___________________Navigate to setting page_____________
 		tourPages.skipTourPages();
@@ -173,16 +173,16 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 	@Test(priority = 7, dependsOnMethods = { "verifyCanUserCancelSubscription" })
 	public void verifyCanUserUpdatePaymentMethod() throws IOException, InterruptedException {
 		// ___________________login, skip tour pages and verify subscription cancelled or not________________
-		assertTrue(loginPage.loginApplication(email, CommonVariables.actualPass, "valid"));
+		loginPage.loginApplication(email, CommonVariables.actualPass, "valid");
 		// Click skip and verify tour page
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
-		assertTrue(tourPages.validateTourPageCalendarScheduleView());
+		tourPages.validateTourPageCalendarScheduleView();
 		
 		tourPages.skipTourPages();
-		assertTrue(calendarPage.validateCalendarPage());
+		calendarPage.validateCalendarPage();
 
 		// __________________Navigate to setting page and verify cancelled plan________________
 		click(driver, calendarPage.iconSetting, "Settings icon");
@@ -209,7 +209,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		manageSubscriptionPage.selectPlan("paid");
 		manageSubscriptionPage.clickContinueButtonSubscriptionPage();
 		ExtentManager.logInfoDetails("payment successful! subscription active.");
-		assertTrue(settingPage.validateSettingsPage());
+		settingPage.validateSettingsPage();
 
 		// ____________________Verify cancel button and plan_______________
 		settingPage.verifyBuyPlanOnSettingsPage("paid");

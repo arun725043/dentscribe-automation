@@ -16,6 +16,7 @@ public class CommonVariables
 	public static String actualErrorMessage = null; 
 	public static String textUsername = "//android.widget.TextView[@text='Username']";
 	public static String generateEmailId = "kapoor.arun+" + CommonMethods.GenerateRandomNumber(3) + "@thinksys.com";
+	public static String generatePassword = "Pass@" + CommonMethods.GenerateRandomNumber(4);
 	public static String patientDeatilsPopupPatientName = null;
 	
 	//Expected Error Messages

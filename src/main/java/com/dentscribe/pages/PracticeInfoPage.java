@@ -1,7 +1,5 @@
 package com.dentscribe.pages;
 
-import static org.testng.Assert.assertTrue;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,7 +8,6 @@ import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
 import com.dentscribe.common.CommonLocators;
 import com.dentscribe.common.CommonMethods;
-import com.dentscribe.common.CommonVariables;
 import com.dentscribe.utils.AndroidActions;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -48,18 +45,17 @@ public class PracticeInfoPage extends AndroidActions {
 	public By validationMsgOfficePhoneNumber = By.xpath("//android.widget.TextView[@text='Phone number is required.']");
 
 	// _______________verify whether Practice Info page exists or not_______________
-	public boolean validatePracticeInfoPage()
+	public void validatePracticeInfoPage()
 	{
 		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(headerPracticeInfoPage));
 		String headerText = getText(headerPracticeInfoPage);
 		if(headerText.trim().equalsIgnoreCase("Practice Info"))
 		{
 			ExtentManager.logInfoDetails("<b>User is now on Practice Info page as expected");
-			return true;
 		}
 		else {
 			ExtentManager.logFailureDetails("Either expected Practice Info page verified element not found or page not exists. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 		

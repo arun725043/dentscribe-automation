@@ -83,18 +83,17 @@ public class SettingsPage extends AndroidActions {
 		
 	
 	// _________verify settings page exists or not_______
-	public boolean validateSettingsPage()
+	public void validateSettingsPage()
 	{
 		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(headerSettingsPage));
 		String headerText = getText(headerSettingsPage);
 		if(headerText.trim().equalsIgnoreCase("settings"))
 		{
 			ExtentManager.logInfoDetails("User is now on <b> Settings page <b> as expected");
-			return true;
 		}
 		else {
 			ExtentManager.logFailureDetails("Expected Settings page either not found or header not matched. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	
@@ -105,7 +104,7 @@ public class SettingsPage extends AndroidActions {
 		String headerText = getText(headerHelpPage);
 		if(headerText.trim().equalsIgnoreCase("help"))
 		{
-			ExtentManager.logInfoDetails("User is now on <b> Help page <b> as expected");
+			ExtentManager.logInfoDetails("<b>User is now on Help page as expected");
 		}
 		else {
 			ExtentManager.logFailureDetails("Expected Help page either not found or header not matched. please check");

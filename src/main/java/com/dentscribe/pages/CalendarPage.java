@@ -68,7 +68,7 @@ public class CalendarPage extends AndroidActions {
 	public By twelvePM = By.xpath("//android.widget.ScrollView[@resource-id='calendar-schedule-view']//android.widget.TextView[@text=' 12:00']"); 
 
 	// _________verify calendar page exists or not_______
-	public boolean validateCalendarPage()
+	public void validateCalendarPage()
 	{
 		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(iconDropdownCalendar));
 		ExtentManager.logInfoDetails(getText(CommonLocators.textWelcomeUser) + " on calendar view page");
@@ -76,11 +76,10 @@ public class CalendarPage extends AndroidActions {
 		if(IsElementPresent(driver, iconDropdownCalendar, "Calendar dropdown icon"))
 		{
 			ExtentManager.logInfoDetails("User is now on <b> Calendar page <b> as expected");
-			return true;
 		}
 		else {
 			ExtentManager.logFailureDetails("Expected current Month Year on calendar page is - " + currentMMYY + " but either expected Month Year not available on Calendar page or not found. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	

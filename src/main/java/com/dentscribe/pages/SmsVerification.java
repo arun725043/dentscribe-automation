@@ -3,6 +3,7 @@ package com.dentscribe.pages;
 import static org.testng.Assert.assertFalse;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.common.CommonLocators;
@@ -22,16 +23,25 @@ public class SmsVerification extends AndroidActions {
 		this.driver = driver;
 	}
 
-	
 	// _________locators______
-	public static By textSmsVerification = By.xpath("//android.widget.TextView[@text='SMS Verification']");
+	public static By textSmsVerification = By.xpath("//android.view.ViewGroup[@resource-id='sms-verification-view']//android.widget.TextView[@text='SMS Verification']");
 	public By textEnterValidCode = By.xpath("//android.widget.TextView[@text='Please enter the valid code.']");
-	public By linkResendCode = By.xpath("//android.widget.TextView[@text='Resend Code']");
+	public By linkResendCode = By.xpath("//android.view.ViewGroup[@resource-id='resend-code-button']//android.widget.TextView[@text='Resend Code']");
 	public By inputSmsOtp = By.className("android.widget.EditText");
 	public By iconBack = By.className("android.widget.ImageView");
 	public By textViews = By.xpath("//android.widget.TextView");
 	public By firstOtpBox = By.xpath("//android.widget.EditText[@resource-id='textInput'][@index=0]");
-	
+
+	// _______________verify whether SMS Verification page exists or not_______________
+	public void validateSmsVerificationPage()
+	{
+		if (IsElementPresent(driver, textSmsVerification, "page header SMS Verification") && IsElementPresent(driver, linkResendCode, "Resend code link")) {
+			ExtentManager.logInfoDetails("<b>User is now on SMS Verification page as expected");
+		} else {
+			ExtentManager.logFailureDetails("Either expected SMS Verification page verified element not found or page not exists. please check");
+			Assert.fail();
+		}
+	}
 	// _____________validate OTP with blank or wrong/invalid values_____________
 	public void validateErrorMessageForBlankWrongOTP(String otp_value) throws InterruptedException 
 	{
@@ -60,21 +70,7 @@ public class SmsVerification extends AndroidActions {
 		{
 			CommonMethods.fillOTPBoxes(driver, otp_value);
 		}
-		click(driver, CommonLocators.continueButton, "Continue button on sms verification page");
-//		if (expectedScreen.equalsIgnoreCase("TOUR SCREEN"))
-//		{
-//			assertTrue(IsElementPresent(driver, CommonLocators.pageCalendarScheduleViewText, "Calendar Schedule View"));
-//			ExtentManager.logInfoDetails("User is now on <b>Calendar Schedule View</b> tour page as expected");
-//		}
-//		else if (expectedScreen.equalsIgnoreCase("EULA SCREEN"))
-//		{
-//			assertTrue(IsElementPresent(driver, CommonLocators.pageEulaAgreementHeader, "EULA Agreement screen"));
-//			ExtentManager.logInfoDetails("User is now on <b>EULA Agreement</b> page as expected");
-//		}
-//		else {
-//			ExtentManager.logFailureDetails("Please enter valid expected screen/element name");
-//			Assert.fail();
-//		}	
+		click(driver, CommonLocators.continueButton, "Continue button on sms verification page");	
 	}
 	
 	// ___________________validate ReSend link_______________________
@@ -86,34 +82,16 @@ public class SmsVerification extends AndroidActions {
 		ExtentManager.logInfoDetails("Timer is started again as expected");
 	}
 	
-	// ________________validate back button_____________
-	public boolean verifyBackIcon(String expectedPageName)
+	// ________________click back icon_____________
+	public void clickcBackIconSmsVerificationPage()
 	{
-		click(driver, iconBack, "Back icon");
-		ExtentManager.logInfoDetails("<b>Back</b> icon clicked on SMS Verification page");
-		if(expectedPageName == "login")
-		{
-			if (IsElementPresent(driver, CommonLocators.labelUsername, "Username field")) {
-				ExtentManager.logInfoDetails("User is landed on <b>login page<b> successfully as expected");
-				return true;
-			} else {
-				ExtentManager.logFailureDetails("Either login page not opened or expected Username field not found. Please check.");
-				return false;
-			}
-		}
-		else if(expectedPageName == "signup")
-		{
-			if (IsElementPresent(driver, CommonLocators.labelPMS, "PMS Field")) {
-				ExtentManager.logInfoDetails("User is landed on signup page successfully as expected");
-				return true;
-			} else {
-				ExtentManager.logFailureDetails("Either signup page not opened or expected PMS field not found. Please check.");
-				return false;
-			}
-		}
-		else {
-			ExtentManager.logFailureDetails("Expected pagename could be 'login' or 'signup'. Please check.");
-			return false;
-		}
+		click(driver, iconBack, "Back icon on SMS Verification page");
+//		if (IsElementPresent(driver, CommonLocators.labelPMS, "PMS Field")) {
+//			ExtentManager.logInfoDetails("User is landed on signup page successfully as expected");
+//			return true;
+//		} else {
+//			ExtentManager.logFailureDetails("Either signup page not opened or expected PMS field not found. Please check.");
+//			return false;
+//		}
 	}
 }

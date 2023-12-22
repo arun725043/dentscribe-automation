@@ -6,18 +6,14 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan">
+      <class name="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup">
         <methods>
-          <include name="verifyBackIconAddPaymentMethodPage"/>
           <include name="tearDown"/>
-          <include name="verifyIsAddPaymentMethodPageExists"/>
-          <include name="verifyCanUserBuyPaidPlanAfterFreeTrialPlan"/>
-          <include name="verifyAddPaymentMethodMandatoryFields"/>
+          <include name="verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage"/>
           <include name="launchApplication"/>
-          <include name="createNewUserAndGoToManageSubscriptionPage"/>
-          <include name="verifyCanUserTake30DaysFreeTrialPlan"/>
+          <include name="verifySmsVerificationWithValidOtp"/>
         </methods>
-      </class> <!-- com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan -->
+      </class> <!-- com.dentscribe.testCases.TestSmsVerificationPageAfterSignup -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -1,200 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="2" failed="1" skipped="3">
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-20T19:54:46 IST" name="Suite" finished-at="2023-12-20T20:01:30 IST" duration-ms="404790">
+  <suite started-at="2023-12-22T19:19:48 IST" name="Suite" finished-at="2023-12-22T19:21:53 IST" duration-ms="125253">
     <groups>
     </groups>
-    <test started-at="2023-12-20T19:54:46 IST" name="Test" finished-at="2023-12-20T20:01:30 IST" duration-ms="404790">
-      <class name="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533]" started-at="2023-12-20T19:54:46 IST" name="launchApplication" finished-at="2023-12-20T19:55:04 IST" duration-ms="17967" status="PASS">
+    <test started-at="2023-12-22T19:19:48 IST" name="Test" finished-at="2023-12-22T19:21:53 IST" duration-ms="125253">
+      <class name="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:19:48 IST" name="launchApplication" finished-at="2023-12-22T19:20:06 IST" duration-ms="17628" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="createNewUserAndGoToManageSubscriptionPage()[pri:0, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533]" started-at="2023-12-20T19:55:04 IST" name="createNewUserAndGoToManageSubscriptionPage" finished-at="2023-12-20T20:00:46 IST" duration-ms="342159" status="PASS">
+        <test-method signature="verifyIsSmsVerificationPageExistsAfterSignup()[pri:1, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:20:06 IST" name="verifyIsSmsVerificationPageExistsAfterSignup" finished-at="2023-12-22T19:21:16 IST" duration-ms="70622" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createNewUserAndGoToManageSubscriptionPage -->
-        <test-method signature="verifyIsAddPaymentMethodPageExists()[pri:1, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533]" started-at="2023-12-20T20:00:46 IST" name="verifyIsAddPaymentMethodPageExists" finished-at="2023-12-20T20:00:49 IST" depends-on-methods="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan.createNewUserAndGoToManageSubscriptionPage" duration-ms="3771" status="PASS">
+        </test-method> <!-- verifyIsSmsVerificationPageExistsAfterSignup -->
+        <test-method signature="verifySmsVerificationWithBlankOtp()[pri:2, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:16 IST" name="verifySmsVerificationWithBlankOtp" finished-at="2023-12-22T19:21:20 IST" depends-on-methods="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup.verifyIsSmsVerificationPageExistsAfterSignup" duration-ms="3253" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyIsAddPaymentMethodPageExists -->
-        <test-method signature="verifyAddPaymentMethodMandatoryFields()[pri:2, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533]" started-at="2023-12-20T20:00:49 IST" name="verifyAddPaymentMethodMandatoryFields" finished-at="2023-12-20T20:01:29 IST" depends-on-methods="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyIsAddPaymentMethodPageExists" duration-ms="39525" status="FAIL">
-          <exception class="org.openqa.selenium.InvalidSelectorException">
-            <message>
-              <![CDATA[org.eclipse.wst.xml.xpath2.processor.XPathParserException: CUP parser error: Parser error: line 1 col 44: s
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
-Build info: version: '4.13.0', revision: 'ba948ece5b*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [61367c27-73ed-4086-9ee1-118ab774b74f, findElement {using=xpath, value=//android.widget.TextView[@text='Your card's expiration year is invalid.']}]
-Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 61367c27-73ed-4086-9ee1-118ab774b74f]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.InvalidSelectorException: org.eclipse.wst.xml.xpath2.processor.XPathParserException: CUP parser error: Parser error: line 1 col 44: s
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
-Build info: version: '4.13.0', revision: 'ba948ece5b*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.4.1'
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [61367c27-73ed-4086-9ee1-118ab774b74f, findElement {using=xpath, value=//android.widget.TextView[@text='Your card's expiration year is invalid.']}]
-Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 61367c27-73ed-4086-9ee1-118ab774b74f
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
-at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
-at com.dentscribe.common.CommonMethods.explicitWait(CommonMethods.java:129)
-at com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyAddPaymentMethodMandatoryFields(TestCreateUserTakeFreePlanAndBuyPaidPlan.java:121)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.InvalidSelectorException -->
+        </test-method> <!-- verifySmsVerificationWithBlankOtp -->
+        <test-method signature="verifySmsVerificationWithWrongOtp()[pri:3, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:20 IST" name="verifySmsVerificationWithWrongOtp" finished-at="2023-12-22T19:21:29 IST" depends-on-methods="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup.verifySmsVerificationWithBlankOtp" duration-ms="8933" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAddPaymentMethodMandatoryFields -->
-        <test-method signature="verifyBackIconAddPaymentMethodPage()[pri:3, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533]" started-at="2023-12-20T20:01:30 IST" name="verifyBackIconAddPaymentMethodPage" finished-at="2023-12-20T20:01:30 IST" depends-on-methods="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyAddPaymentMethodMandatoryFields" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyBackIconAddPaymentMethodPage()[pri:3, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyBackIconAddPaymentMethodPage()[pri:3, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533] depends on not successfully finished methods
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
+        </test-method> <!-- verifySmsVerificationWithWrongOtp -->
+        <test-method signature="verifySmsVerificationResendCodeLink()[pri:4, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:29 IST" name="verifySmsVerificationResendCodeLink" finished-at="2023-12-22T19:21:34 IST" depends-on-methods="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup.verifySmsVerificationWithWrongOtp" duration-ms="5935" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyBackIconAddPaymentMethodPage -->
-        <test-method signature="verifyCanUserTake30DaysFreeTrialPlan()[pri:4, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533]" started-at="2023-12-20T20:01:30 IST" name="verifyCanUserTake30DaysFreeTrialPlan" finished-at="2023-12-20T20:01:30 IST" depends-on-methods="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyBackIconAddPaymentMethodPage" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyCanUserTake30DaysFreeTrialPlan()[pri:4, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyCanUserTake30DaysFreeTrialPlan()[pri:4, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533] depends on not successfully finished methods
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
+        </test-method> <!-- verifySmsVerificationResendCodeLink -->
+        <test-method signature="verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage()[pri:5, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:34 IST" name="verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage" finished-at="2023-12-22T19:21:40 IST" duration-ms="5343" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyCanUserTake30DaysFreeTrialPlan -->
-        <test-method signature="verifyCanUserBuyPaidPlanAfterFreeTrialPlan()[pri:5, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533]" started-at="2023-12-20T20:01:30 IST" name="verifyCanUserBuyPaidPlanAfterFreeTrialPlan" finished-at="2023-12-20T20:01:30 IST" depends-on-methods="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyCanUserTake30DaysFreeTrialPlan" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyCanUserBuyPaidPlanAfterFreeTrialPlan()[pri:5, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyCanUserBuyPaidPlanAfterFreeTrialPlan()[pri:5, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533] depends on not successfully finished methods
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
+        </test-method> <!-- verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage -->
+        <test-method signature="verifySmsVerificationWithValidOtp()[pri:6, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:40 IST" name="verifySmsVerificationWithValidOtp" finished-at="2023-12-22T19:21:53 IST" depends-on-methods="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup.verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage" duration-ms="12894" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyCanUserBuyPaidPlanAfterFreeTrialPlan -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533]" started-at="2023-12-20T20:01:30 IST" name="tearDown" finished-at="2023-12-20T20:01:30 IST" duration-ms="615" status="PASS">
+        </test-method> <!-- verifySmsVerificationWithValidOtp -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:53 IST" name="tearDown" finished-at="2023-12-22T19:21:53 IST" duration-ms="606" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan -->
+      </class> <!-- com.dentscribe.testCases.TestSmsVerificationPageAfterSignup -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

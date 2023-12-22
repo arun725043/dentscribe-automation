@@ -9,45 +9,15 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Test</a></td><td class="num">2</td><td class="num attn">3</td><td class="num">0</td><td class="num attn">1</td><td class="num">404,790</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Test</a></td><td class="num">6</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">125,253</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan</td><td><a href="#m0">verifyAddPaymentMethodMandatoryFields</a></td><td rowspan="1">1703082649963</td><td rowspan="1">39525</td></tr><tr><th colspan="4">Test &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="3">com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan</td><td><a href="#m1">verifyBackIconAddPaymentMethodPage</a></td><td rowspan="1">1703082690198</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m2">verifyCanUserBuyPaidPlanAfterFreeTrialPlan</a></td><td rowspan="1">1703082690202</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m3">verifyCanUserTake30DaysFreeTrialPlan</a></td><td rowspan="1">1703082690200</td><td rowspan="1">0</td></tr><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="2">com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan</td><td><a href="#m4">createNewUserAndGoToManageSubscriptionPage</a></td><td rowspan="1">1703082304028</td><td rowspan="1">342159</td></tr><tr class="passedeven"><td><a href="#m5">verifyIsAddPaymentMethodPageExists</a></td><td rowspan="1">1703082646191</td><td rowspan="1">3771</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="6">com.dentscribe.testCases.TestSmsVerificationPageAfterSignup</td><td><a href="#m0">verifyIsSmsVerificationPageExistsAfterSignup</a></td><td rowspan="1">1703253006190</td><td rowspan="1">70622</td></tr><tr class="passedeven"><td><a href="#m1">verifySmsVerificationResendCodeLink</a></td><td rowspan="1">1703253089005</td><td rowspan="1">5935</td></tr><tr class="passedeven"><td><a href="#m2">verifySmsVerificationWithBlankOtp</a></td><td rowspan="1">1703253076815</td><td rowspan="1">3253</td></tr><tr class="passedeven"><td><a href="#m3">verifySmsVerificationWithValidOtp</a></td><td rowspan="1">1703253100287</td><td rowspan="1">12894</td></tr><tr class="passedeven"><td><a href="#m4">verifySmsVerificationWithWrongOtp</a></td><td rowspan="1">1703253080069</td><td rowspan="1">8933</td></tr><tr class="passedeven"><td><a href="#m5">verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage</a></td><td rowspan="1">1703253094942</td><td rowspan="1">5343</td></tr></tbody>
 </table>
-<h2>Test</h2><h3 id="m0">com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan#verifyAddPaymentMethodMandatoryFields</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.InvalidSelectorException: org.eclipse.wst.xml.xpath2.processor.XPathParserException: CUP parser error: Parser error: line 1 col 44: s
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
-Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [61367c27-73ed-4086-9ee1-118ab774b74f, findElement {using=xpath, value=//android.widget.TextView[@text=&apos;Your card&apos;s expiration year is invalid.&apos;]}]
-Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 61367c27-73ed-4086-9ee1-118ab774b74f
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:194)
-	at org.openqa.selenium.support.ui.ExpectedConditions$7.apply(ExpectedConditions.java:190)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:205)
-	at com.dentscribe.common.CommonMethods.explicitWait(CommonMethods.java:129)
-	at com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyAddPaymentMethodMandatoryFields(TestCreateUserTakeFreePlanAndBuyPaidPlan.java:121)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan#verifyBackIconAddPaymentMethodPage</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyBackIconAddPaymentMethodPage()[pri:3, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533] depends on not successfully finished methods
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 18 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan#verifyCanUserBuyPaidPlanAfterFreeTrialPlan</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyCanUserBuyPaidPlanAfterFreeTrialPlan()[pri:5, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533] depends on not successfully finished methods
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 18 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan#verifyCanUserTake30DaysFreeTrialPlan</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method TestCreateUserTakeFreePlanAndBuyPaidPlan.verifyCanUserTake30DaysFreeTrialPlan()[pri:4, instance:com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan@42a05533] depends on not successfully finished methods
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 18 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan#createNewUserAndGoToManageSubscriptionPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan#verifyIsAddPaymentMethodPageExists</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Test</h2><h3 id="m0">com.dentscribe.testCases.TestSmsVerificationPageAfterSignup#verifyIsSmsVerificationPageExistsAfterSignup</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.dentscribe.testCases.TestSmsVerificationPageAfterSignup#verifySmsVerificationResendCodeLink</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">com.dentscribe.testCases.TestSmsVerificationPageAfterSignup#verifySmsVerificationWithBlankOtp</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">com.dentscribe.testCases.TestSmsVerificationPageAfterSignup#verifySmsVerificationWithValidOtp</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">com.dentscribe.testCases.TestSmsVerificationPageAfterSignup#verifySmsVerificationWithWrongOtp</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">com.dentscribe.testCases.TestSmsVerificationPageAfterSignup#verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

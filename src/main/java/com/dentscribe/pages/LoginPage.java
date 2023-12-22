@@ -55,14 +55,13 @@ public class LoginPage extends AndroidActions {
 	}
 
 	// __________verify whether login page exists or not__________
-	public boolean validateLoginPage() 
+	public void validateLoginPage() 
 	{
 		if (IsElementPresent(driver, CommonLocators.loginNote, "text - " + CommonVariables.loginNoteText)) {
 			ExtentManager.logInfoDetails("<b>User is now on Login page as expected");
-			return true;
 		} else {
 			ExtentManager.logFailureDetails("Either expected Login page verified element not found or not exists. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	
@@ -75,7 +74,7 @@ public class LoginPage extends AndroidActions {
 	}
 	
 	// login application
-	public boolean loginApplication(String username, String password, String operation) throws IOException, InterruptedException {
+	public void loginApplication(String username, String password, String operation) throws IOException, InterruptedException {
 		enterUsernamePassword(username, password);
 		scrollToText("Continue");
 		click(driver, buttonContinue, "Continue button on login page");
@@ -85,41 +84,40 @@ public class LoginPage extends AndroidActions {
 				explicitWait(driver, buttonSkip, 30);
 				explicitWait(driver, buttonEnable, 30);
 				ExtentManager.logInfoDetails("Biometric popup appearing as expected");
-				return true;
 			} else {
 				if (readData("Config", "emmulator").equalsIgnoreCase("no") && readData("Config", "biometric").equalsIgnoreCase("yes")) 
 				{
 					explicitWait(driver, SmsVerification.textSmsVerification, 30);
 					ExtentManager.logInfoDetails("SMS Verification page appearing as expected");
-					return true;
 				}
 				else {
 					verifyBiometricPopupButton();
 					ExtentManager.logInfoDetails("Biometric popup appearing as expected.");
 				}				
 			}
+			break;
 		case "invalid":
 			IsElementPresent(driver, CommonLocators.invalidCredentialsError, "Error message");
 			ExtentManager.logInfoDetails("Expected error message found - <b>" + getText(CommonLocators.invalidCredentialsError) + "<b>");
 			IsElementPresent(driver, CommonLocators.labelUsername, "Username field");
 			ExtentManager.logInfoDetails("User not logged in as expected and still on Login page");
-			return true;
+			break;
 		case "no record":
 			IsElementPresent(driver, CommonLocators.errorMessageNoRecordFound, "Error message");
 			ExtentManager.logInfoDetails("Expected error message found - <b>" + getText(CommonLocators.errorMessageNoRecordFound) + "<b>");
 			IsElementPresent(driver, CommonLocators.labelUsername, "Username field");
 			ExtentManager.logInfoDetails("User not logged in as expected and still on Login page");
-			return true;
+			break;
 		case "error":
 			IsElementPresent(driver, CommonLocators.errorMessageWithoutPractice, "Error message");
 			ExtentManager.logInfoDetails("User not able to login because expected error message found - <b>" + getText(CommonLocators.errorMessageWithoutPractice) + "<b>");
-			return true;
+			break;
 		case "spu popup":
 			verifyCloseSpuInstallPopup();
-			return true;
+			break;
 		default:
-			ExtentManager.logFailureDetails("Operation name could be valid or invalid. ");
-			return false;
+			ExtentManager.logFailureDetails("Operation name could be valid or invalid or no record or error or spu popup. please check");
+			Assert.fail();
 		}
 	}
 	
@@ -155,6 +153,7 @@ public class LoginPage extends AndroidActions {
 		if (getText(validationMsgUsername).equals(CommonVariables.errorMsgTextInvalidEmail))
 		{
 			ExtentManager.logInfoDetails("Expected validation message found : <b>" + CommonVariables.errorMsgTextInvalidEmail);
+			ExtentManager.logInfoDetails("<b>Username email should be in valid format.");
 		}
 		else {
 			ExtentManager.logFailureDetails("Expected validation message is : <b>" + CommonVariables.errorMsgTextInvalidEmail + " but actual message found : <b>" + getText(validationMsgUsername));
