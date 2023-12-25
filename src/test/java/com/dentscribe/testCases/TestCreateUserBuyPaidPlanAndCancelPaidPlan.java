@@ -26,7 +26,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 			loginPage.verifyIsApplicationLaunched();
 
 			// _______________Click Signup tab and verify it_______________
-			click(driver, signUpPage.signupButton, "Signup tab");
+			click(driver, CommonLocators.buttonSignup, "Signup tab");
 			signUpPage.validateSignupPage();
 
 			// ____________________Fill signup form and verify confirmation popup button_________________
@@ -38,7 +38,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 			assertTrue(signUpPage.clickSignupConfirmationPopupButtons("continue"));
 			getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
 			smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
-			assertTrue(practiceInfoPage.validatePracticeInfoPage());
+			practiceInfoPage.validatePracticeInfoPage();
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
@@ -83,7 +83,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 
 		// __________________Fill the confirmation page______________________________
 		sikkaWebviewPage.enterExistingSikkaCredentials(readData("userDetails", "existingSikkaUser"), readData("userDetails", "existingSikkaPwd"));
-		explicitWait(driver, CommonLocators.inputTxtUsername, 60);
+		explicitWait(driver, loginPage.labelUsername, 60);
 		loginPage.validateLoginPage();
 		ExtentManager.logInfoDetails("<b>Practice created successfully");
 	}

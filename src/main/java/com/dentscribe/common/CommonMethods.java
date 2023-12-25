@@ -118,6 +118,40 @@ public class CommonMethods {
 		}
 		return actualText;
 	}
+	
+	// verify actual and expected text
+	public void verifyTexts(String actualText, String expectedText) {
+		if (actualText.trim().equals(expectedText.trim())) 
+		{
+			ExtentManager.logInfoDetails("Actual and Expected text matched as expected.");
+		} else {
+			ExtentManager.logFailureDetails("Expected text is :- " + expectedText + " but actual text found :- " + actualText);
+			Assert.fail();
+		}
+	}
+	
+	// verify given text input in list and then click on it
+	public void verifyClickListOption(AppiumDriver driver, By optionsLocator, String optionText) {
+		int flag = 0;
+		List<WebElement> options = driver.findElements(optionsLocator);
+		for (WebElement option : options) 
+		{
+			String optionName = option.getText();
+//			System.out.println("OPTION NAME ::- " + optionName);
+			if (optionName.equalsIgnoreCase(optionText))
+			{
+				flag = 1;
+				option.click();
+				break;
+			}
+		}
+		
+		if(flag == 0)
+		{
+			ExtentManager.logFailureDetails(optionText + " not available in list. please check");
+			Assert.fail();
+		}
+	}
 
 	// To perform send keys operation (i.e to enter text in a field)
 	public void sendKeys(AppiumDriver driver, By locator, String fieldName, String value) {
@@ -131,16 +165,6 @@ public class CommonMethods {
 
 	public void back(AppiumDriver driver) {
 		driver.navigate().back();
-	}
-
-	public void verifyTexts(String actualText, String expectedText) {
-		if (actualText.trim().equals(expectedText.trim())) 
-		{
-			ExtentManager.logInfoDetails("Actual and Expected text matched as expected.");
-		} else {
-			ExtentManager.logFailureDetails("Expected text is :- " + expectedText + " but actual text found :- " + actualText);
-			Assert.fail();
-		}
 	}
 
 	public boolean contains(String actual, String expected) {

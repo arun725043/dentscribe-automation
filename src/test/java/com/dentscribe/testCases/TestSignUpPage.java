@@ -3,6 +3,7 @@ package com.dentscribe.testCases;
 import org.testng.annotations.Test;
 
 import com.dentscribe.base.AndroidBase;
+import com.dentscribe.common.CommonLocators;
 import com.dentscribe.common.CommonVariables;
 
 public class TestSignUpPage extends AndroidBase 
@@ -52,8 +53,8 @@ public class TestSignUpPage extends AndroidBase
 	@Test(priority = 7, dependsOnMethods = { "verifyExistingAndDuplicateEmailId" })
 	public void verifySignupWithOnlyMandatoryFields() throws InterruptedException {
 		// __________refreshing signup page______________
-		click(driver, loginPage.buttonLogin, "Login tab");
-		click(driver, loginPage.buttonSignup, "Sign Up tab");
+		click(driver, CommonLocators.buttonLogin, "Login tab");
+		click(driver, CommonLocators.buttonSignup, "Sign Up tab");
 		
 		// _________fill only mandatory values and verify continue button click_________
 		String password = CommonVariables.generatePassword;

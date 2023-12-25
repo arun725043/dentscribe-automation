@@ -4,42 +4,51 @@ import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 import org.testng.annotations.Test;
+
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
 import com.dentscribe.common.CommonLocators;
+import com.dentscribe.common.CommonMethods;
 
-public class DS_019_ChangePassword extends AndroidBase {
+public class TestChangePassword extends AndroidBase
+{	
+	String newPasswordString = "Test@" + CommonMethods.GenerateRandomNumber(4);
+	
+	@Test(priority = 1)
+	public void verifyChangePasswordFromSettingsPage() throws IOException, InterruptedException {
+		
+		//__________________Application Launched_____________________
+		loginPage.verifyIsApplicationLaunched();
+		
+		// Perform Login
+		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "currentPassword"), "sms page");
 
-	String pwd = null;
-	@Test (priority = 0)
-	public void verifyChangePasswordWithInvalidCurrentPassword() throws IOException, InterruptedException 
-	{
-		ExtentManager.logInfoDetails("Application launched successfully");
-		assertTrue(loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "newPassword"), "valid"));
+		// login with valid credentials
+		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		//______________validate otp and verify expected opened page______________
 		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
-		smsVerificationPage.validateValidOTP(getOtp, "Tour Screen");
-		
-		// ______skip tour pages__________
+		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
+		tourPages.validateTourPageCalendarScheduleView();
+
+		//skip tour pages
 		tourPages.skipTourPages();
 		calendarPage.validateCalendarPage();
-
-		// ____clicked setting icon on calendar page and verify setting page_______
-		click(driver, calendarPage.iconSetting, "Settings icon on calendar page");
+		
+		// to click on setting icon on calendar page and verify settings page
+		calendarPage.clickSettingsIconCalendarPage();
 		settingPage.validateSettingsPage();
-
+		
 		// _________________input old password______________________
 		actions.scrollToPartialText("Enter the password");
 		sendKeys(driver, settingPage.inputCurrentPassword, "Current Password field", "Kapoor@123");
 		ExtentManager.logInfoDetails("Entered value in current password input field : " + getAttribute(settingPage.inputCurrentPassword));
 
 		// ________________input new password___________________
-		pwd = settingPage.generatePassword();
 		actions.scrollToPartialText("Enter the new password");
-		sendKeys(driver, settingPage.inputNewPassword, "New password field", pwd);
+		sendKeys(driver, settingPage.inputNewPassword, "New password field", newPasswordString);
 		ExtentManager.logInfoDetails("Entered value in New password input field : " + getAttribute(settingPage.inputNewPassword));
 		actions.scrollToPartialText("Save");
 		click(driver, settingPage.buttonSave, "Save button");
@@ -47,7 +56,7 @@ public class DS_019_ChangePassword extends AndroidBase {
 		getText(CommonLocators.errorMessageCurrentPasswordNotMatched);
 	}
 	
-	@Test(priority = 1)
+	@Test(priority = 2, dependsOnMethods = { "verifyChangePasswordFromSettingsPage" })
 	public void verifyNewPasswordWeakValidation()
 	{
 		clear(settingPage.inputNewPassword);
@@ -56,8 +65,8 @@ public class DS_019_ChangePassword extends AndroidBase {
 		getText(settingPage.ErrorMsgNewPassword);
 	}
 	
-	@Test (priority = 2)
-	public void verifyChangePasswordAndUserShouldLogout() throws IOException, InterruptedException
+	@Test(priority = 3, dependsOnMethods = { "verifyChangePasswordFromSettingsPage" })
+	public void verifyUserShouldNotLoginFromOldPassword() throws IOException, InterruptedException
 	{
 		// _________________input old password______________________
 		actions.scrollToPartialText("Current Password");
@@ -67,27 +76,25 @@ public class DS_019_ChangePassword extends AndroidBase {
 		writeData("ChangePassword", "oldPassword", readData("ChangePassword", "newPassword"));
 
 		// ________________input new password___________________
-		pwd = settingPage.generatePassword();
 		actions.scrollToPartialText("New Password");
 		clear(settingPage.inputNewPassword);
-		sendKeys(driver, settingPage.inputNewPassword, "New password field", pwd);
+		sendKeys(driver, settingPage.inputNewPassword, "New password field", newPasswordString);
 		ExtentManager.logInfoDetails("Entered value in New password input field : " + getAttribute(settingPage.inputNewPassword));
-		writeData("ChangePassword", "newPassword", pwd);
+		writeData("ChangePassword", "newPassword", newPasswordString);
 		actions.scrollToPartialText("Save");
 		click(driver, settingPage.buttonSave, "Save button");
-		explicitWait(driver, CommonLocators.inputTxtUsername, 20);
-		loginPage.validateLoginPageNote();
+		explicitWait(driver, loginPage.labelUsername, 20);
+		loginPage.validateLoginPage();
+				
+		// To verify that user is not able to login with invalid id and password
+		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "oldPassword"), "invalid");
 	}
 	
-	@Test (priority = 3)
-	public void verifyLoginWithBothOldNewPassword() throws IOException, InterruptedException
-	{
-		// __________________try to Login with old password___________________
-		assertTrue(loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "oldPassword"), "invalid"));
-		ExtentManager.logInfoDetails("User is not logged in with old password as expected");
-
-		// ___________________try to login with new password___________________
-		assertTrue(loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "newPassword"), "valid"));
-		ExtentManager.logInfoDetails("User logged in successfully with New Password as expected.");
+	@Test(priority = 4, dependsOnMethods = { "verifyChangePasswordFromSettingsPage" })
+	public void verifyUserShouldLoginFromNewChangedPassword() throws IOException, InterruptedException
+	{	
+		// To verify that user is able to login with new id and password
+		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "currentPassword"), "sms page");
 	}
+	
 }

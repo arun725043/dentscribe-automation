@@ -7,7 +7,7 @@
 	<test thread-count="5" name="Test">
 		<classes>		
 		
-			<class name="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup" />
+			<class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" />
 			
 			<!-- DONE TEST CASES -->
 			<!-- 
@@ -17,18 +17,22 @@
 			<class name="com.dentscribe.testCases.TestLoginPage" />
 			<class name="com.dentscribe.testCases.TestSmsVerificationPageAfterLogin" />
 			<class name="com.dentscribe.testCases.TestSignUpPage" />
-			
+			<class name="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup" />
 			-->
 			
 			<!-- 
+			TO BE TEST (YET APIs NOT WORKING')
+			<class name="com.dentscribe.testCases.TestSignupAndLoginWithoutRegisterPractice" />
+			<class name="com.dentscribe.testCases.TestTourPages" />
+			<class name="com.dentscribe.testCases.TestPatientSearchPage" />
+			<class name="com.dentscribe.testCases.TestForgotPassowrdPage" />
+			<class name="com.dentscribe.testCases.TestSettingsPage" />
+			<class name="com.dentscribe.testCases.TestChangePassword" />
+			<class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" />
+			-->	
+			
+			<!-- 
 			iOS XML FILE
-			<class name="com.dentscribe.testCases_iOS.TestSmsVerificationPageAfterSignup" />
-			<class name="com.dentscribe.testCases_iOS.TestSignupAndLoginWithoutRegisterPractice" />
-			<class name="com.dentscribe.testCases_iOS.TestTourPages" />
-			<class name="com.dentscribe.testCases_iOS.TestPatientSearchPage" />
-			<class name="com.dentscribe.testCases_iOS.TestForgotPassowrdPage" />
-			<class name="com.dentscribe.testCases_iOS.TestSettingsPage" />
-			<class name="com.dentscribe.testCases_iOS.TestChangePassword" />
 			<class name="com.dentscribe.testCases_iOS.TestFeedbackAndNewFeedbackPages" />
 			<class name="com.dentscribe.testCases_iOS.TestRecordingfor10mintsAndGenerateSoapReport" />
 			

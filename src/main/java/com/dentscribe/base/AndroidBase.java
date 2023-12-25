@@ -13,6 +13,7 @@ import com.dentscribe.pages.AddPaymentMethodPage;
 import com.dentscribe.pages.CalendarPage;
 import com.dentscribe.pages.EulaAgreementPage;
 import com.dentscribe.pages.ForgotPasswordPage;
+import com.dentscribe.pages.HelpPage;
 import com.dentscribe.pages.LoginPage;
 import com.dentscribe.pages.ManageSubscriptionPage;
 import com.dentscribe.pages.PatientProfilePage;
@@ -57,6 +58,7 @@ public class AndroidBase extends CommonMethods {
 	public SikkaWebviewPage sikkaWebviewPage;
 	public EulaAgreementPage eulaPage;
 	public AddPaymentMethodPage addPaymentMethodPage;
+	public HelpPage helpPage;
 
 //	@BeforeTest
 	public void startServer() {
@@ -116,5 +118,6 @@ public class AndroidBase extends CommonMethods {
 		sikkaWebviewPage = new SikkaWebviewPage(driver);
 		eulaPage = new EulaAgreementPage(driver);
 		addPaymentMethodPage = new AddPaymentMethodPage(driver);
+		helpPage = new HelpPage(driver);
 	}
 }

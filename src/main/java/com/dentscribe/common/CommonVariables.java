@@ -46,10 +46,14 @@ public class CommonVariables
 	public static String successMsgTextEmailNotification = "Email notification updated!";
 	public static String successMsgTextAccountInfoUpdate = "User details updated!";
 	
-	
 	//Note messages
 	public static String loginNoteText = "Sign in with your username and password or use biometrics/multifactor authentication for enhanced security.";
 	public static String signupNoteText = "Set up your new account. You can also add payment information next if you choose to subscribe to our service. ";
 	
-	
+	//FAQs list questions
+	public static String question1 = "Can I edit my SOAP report?";
+	public static String question2 = "Can I integrate my patient management system with Dentscribe?";
+	public static String question3 = "How do I cancel or pause my subscription?";
+	public static String question4 = "How do I record patient notes?";
+
 }

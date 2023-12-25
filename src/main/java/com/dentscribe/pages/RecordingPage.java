@@ -78,7 +78,7 @@ public class RecordingPage extends AndroidActions {
 	}
 	
 	//
-	public void clickVerifyBackIconRecordingPage(String cickButton) throws InterruptedException
+	public void clickVerifyBackIconRecordingPage(String buttonName) throws InterruptedException
 	{
 		if(IsElementPresent(driver, iconBackRecordingPage, "Back icon on recording page"))
 		{
@@ -86,11 +86,11 @@ public class RecordingPage extends AndroidActions {
 			if(IsElementPresent(driver, backIconPopupMessage, "Recording pause popup"))
 			{
 				ExtentManager.logInfoDetails("Message found on back icon click popup is - <b>" + getText(backIconPopupMessage));
-				if (cickButton.equalsIgnoreCase("CANCEL"))
+				if (buttonName.equalsIgnoreCase("CANCEL"))
 				{
 					clickVerifyPausePopupCancelButton();
 				}
-				else if (cickButton.equalsIgnoreCase("OK"))
+				else if (buttonName.equalsIgnoreCase("OK"))
 				{
 					click(driver, backIconPopupButtonOK, "OK button recording pause popup");
 					Thread.sleep(10000);

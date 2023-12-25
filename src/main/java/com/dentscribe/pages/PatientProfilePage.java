@@ -38,6 +38,12 @@ public class PatientProfilePage extends AndroidActions {
 			return false;
 		}
 	}
+	
+	// _______________click back icon patient search page______________
+	public void clickBackIconPatientProfilePage()
+	{
+		click(driver, iconBackPatientProfile, "Back button of patient profile page");
+	}
 
 	// _________verify patient profile page for patient name, dob, last visit_______
 	public void verifyProfilePageDetails(String name, String dob, String lastVisitDate) 

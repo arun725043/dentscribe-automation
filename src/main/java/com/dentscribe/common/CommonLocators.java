@@ -3,27 +3,15 @@ package com.dentscribe.common;
 import org.openqa.selenium.By;
 
 public class CommonLocators {
-	
-	public static String textUsername = "//android.widget.TextView[@text='Username']";
-	public static String textPassword = "//android.widget.TextView[@text='Password']";
+
 	public static String fixPath = "//parent::android.view.ViewGroup//following-sibling::android.widget.EditText";
 	
-	public static By labelUsername = By.xpath(textUsername);
-	public static By labelPassword = By.xpath(textPassword);
-	
 	public static By textWelcomeUser = By.xpath("//*[contains(@text,'Welcome,')]");
-	public static By inputTxtUsername = By.xpath(textUsername + fixPath);
-	public static By inputTxtPassword = By.xpath(textPassword + fixPath);
-	public static By txtConfirmPassword = By.xpath("//android.widget.TextView[@text='Confirm Password']" + fixPath);
-	public static By msgUsernameIsRequired = By.xpath("//android.widget.TextView[@text='Username is required.']");
-	public static By msgPasswordIsRequired = By.xpath("//android.widget.TextView[@text='Password is required.']");
-	public static By txtValidEmail = By.xpath("//android.widget.EditText[@text='Please enter valid email.']");
 	public static By continueButton = By.xpath("//android.widget.TextView[@text='Continue']");
 	public static By textWelcomeDentScribe = By.xpath("//android.widget.TextView[@text='Welcome to Dentscribe!']");
-	public static By labelPMS = By.xpath("//android.widget.TextView[@text='Select Your Practice Management Software']");
-	public static By linkForgotPassword = By.xpath("//android.widget.TextView[@text='Forgot Password']");
+	public static By buttonLogin = By.xpath("//android.widget.TextView[@text='Login']");
+	public static By buttonSignup = By.xpath("//android.widget.TextView[@text='Sign Up']");
 	public static By loginNote = By.xpath("//android.widget.TextView[@text='" + CommonVariables.loginNoteText + "']");
-	public static By signupNote = By.xpath("//android.widget.TextView[@text='" + CommonVariables.signupNoteText + "']");
 	
 	// Error locators
 	public static By errorMessageWithoutPractice = By.xpath("//android.widget.TextView[@text='" + CommonVariables.errorMsgTextWithoutFillPracticeForm + "']");

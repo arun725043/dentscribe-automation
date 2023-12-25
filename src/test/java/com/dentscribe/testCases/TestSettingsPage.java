@@ -11,90 +11,71 @@ import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
 import com.dentscribe.common.CommonLocators;
 
-public class DS_020_022_023_024_028_SettingsPageTest extends AndroidBase {
-
+public class TestSettingsPage extends AndroidBase {
+	
 	String output = null;
 	String practiceName = "Dental Practice " + GenerateRandomNumber(3);
 	String address1 = "Test Address " + GenerateRandomNumber(3);
 	String address2 = "Test Address " + GenerateRandomNumber(3);
 	
-	@Test (priority = 0)
-	public void verifyIsSettingsPageExists() throws IOException, InterruptedException 
-	{
-		ExtentManager.logInfoDetails("Application launched successfully");
-		assertTrue(loginPage.loginApplication(readData("userDetails", "username"), readData("userDetails", "password"), "valid"));
+	@Test(priority = 1)
+	public void verifyIsSettingsPageExists() throws IOException, InterruptedException {
+		
+		//_______________verify Application Launched and login_______________
+		loginPage.verifyIsApplicationLaunched();
+		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
-		//______________validate otp and verify expected opened page______________
+		//______________validate OTP and verify expected opened page______________
 		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
-		smsVerificationPage.validateValidOTP(getOtp, "Tour Screen");
-		
-		// ______skip tour pages__________
+		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
+		tourPages.validateTourPageCalendarScheduleView();
+
+		// ______________skip tour pages______________
 		tourPages.skipTourPages();
 		calendarPage.validateCalendarPage();
-
-		// ____clicked setting icon on calendar page and verify setting page_______
-		click(driver, calendarPage.iconSetting, "Settings icon on calendar page");
-		settingPage.validateSettingsPage();
-	}
-	
-	@Test (priority = 1, dependsOnMethods = { "verifyIsSettingsPageExists" })
-	public void verifyBackIconSettingsPage() throws IOException, InterruptedException
-	{
-		// ________clicked back button on setting page and verify calendar page_______
-		click(driver, settingPage.backIconSettingsPage, "Back icon settings page");
-		calendarPage.validateCalendarPage();
-
-		//Again go to settings page
-		click(driver, calendarPage.iconSetting, "Settings icon on calendar page");
-		settingPage.validateSettingsPage();
-	}
-	
-	@Test (priority = 2, dependsOnMethods = { "verifyBackIconSettingsPage" })
-	public void verifyIsBothHelpOptionsWorkingAsExpected() throws IOException, InterruptedException 
-	{		
-		// ________clicked help icon on settings page and verify help page_______
-		click(driver, settingPage.iconHelp, "Help icon settings page");
-		settingPage.validateHelpPage();
-
-		// ________clicked back icon on help page and verify settings page_______
-		click(driver, settingPage.backIconHelpPage, "Back icon Help page");
-		settingPage.validateSettingsPage();
 		
-//		Thread.sleep(5000);
-		// ________clicked help option given in General Settings on settings page and verify help page_______
-		click(driver, settingPage.buttonHelp, "Help icon settings page");
-		settingPage.validateHelpPage();
-
-		// ________clicked back icon on help page and verify settings page_______
-		click(driver, settingPage.backIconHelpPage, "Back icon Help page");
+		// ______________go to settings page and verify______________
+		calendarPage.clickSettingsIconCalendarPage();
 		settingPage.validateSettingsPage();
 	}
 	
-	@Test (priority = 3, dependsOnMethods = { "verifyBackIconSettingsPage" })
-	public void verifyPushNotificationSwitch() throws InterruptedException
+	@Test(priority = 2, dependsOnMethods = { "verifyIsSettingsPageExists" })
+	public void verifyBackIconSettingsPage()
 	{
+		// To click on back icon button 
+		settingPage.clickBackIconSettingsPage();
+		calendarPage.validateCalendarPage();
+		
+		// Go back to settings page
+		calendarPage.clickSettingsIconCalendarPage();
+		settingPage.validateSettingsPage();
+	}
+	
+	@Test(priority = 3, dependsOnMethods = { "verifyBackIconSettingsPage" })
+	public void verifyPushNotificationsSwitch() throws InterruptedException {
+		// To verify the push notifications 
 		settingPage.enableDisableNotifications("off", settingPage.switchPushNotification, "Push Notifications", CommonLocators.successMessagePushNotifications);
 		settingPage.enableDisableNotifications("on", settingPage.switchPushNotification, "Push Notifications", CommonLocators.successMessagePushNotifications);
 	}
-		
-	@Test (priority = 4)
-	public void verifySmsNotificationSwitch() throws InterruptedException
-	{
+	
+	@Test(priority = 4)
+	public void verifySmsNotificationsSwitch() throws InterruptedException {
+		// To verify the sms notifications 
 		settingPage.enableDisableNotifications("off", settingPage.switchSmsNotification, "SMS Notifications", CommonLocators.successMessageSmsNotifications);
 		settingPage.enableDisableNotifications("on", settingPage.switchSmsNotification, "SMS Notifications", CommonLocators.successMessageSmsNotifications);
 	}
 	
-	@Test (priority = 5)
-	public void verifyEmailNotificationSwitch() throws InterruptedException
-	{
+	@Test(priority = 5)
+	public void verifyEmailNotificationsSwitch() throws InterruptedException {
+		// To verify the email notifications 
 		settingPage.enableDisableNotifications("off", settingPage.switchEmailNotification, "Email Notifications", CommonLocators.successMessageEmailNotifications);
 		settingPage.enableDisableNotifications("on", settingPage.switchEmailNotification, "Email Notifications", CommonLocators.successMessageEmailNotifications);
 	}
-
+	
 	@Test(priority = 6)
-	public void verifyAccountInfoUpdate() throws InterruptedException, IOException 
-	{
+	public void verifyAccountInfoUpdate() throws InterruptedException {
+		
 		actions.scrollToPartialText("Enter the password");
 
 		// ____________________Edit phone and update______________________
@@ -117,8 +98,8 @@ public class DS_020_022_023_024_028_SettingsPageTest extends AndroidBase {
 	}
 	
 	@Test(priority = 7)
-	public void verifyPracticeInfoUpdate() throws InterruptedException, IOException 
-	{
+	public void verifyPracticeUpdate() throws InterruptedException {
+		
 		// __________________update info__________________
 		settingPage.fillPracticeInfo(practiceName, address1, address2, "", "", "", "", "", "");
 		settingPage.clickContinueButtonPracticeInfo();
@@ -132,5 +113,47 @@ public class DS_020_022_023_024_028_SettingsPageTest extends AndroidBase {
 		Thread.sleep(2000);
 		settingPage.verifyUpdatedPracticeInfo(practiceName, address1, address2, "", "", "", "", "", "");
 		ExtentManager.logInfoDetails("Practice Info has been updated successfully and verified");
+	}
+	
+	@Test(priority = 8)
+	public void verifyHelpOptionsSettingsPage()
+	{	 
+		// ________clicked help icon on settings page and verify help page_______
+		settingPage.clickHelpOptions("Help icon");
+		helpPage.validateHelpPage();
+
+		// ________clicked back icon on help page and verify settings page_______
+		helpPage.clickBackIconHelpPage();
+		settingPage.validateSettingsPage();
+		
+		// ________clicked help option given in General Settings on settings page and verify help page_______
+		settingPage.clickHelpOptions("Help button");
+		helpPage.validateHelpPage();
+
+		// ________clicked back icon on help page and verify settings page_______
+		helpPage.clickBackIconHelpPage();
+		settingPage.validateSettingsPage();
+	}
+	
+	@Test(priority = 9)
+	public void verifyFAQsInHelpPage()
+	{
+		settingPage.clickHelpOptions("Help button");
+		helpPage.validateHelpPage();
+		// ________________verify whether all expected questions available_____________
+		helpPage.verifyFAQsQuestions();
+		ExtentManager.logInfoDetails("All questions are available in Help page as expected");
+		helpPage.clickBackIconHelpPage();
+	}
+	
+	@Test (priority = 10)
+	public void verifyLogout()
+	{
+		// ___________________click logout________________
+		actions.scrollByElement(settingPage.buttonLogOut);
+		settingPage.clickOnLogout();
+		 
+		// Verify login page
+		loginPage.validateLoginPage();
 	}
 }

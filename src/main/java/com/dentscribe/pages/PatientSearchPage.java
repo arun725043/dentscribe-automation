@@ -51,6 +51,12 @@ public class PatientSearchPage extends AndroidActions {
 		}
 	}
 	
+	// _______________click back icon patient search page______________
+	public void clickBackIconPatientSearchPage()
+	{
+		click(driver, iconBackPatientSearch, "Back button of patient search page");
+	}
+	
 	// ___________fetch patient loader_______
 	public void fetchingPatientLoader() {
 		try {
@@ -87,7 +93,7 @@ public class PatientSearchPage extends AndroidActions {
 
 	}
 
-	public void searchPatient(String searchBy, String searchValue) throws InterruptedException
+	public void verifySearchPatientResults(String searchBy, String searchValue) throws InterruptedException
 	{
 		// Search By patientName and verify
 		if (searchBy == "name")

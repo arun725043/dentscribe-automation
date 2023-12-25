@@ -68,11 +68,6 @@ public class SettingsPage extends AndroidActions {
 	public By switchSmsNotification = By.xpath("//android.widget.TextView[contains(@text,' SMS Notifications')]//following-sibling::android.widget.Switch");
 	public By switchEmailNotification = By.xpath("//android.widget.TextView[contains(@text,' Email Notifications')]//following-sibling::android.widget.Switch");
 	
-	// Help page locators
-	public By headerHelpPage = By.xpath("//android.view.ViewGroup[@resource-id='help-screen-view']//android.widget.TextView[@text='Help']");
-	public By backIconHelpPage = By.xpath("//android.widget.TextView[@text='Help']//preceding-sibling::android.view.ViewGroup//android.widget.ImageView[@index=0]");
-	public By textFaqs = By.xpath("//android.widget.TextView[@text='FAQs']");
-
 	// ________________Cancel subscription____________
 	public By dropdownReason = By.xpath("//android.widget.TextView[contains(@text,'Reason')]//following-sibling::android.view.ViewGroup//android.widget.EditText");
 	public By listOfReason = By.xpath("//android.widget.TextView[contains(@text,'Reason')]//parent::android.view.ViewGroup//android.widget.ScrollView//android.widget.TextView");
@@ -97,24 +92,30 @@ public class SettingsPage extends AndroidActions {
 		}
 	}
 	
-	// _________verify help page exists or not_______
-	public void validateHelpPage()
+	// click back icon 
+	public void clickBackIconSettingsPage()
 	{
-		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(textFaqs));
-		String headerText = getText(headerHelpPage);
-		if(headerText.trim().equalsIgnoreCase("help"))
-		{
-			ExtentManager.logInfoDetails("<b>User is now on Help page as expected");
-		}
-		else {
-			ExtentManager.logFailureDetails("Expected Help page either not found or header not matched. please check");
-			Assert.fail();
-		}
+		click(driver, backIconSettingsPage, "Back icon on settings page");
 	}
 	
 	// click logout link
 	public void clickOnLogout() {
 		click(driver, buttonLogOut, "Logout button");
+	}
+	
+	// Click Help options
+	public void clickHelpOptions(String helpOptionType)
+	{
+		switch (helpOptionType) {
+		case "help icon":
+			click(driver, iconHelp, "Help icon on settings page");
+			break;
+		case "help button":
+			click(driver, buttonHelp, "Help button on settings page");
+			break;
+		default:
+			break;
+		}
 	}
 
 	// ____________verify whether selected plan and its related button exists or not_____________

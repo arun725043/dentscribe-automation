@@ -24,7 +24,8 @@ public class SignUpPage extends AndroidActions {
 		this.driver = driver;
 	}
 
-	public By signupButton = By.xpath("//android.widget.TextView[@text='Sign Up']");
+	public By labelPMS = By.xpath("//android.widget.TextView[@text='Select Your Practice Management Software']");
+	public By signupNote = By.xpath("//android.widget.TextView[@text='" + CommonVariables.signupNoteText + "']");
 	public By textPhone = By.xpath("//android.widget.TextView[@text='Phone Number']");
 	
 	public By inputFirstName = By.xpath("//android.widget.TextView[@text='First Name']" + CommonLocators.fixPath);
@@ -47,7 +48,10 @@ public class SignUpPage extends AndroidActions {
 	public By textSmsVerification = By.xpath("//android.widget.TextView[@text='SMS Verification']");
 	public By inputTelephone = By.xpath("android.widget.EditText[@content-desc='Telephone input']");
 	public By textIndia = By.xpath("//android.widget.TextView[contains(@text,'India')]");
+	public By roleDrpdwn = By.xpath("//android.view.ViewGroup[@resource-id='role-input']//android.view.ViewGroup[@index=2]//android.widget.TextView");
+	public By licenseStateDrpdwn = By.xpath("//android.view.ViewGroup[@resource-id='licensestate-input']//android.widget.TextView[@index=2]");
 	public By pmsDrpdwn = By.xpath("//android.widget.TextView[@text='Select Your Practice Management Software']//parent::android.view.ViewGroup//following-sibling::android.view.ViewGroup/android.widget.TextView");
+	public By optionsListPMS = By.xpath("//android.view.ViewGroup[@resource-id='pms-dropdown']//android.view.ViewGroup[@resource-id='select-pms']//android.widget.TextView");
 	public By txtSorry = By.xpath("//android.widget.TextView[contains(@text,'Sorry!')]");
 	public By buttonOkay = By.xpath("//android.widget.TextView[@text='Okay']");
 	public By textEmailAlreadyExist = By.xpath("//android.widget.TextView[@text='User with email id already exists.']");
@@ -70,8 +74,8 @@ public class SignUpPage extends AndroidActions {
 	// _______________verify whether signup page exists or not_______________
 	public void validateSignupPage()
 	{
-		click(driver, signupButton, "Signup tab");
-		if (IsElementPresent(driver, CommonLocators.signupNote, "text - " + CommonVariables.signupNoteText)) {
+		click(driver, CommonLocators.buttonSignup, "Signup tab");
+		if (IsElementPresent(driver, signupNote, "text - " + CommonVariables.signupNoteText)) {
 			ExtentManager.logInfoDetails("<b>User is now on Signup page as expected");
 		} else {
 			ExtentManager.logFailureDetails("Either expected Signup page verified element not found or page not exists. please check");
@@ -125,9 +129,9 @@ public class SignUpPage extends AndroidActions {
 		//Password, confirm password
 		scrollUntilElementIsVisible("Password");
 		CommonVariables.actualPass = userDetail[8];
-		sendKeys(driver, CommonLocators.inputTxtPassword, "Password", CommonVariables.actualPass);
+		sendKeys(driver, inputPassword, "Password", CommonVariables.actualPass);
 		scrollUntilElementIsVisible("Confirm Password");
-		sendKeys(driver, CommonLocators.txtConfirmPassword, "Confirm password", CommonVariables.actualPass);
+		sendKeys(driver, inputConfirmPassword, "Confirm password", CommonVariables.actualPass);
 		Thread.sleep(3000);
 		// PMS, Continue button
 		scrollToText("Continue");
@@ -155,42 +159,108 @@ public class SignUpPage extends AndroidActions {
 			String role, String licenseState, String licenseNumber, String password, String confirmPassword, String pms) throws InterruptedException 
 	{
 		try {
-			if (firstName != "")
+			if (firstName != "") {
 				sendKeys(driver, inputFirstName, "First Name", firstName);
-			sendKeys(driver, inputLastName, "Last Name", lastName);
-			
-			// Phone code, country, number
-			if(countryCode != "" && phoneNumber != "") {
+			}
+			else {
+				ExtentManager.logFailureDetails("First Name is mandatory. please fill");
+				Assert.fail();
+			}
+			if (lastName != "") {
+				sendKeys(driver, inputLastName, "Last Name", lastName);
+			}
+			else {
+				ExtentManager.logInfoDetails("Last name value not given by user");
+			}
+			// Country code
+			if(countryCode != "") {
 				click(driver, inputCountryCode, "Phone number code");
 				scrollToPartialText(countryCode);
 				click(driver, By.xpath("//android.widget.TextView[contains(@text,'" + countryCode + "')]"), countryCode + " code and selected");
 				Thread.sleep(2000);
+			}
+			else {
+				ExtentManager.logInfoDetails("Contry code not given by user therefore by default its <b>+1");
+			}
+			// Phone number
+			if(phoneNumber != "") {
 				sendKeys(driver, inputPhoneNumber, "Phone number", phoneNumber);
 			}
+			else {
+				ExtentManager.logFailureDetails("Phone number is mandatory. please fill");
+				Assert.fail();
+			}
 			// Email
-			if(email != "")
+			if(email != "") {
 				scrollUntilElementIsVisible("Title");
 				sendKeys(driver, inputEmail, "Email", email);
+			}
+			else {
+				ExtentManager.logFailureDetails("Email is mandatory. please fill");
+				Assert.fail();
+			}
 			//Title
-			sendKeys(driver, inputTitle, "Title", title);
+			if(title != "") {
+				sendKeys(driver, inputTitle, "Title", title);
+			}
+			else {
+				ExtentManager.logInfoDetails("Title value not given by user");
+			}
+			//Role
+			if(role != "") {
+				click(driver, roleDrpdwn, "Role dropdown");
+				scrollableClick(role);
+			}
+			else {
+				ExtentManager.logInfoDetails("Role value not given by user therefore by default its <b>Dentist");
+			}
+			//License State
+			if(licenseState != "") {
+				click(driver, licenseStateDrpdwn, "License State dropdown");
+				scrollableClick(licenseState);
+			}
+			else {
+				ExtentManager.logInfoDetails("License State value not given by user therefore by default its <b>California");
+			}
 			//License number
-			if(licenseNumber != "")
+			if(licenseNumber != "") {
 				scrollUntilElementIsVisible("License Number");
 				sendKeys(driver, inputLicenseNumber, "License number", licenseNumber);
-			
-			//Password, confirm password
-			if (password != "" && confirmPassword != "")
+			}
+			else {
+				ExtentManager.logFailureDetails("License number is mandatory. please fill");
+				Assert.fail();
+			}
+			//Password
+			if (password != "")
 			{
 				scrollUntilElementIsVisible("Password");
-				sendKeys(driver, CommonLocators.inputTxtPassword, "Password", password);
+				sendKeys(driver, inputPassword, "Password", password);
+			}
+			else {
+				ExtentManager.logFailureDetails("Password is mandatory. please fill");
+				Assert.fail();
+			}
+			if (confirmPassword != "")
+			{
 				scrollUntilElementIsVisible("Confirm Password");
-				sendKeys(driver, CommonLocators.txtConfirmPassword, "Confirm password", confirmPassword);
+				sendKeys(driver, inputConfirmPassword, "Confirm password", confirmPassword);
+			}
+			else {
+				ExtentManager.logFailureDetails("Confirm password is mandatory. please fill");
+				Assert.fail();
 			}
 			Thread.sleep(3000);
 			// PMS, Continue button
-			scrollToText("Continue");
-			click(driver, pmsDrpdwn, "PMS dropdown");
-			scrollableClick(pms);
+			if (pms != "")
+			{
+				scrollToText("Continue");
+				click(driver, pmsDrpdwn, "PMS dropdown");
+				scrollableClick(pms);
+			}
+			else {
+				ExtentManager.logInfoDetails("PMS value not given by user therefore by default its <b>Eaglesoft");
+			}
 		}
 		catch (Exception e) {
 			ExtentManager.logFailureDetails("Mandatory fields cannot be empty. please check any field value is missing");
@@ -214,7 +284,7 @@ public class SignUpPage extends AndroidActions {
 
 	// _____________verify confirmation popup button____________
 	public boolean verifyConfirmationPopupButton() {
-		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(buttonBack));
+		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(textAskForContinue));
 		if (IsElementPresent(driver, buttonBack, "Back button") && IsElementPresent(driver, buttonContinue, "Continue button")) {
 			ExtentManager.logInfoDetails("Expected <b>Back<b> and <b> Continue<b> appearing on Confirmation popup");
 			return true;
@@ -265,6 +335,11 @@ public class SignUpPage extends AndroidActions {
 			scrollUntilElementIsVisible("User with email id already exists.");
 			assertTrue(IsElementPresent(driver, textEmailAlreadyExist, "Duplicate email validation message"));
 			ExtentManager.logInfoDetails("Error message found - <b>" + getText(textEmailAlreadyExist) + "<b>");
+		}
+		else if (expectedResult == "sorry popup")
+		{
+			verifySorryPopup();
+			click(driver, ErrorMsgInvalidConfirmPassword, expectedResult);
 		}
 		else {
 			ExtentManager.logFailureDetails("Expected result on continue button click could be either 'Confirmation popup' or 'error message'");

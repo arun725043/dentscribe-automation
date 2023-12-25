@@ -84,7 +84,7 @@ public class CalendarPage extends AndroidActions {
 	}
 	
 	// _______________verify calendar page search icon and click on it______________
-	public boolean clickCalendarPageSearchIcon() {
+	public boolean clickSearchIconCalendarPage() {
 		if (IsElementPresent(driver, iconSearch, "Search icon calendar page"))
 		{
 			click(driver, iconSearch, "Search icon");
@@ -93,7 +93,7 @@ public class CalendarPage extends AndroidActions {
 	}
 	
 	// _______________verify calendar page search icon and click on it______________
-	public boolean clickCalendarPageSettingsIcon() {
+	public boolean clickSettingsIconCalendarPage() {
 		if (IsElementPresent(driver, iconSetting, "Settings icon calendar page"))
 		{
 			click(driver, iconSetting, "Settings icon");

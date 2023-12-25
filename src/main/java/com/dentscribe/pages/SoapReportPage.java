@@ -1,6 +1,9 @@
 package com.dentscribe.pages;
 
 import org.testng.Assert;
+
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -29,7 +32,9 @@ public class SoapReportPage extends AndroidActions {
 	public String licenseValue;
 
 	// _________locators______
-	public By backButton = By.className("android.widget.ImageView");
+	public By iconBackSoapReport = By.className("android.widget.ImageView");
+	public By iconEditSoapReport = By.className("android.widget.ImageView");
+	public By iconSaveSoapReport = By.className("android.widget.ImageView");
 
 	// Soap report locators
 	public By buttonAdoptSignature = By.xpath("//android.widget.TextView[@text='Adopt Signature']");
@@ -79,6 +84,26 @@ public class SoapReportPage extends AndroidActions {
 		}
 	}
 
+	public void clickVerifyEditSaveIconSoapReport(String iconName)
+	{
+		switch (iconName) {
+		case "edit":
+			click(driver, iconEditSoapReport, "Edit icon on Soap report page");
+			IsElementPresent(driver, iconSaveSoapReport, "Save icon on Soap report page");
+			ExtentManager.logInfoDetails("Save icon visible on Edit icon click as expected");
+			break;
+		case "save":
+			click(driver, iconSaveSoapReport, "Save icon on Soap report page");
+			IsElementPresent(driver, iconEditSoapReport, "Edit icon on Soap report page");
+			ExtentManager.logInfoDetails("Edit icon visible on Save icon click as expected");
+			break;
+
+		default:
+			ExtentManager.logFailureDetails("User provided icon name - <b>" + iconName + "<b> but icon name could be only edit or save. please check");
+			Assert.fail();
+		}
+	}
+	
 	// ___________Draw signature___________
 	public void addSignature()
 	{
@@ -96,6 +121,12 @@ public class SoapReportPage extends AndroidActions {
 		}
 	}
 	
+	// _______________click back icon_______________
+	public void clickBackIconSoapReport()
+	{
+		click(driver, iconBackSoapReport, "Back icon on Soap report");
+	}
+	
 	// ___________submit SOAP Report___________
 	public void submitSoapReport()
 	{
@@ -110,7 +141,7 @@ public class SoapReportPage extends AndroidActions {
 		}
 	}
 
-	public void addNameTitleLicenseInReport() {
+	public void updateUserDetails() {
 		clear(name);
 		nameValue = CommonMethods.genrateRandomFirstName();
 		sendKeys(driver, name, "Name field", nameValue);
@@ -121,19 +152,16 @@ public class SoapReportPage extends AndroidActions {
 		clear(license);
 		licenseValue = CommonMethods.GenerateRandomNumber(5);
 		sendKeys(driver, license, "License field", licenseValue);
-
-		click(driver, buttonSubmitReport, "Submit button");
-		AndroidBase.wait.until(
-				ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@text,'Welcome, Rahul12!')]")));
 	}
 
-	public boolean verifyNameTitleLicense() {
+	public void verifyUpdatedUserDetails() {
 		scrollToText("Submit");
 		if (nameValue.equals(getAttribute(name)) && licenseValue.equals(getAttribute(license))
 				&& titleValue.equals(getAttribute(title))) {
-			return true;
+			ExtentManager.logInfoDetails("All values updated successfully as expected");
 		} else {
-			return false;
+			ExtentManager.logFailureDetails("Either name, title, license number not updated or all not updated. please check");
+			Assert.fail();
 		}
 	}
 }

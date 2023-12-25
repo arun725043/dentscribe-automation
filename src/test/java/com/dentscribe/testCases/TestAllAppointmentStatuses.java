@@ -17,19 +17,23 @@ public class TestAllAppointmentStatuses extends AndroidBase
 	@Test (priority = 0)
 	public void goToCalendarPageAndSelectAppointmentDate() throws IOException, InterruptedException 
 	{
+		// _______________verify application lainch_______________
 		loginPage.verifyIsApplicationLaunched();
 		
-		// _______________login into the application_______________
-		assertTrue(loginPage.loginApplication(readData("userDetails", "username"), readData("userDetails", "password"), "valid"));
+		// _______________login with valid credentials_______________
+		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
+		
+		// _______________validate otp and verify expected opened page_______________
 		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
-		smsVerificationPage.validateValidOTP(getOtp, "Tour Screen");
+		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
+		tourPages.validateTourPageCalendarScheduleView();
 		
 		// _______________Click skip and verify tour page_______________
 		tourPages.skipTourPages();
 		calendarPage.validateCalendarPage();
 		
-		//_____________select appointments date________________
+		// _____________select appointments date________________
 		Thread.sleep(5000);
 		calendarPage.selectAppointmentsDate(readAppointmentsDate);
 	}
@@ -99,8 +103,8 @@ public class TestAllAppointmentStatuses extends AndroidBase
 	public void addSignatureInSoapReportAndSubmit() throws InterruptedException
 	{
 		calendarPage.clickVerifyPatientAppointmentButton(calendarPage.patientName, "Review");
+		soapReportPage.validateSoapReportPage();
 		// ____________Submit soap report__________________
-		getText(soapReportPage.textSoapReport);
 		soapReportPage.clickAdoptSignature();
 		soapReportPage.addSignature();
 		soapReportPage.submitSoapReport();

@@ -1,45 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-22T19:19:48 IST" name="Suite" finished-at="2023-12-22T19:21:53 IST" duration-ms="125253">
+  <suite started-at="2023-12-25T12:27:22 IST" name="Suite" finished-at="2023-12-25T12:28:52 IST" duration-ms="90034">
     <groups>
     </groups>
-    <test started-at="2023-12-22T19:19:48 IST" name="Test" finished-at="2023-12-22T19:21:53 IST" duration-ms="125253">
-      <class name="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:19:48 IST" name="launchApplication" finished-at="2023-12-22T19:20:06 IST" duration-ms="17628" status="PASS">
+    <test started-at="2023-12-25T12:27:22 IST" name="Test" finished-at="2023-12-25T12:28:52 IST" duration-ms="90034">
+      <class name="com.dentscribe.testCases.TestSignupAndLoginWithoutRegisterPractice">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.TestSignupAndLoginWithoutRegisterPractice@164dea80]" started-at="2023-12-25T12:27:22 IST" name="launchApplication" finished-at="2023-12-25T12:27:39 IST" duration-ms="16504" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="verifyIsSmsVerificationPageExistsAfterSignup()[pri:1, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:20:06 IST" name="verifyIsSmsVerificationPageExistsAfterSignup" finished-at="2023-12-22T19:21:16 IST" duration-ms="70622" status="PASS">
+        <test-method signature="verifySignupWithNonSupportedPMS()[pri:1, instance:com.dentscribe.testCases.TestSignupAndLoginWithoutRegisterPractice@164dea80]" started-at="2023-12-25T12:27:39 IST" name="verifySignupWithNonSupportedPMS" finished-at="2023-12-25T12:28:51 IST" duration-ms="72829" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyIsSmsVerificationPageExistsAfterSignup -->
-        <test-method signature="verifySmsVerificationWithBlankOtp()[pri:2, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:16 IST" name="verifySmsVerificationWithBlankOtp" finished-at="2023-12-22T19:21:20 IST" depends-on-methods="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup.verifyIsSmsVerificationPageExistsAfterSignup" duration-ms="3253" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySmsVerificationWithBlankOtp -->
-        <test-method signature="verifySmsVerificationWithWrongOtp()[pri:3, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:20 IST" name="verifySmsVerificationWithWrongOtp" finished-at="2023-12-22T19:21:29 IST" depends-on-methods="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup.verifySmsVerificationWithBlankOtp" duration-ms="8933" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySmsVerificationWithWrongOtp -->
-        <test-method signature="verifySmsVerificationResendCodeLink()[pri:4, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:29 IST" name="verifySmsVerificationResendCodeLink" finished-at="2023-12-22T19:21:34 IST" depends-on-methods="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup.verifySmsVerificationWithWrongOtp" duration-ms="5935" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySmsVerificationResendCodeLink -->
-        <test-method signature="verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage()[pri:5, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:34 IST" name="verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage" finished-at="2023-12-22T19:21:40 IST" duration-ms="5343" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage -->
-        <test-method signature="verifySmsVerificationWithValidOtp()[pri:6, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:40 IST" name="verifySmsVerificationWithValidOtp" finished-at="2023-12-22T19:21:53 IST" depends-on-methods="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup.verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage" duration-ms="12894" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySmsVerificationWithValidOtp -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.TestSmsVerificationPageAfterSignup@42a05533]" started-at="2023-12-22T19:21:53 IST" name="tearDown" finished-at="2023-12-22T19:21:53 IST" duration-ms="606" status="PASS">
+        </test-method> <!-- verifySignupWithNonSupportedPMS -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.TestSignupAndLoginWithoutRegisterPractice@164dea80]" started-at="2023-12-25T12:28:51 IST" name="tearDown" finished-at="2023-12-25T12:28:52 IST" duration-ms="671" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.dentscribe.testCases.TestSmsVerificationPageAfterSignup -->
+      </class> <!-- com.dentscribe.testCases.TestSignupAndLoginWithoutRegisterPractice -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

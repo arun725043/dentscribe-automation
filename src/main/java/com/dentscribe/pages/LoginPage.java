@@ -27,9 +27,20 @@ public class LoginPage extends AndroidActions {
 	}
 	
 	// _________locators______
-	public By buttonLogin = By.xpath("//android.widget.TextView[@text='Login']");
-	public By buttonSignup = By.xpath("//android.widget.TextView[@text='Sign Up']");
 	public By linkSetUpBiometric = By.xpath("//android.widget.TextView[@text='Set Up Biometrics']");
+	public By linkForgotPassword = By.xpath("//android.widget.TextView[@text='Forgot Password']");
+	
+	String uname = "//android.widget.TextView[@text='Username']";
+	String pwd = "//android.widget.TextView[@text='Password']";
+	public By inputTxtUsername = By.xpath(uname + CommonLocators.fixPath);
+	public By inputTxtPassword = By.xpath(pwd + CommonLocators.fixPath);
+	
+	public By labelUsername = By.xpath(uname);
+	public By labelPassword = By.xpath(pwd);
+	
+	public By msgUsernameIsRequired = By.xpath("//android.widget.TextView[@text='Username is required.']");
+	public By msgPasswordIsRequired = By.xpath("//android.widget.TextView[@text='Password is required.']");
+	public By txtValidEmail = By.xpath("//android.widget.EditText[@text='Please enter valid email.']");
 	public By buttonContinue = By.xpath("//android.widget.TextView[@text='Continue']");
 	public By buttonSkip = By.xpath("//android.widget.TextView[@text='Skip']");
 	public By buttonEnable = By.xpath("//android.widget.TextView[@text='Enable']");	
@@ -67,10 +78,10 @@ public class LoginPage extends AndroidActions {
 	
 	public void enterUsernamePassword(String username, String password)
 	{
-		clear(CommonLocators.inputTxtUsername);
-		sendKeys(driver, CommonLocators.inputTxtUsername, "Username", username);
-		clear(CommonLocators.inputTxtPassword);
-		sendKeys(driver, CommonLocators.inputTxtPassword, "Password", password);
+		clear(inputTxtUsername);
+		sendKeys(driver, inputTxtUsername, "Username", username);
+		clear(inputTxtPassword);
+		sendKeys(driver, inputTxtPassword, "Password", password);
 	}
 	
 	// login application
@@ -99,13 +110,13 @@ public class LoginPage extends AndroidActions {
 		case "invalid":
 			IsElementPresent(driver, CommonLocators.invalidCredentialsError, "Error message");
 			ExtentManager.logInfoDetails("Expected error message found - <b>" + getText(CommonLocators.invalidCredentialsError) + "<b>");
-			IsElementPresent(driver, CommonLocators.labelUsername, "Username field");
+			IsElementPresent(driver, labelUsername, "Username field");
 			ExtentManager.logInfoDetails("User not logged in as expected and still on Login page");
 			break;
 		case "no record":
 			IsElementPresent(driver, CommonLocators.errorMessageNoRecordFound, "Error message");
 			ExtentManager.logInfoDetails("Expected error message found - <b>" + getText(CommonLocators.errorMessageNoRecordFound) + "<b>");
-			IsElementPresent(driver, CommonLocators.labelUsername, "Username field");
+			IsElementPresent(driver, labelUsername, "Username field");
 			ExtentManager.logInfoDetails("User not logged in as expected and still on Login page");
 			break;
 		case "error":
@@ -132,11 +143,11 @@ public class LoginPage extends AndroidActions {
 
 	// ________verify home page elements_______
 	public void verifyHomePageElement() {
-		IsElementPresent(driver, buttonLogin, "Login tab");
-		IsElementPresent(driver, buttonSignup, "Sign Up tab");
-		IsElementPresent(driver, CommonLocators.labelUsername, "Username");
-		IsElementPresent(driver, CommonLocators.labelPassword, "Password");
-		IsElementPresent(driver, CommonLocators.linkForgotPassword, "Forgot Password link");
+		IsElementPresent(driver, CommonLocators.buttonLogin, "Login tab");
+		IsElementPresent(driver, CommonLocators.buttonSignup, "Sign Up tab");
+		IsElementPresent(driver, labelUsername, "Username");
+		IsElementPresent(driver, labelPassword, "Password");
+		IsElementPresent(driver, linkForgotPassword, "Forgot Password link");
 		if(readData("Config", "biometric").equalsIgnoreCase("on"))
 		{
 			IsElementPresent(driver, linkSetUpBiometric, "Set Up Biometrics");
@@ -149,7 +160,7 @@ public class LoginPage extends AndroidActions {
 	// _________verify wrong email id format_______
 	public void validateWrongEmailId(String email) throws InterruptedException
 	{
-		sendKeys(driver, CommonLocators.inputTxtUsername, "Username", email);
+		sendKeys(driver, inputTxtUsername, "Username", email);
 		if (getText(validationMsgUsername).equals(CommonVariables.errorMsgTextInvalidEmail))
 		{
 			ExtentManager.logInfoDetails("Expected validation message found : <b>" + CommonVariables.errorMsgTextInvalidEmail);
