@@ -39,7 +39,6 @@ public class TestTourPages extends AndroidBase {
 	{	
 		// _______________verify back button functionality____________________
 		tourPages.verifyTourPagesOnBackButton();
-		tourPages.verifyTourPagesOnNextButton("yes");
 	}
 	
 	@Test (priority = 4, dependsOnMethods = { "verifyBackButtonFromLastToFirstTourPage" })

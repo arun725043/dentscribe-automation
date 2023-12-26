@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
@@ -79,8 +80,15 @@ public class PatientSearchPage extends AndroidActions {
 	}
 
 	// ______________verify patient is searched or not_________
-	public boolean verifySearchedPatient(String... info) {
-		return IsElementPresent(driver, By.xpath("//android.widget.TextView[@text='" + info[0] + "']"), "Searched patient");
+	public void verifySearchedPatient(String... info) {
+		if(IsElementPresent(driver, By.xpath("//android.widget.TextView[@text='" + info[0] + "']"), "Searched patient"))
+		{
+			ExtentManager.logInfoDetails("<b>Search Result is displayed as per the given input");
+		}
+		else {
+			ExtentManager.logFailureDetails("Either Search Result not found or actual and expected not matched.");
+			Assert.fail();
+		}
 	}
 
 	public String[] changeDateFormat(String date) {
@@ -102,8 +110,7 @@ public class PatientSearchPage extends AndroidActions {
 			enterSearchValue(searchValue);
 	
 			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.TextView[@text='" + searchValue + "']")));
-			assertTrue(verifySearchedPatient(searchValue));
-			ExtentManager.logInfoDetails("Search Result is displayed as per the given input");
+			verifySearchedPatient(searchValue);
 		}
 		else if (searchBy == "phone")
 		{
@@ -123,8 +130,7 @@ public class PatientSearchPage extends AndroidActions {
 			enterSearchValue(searchValue);
 			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.TextView[@text='" + searchValue + "']")));
 	
-			assertTrue(verifySearchedPatient(searchValue));
-			ExtentManager.logInfoDetails("Search Result is displayed as per the given input");
+			verifySearchedPatient(searchValue);
 		}
 		else if (searchBy == "insurance")
 		{
@@ -137,7 +143,7 @@ public class PatientSearchPage extends AndroidActions {
 		}
 		else {
 			enterSearchValue(searchValue);
-			IsElementPresent(driver, searchNote, "Search not");
+			IsElementPresent(driver, searchNote, "Search note");
 			ExtentManager.logInfoDetails("Note message found - <b>" + getText(searchNote) + "<b>");
 		}
 	}

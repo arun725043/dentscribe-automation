@@ -6,14 +6,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup">
+      <class name="com.dentscribe.testCases.TestSettingsPage">
         <methods>
           <include name="tearDown"/>
-          <include name="verifyWhetherSmsVerificationPageBackIconRedirectToSignupPage"/>
           <include name="launchApplication"/>
-          <include name="verifySmsVerificationWithValidOtp"/>
+          <include name="verifyLogout"/>
         </methods>
-      </class> <!-- com.dentscribe.testCases.TestSmsVerificationPageAfterSignup -->
+      </class> <!-- com.dentscribe.testCases.TestSettingsPage -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

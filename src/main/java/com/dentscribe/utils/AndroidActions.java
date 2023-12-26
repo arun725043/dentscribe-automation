@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 
+import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.common.CommonMethods;
 import com.google.common.collect.ImmutableMap;
 
@@ -63,6 +64,7 @@ public class AndroidActions extends CommonMethods {
 		while (true) {
 			WebElement element = null;
 			try {
+				ExtentManager.logInfoDetails("Scrolling page to find the target element - <b>" + targetText);
 				element = driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().textContains(\"" + targetText + "\"));"));
 				Thread.sleep(1000);
 			} catch (Exception e) {
@@ -71,6 +73,7 @@ public class AndroidActions extends CommonMethods {
 			}
 
 			if (element != null && element.isDisplayed()) {
+				ExtentManager.logInfoDetails("Successfully reached to element - <b>" + targetText);
 				break;
 			} else {
 				driver.pressKey(new KeyEvent(AndroidKey.PAGE_DOWN));

@@ -104,9 +104,10 @@ public class SettingsPage extends AndroidActions {
 	}
 	
 	// Click Help options
-	public void clickHelpOptions(String helpOptionType)
+	public void clickHelpOptions(String helpOptionType) throws InterruptedException
 	{
-		switch (helpOptionType) {
+		scrollUntilElementIsVisible("General Settings");
+		switch (helpOptionType.toLowerCase()) {
 		case "help icon":
 			click(driver, iconHelp, "Help icon on settings page");
 			break;
@@ -114,6 +115,8 @@ public class SettingsPage extends AndroidActions {
 			click(driver, buttonHelp, "Help button on settings page");
 			break;
 		default:
+			ExtentManager.logFailureDetails(helpOptionType + " is not valid option. It could be 'help icon' or 'help button'. Please check");
+			Assert.fail();
 			break;
 		}
 	}
@@ -193,7 +196,7 @@ public class SettingsPage extends AndroidActions {
 	{
 		if (practiceName != "")
 		{
-			scrollToText("Address Line 1");
+			scrollUntilElementIsVisible("Address Line 1");
 			clear(inputPracticeName);
 			sendKeys(driver, inputPracticeName, "Practice name", practiceName);
 		}
@@ -213,7 +216,7 @@ public class SettingsPage extends AndroidActions {
 
 		if (address2 != "")
 		{
-			scrollToPartialText("Address Line 2");
+			scrollUntilElementIsVisible("Address Line 2");
 			clear(inputAddressLine2);
 			sendKeys(driver, inputAddressLine2, "Address Line 2", address2);
 		}
@@ -233,7 +236,7 @@ public class SettingsPage extends AndroidActions {
 		if (state != "")
 		{
 			click(driver, dropdownState, "State dropdown");
-			scrollToPartialText(state);
+			scrollUntilElementIsVisible(state);
 //			click(driver, By.xpath("//android.widget.TextView[@text='" + state + "']"), state);
 		}
 		else {

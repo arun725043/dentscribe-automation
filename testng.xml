@@ -7,8 +7,8 @@
 	<test thread-count="5" name="Test">
 		<classes>		
 		
-			<class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" />
-			
+
+		<class name="com.dentscribe.testCases.TestSettingsPage" />	
 			<!-- DONE TEST CASES -->
 			<!-- 
 			<class name="com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan" />
@@ -18,16 +18,20 @@
 			<class name="com.dentscribe.testCases.TestSmsVerificationPageAfterLogin" />
 			<class name="com.dentscribe.testCases.TestSignUpPage" />
 			<class name="com.dentscribe.testCases.TestSmsVerificationPageAfterSignup" />
+			<class name="com.dentscribe.testCases.TestSignupAndLoginWithoutRegisterPractice" />
+			<class name="com.dentscribe.testCases.TestTourPages" />
+			<class name="com.dentscribe.testCases.TestPatientSearchPage" />
+			<class name="com.dentscribe.testCases.TestForgotPasswordPage" />
 			-->
 			
 			<!-- 
 			TO BE TEST (YET APIs NOT WORKING')
-			<class name="com.dentscribe.testCases.TestSignupAndLoginWithoutRegisterPractice" />
-			<class name="com.dentscribe.testCases.TestTourPages" />
-			<class name="com.dentscribe.testCases.TestPatientSearchPage" />
-			<class name="com.dentscribe.testCases.TestForgotPassowrdPage" />
-			<class name="com.dentscribe.testCases.TestSettingsPage" />
+			
+			
+			
+			
 			<class name="com.dentscribe.testCases.TestChangePassword" />
+			<class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" />
 			<class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" />
 			-->	
 			

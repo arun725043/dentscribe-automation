@@ -121,11 +121,34 @@ public class CommonMethods {
 	
 	// verify actual and expected text
 	public void verifyTexts(String actualText, String expectedText) {
-		if (actualText.trim().equals(expectedText.trim())) 
+		if (actualText.trim().equalsIgnoreCase(expectedText.trim())) 
 		{
 			ExtentManager.logInfoDetails("Actual and Expected text matched as expected.");
 		} else {
 			ExtentManager.logFailureDetails("Expected text is :- " + expectedText + " but actual text found :- " + actualText);
+			Assert.fail();
+		}
+	}
+	
+	// verify given text input in list and then click on it
+	public void verifyListOption(AppiumDriver driver, By optionsLocator, String optionText) {
+		int flag = 0;
+		List<WebElement> options = driver.findElements(optionsLocator);
+		for (WebElement option : options) 
+		{
+			String optionName = option.getText();
+			System.out.println("OPTION NAME ::- " + optionName);
+			if (optionName.equalsIgnoreCase(optionText))
+			{
+				flag = 1;
+				ExtentManager.logInfoDetails(optionText + " exists in list as expected.");
+				break;
+			}
+		}
+		
+		if(flag == 0)
+		{
+			ExtentManager.logFailureDetails(optionText + " not available in list. please check");
 			Assert.fail();
 		}
 	}

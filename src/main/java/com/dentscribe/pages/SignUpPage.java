@@ -322,13 +322,13 @@ public class SignUpPage extends AndroidActions {
 		if (expectedResult == "confirmation popup")
 		{
 			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(textAskForContinue));
-			ExtentManager.logInfoDetails("Expected confirmation popup opened");
+			ExtentManager.logInfoDetails("<b>Expected confirmation popup opened");
 		}
 		else if (expectedResult == "signup page")
 		{
 			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(labelPMSDropdown));
 			flag = IsElementPresent(driver, labelPMSDropdown, "PMS Field");
-			ExtentManager.logInfoDetails("User come back to <b>Signup<b> page as expected");
+			ExtentManager.logInfoDetails("<b>User come back to Signup page as expected");
 		}
 		else if (expectedResult == "duplicate email")
 		{
@@ -339,7 +339,7 @@ public class SignUpPage extends AndroidActions {
 		else if (expectedResult == "sorry popup")
 		{
 			verifySorryPopup();
-			click(driver, ErrorMsgInvalidConfirmPassword, expectedResult);
+			click(driver, buttonOkay, "Okay button on Confirmation popup");
 		}
 		else {
 			ExtentManager.logFailureDetails("Expected result on continue button click could be either 'Confirmation popup' or 'error message'");

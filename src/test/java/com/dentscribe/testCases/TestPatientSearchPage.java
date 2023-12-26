@@ -59,17 +59,14 @@ public class TestPatientSearchPage extends AndroidBase {
 	public void verifyPatientSearchByPatientPhoneNumber() throws InterruptedException
 	{
 		// Search By patientMobile and verify
-		searchPage.verifySearchPatientResults("mobile", readData("testData", "patientPhone"));
+		searchPage.verifySearchPatientResults("phone", readData("testData", "patientPhone"));
 	}
 	
 	@Test (priority = 6, dependsOnMethods = { "verifyIsPatientSearchPageExists" } )
 	public void verifyPatientSearchByPatientDOB() throws InterruptedException
 	{
 		// Search By dob and verify
-		searchPage.verifySearchPatientResults("dob", readData("testData", "dob"));
-		
-		assertTrue(searchPage.verifySearchedPatient(readData("testData", "dob")));
-		ExtentManager.logInfoDetails("Search Result is displayed as per the given input");
+		searchPage.verifySearchPatientResults("dob", readData("testData", "dobSearchPage"));
 	}
 
 	@Test (priority = 7, dependsOnMethods = { "verifyIsPatientSearchPageExists" } )

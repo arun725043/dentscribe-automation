@@ -26,10 +26,12 @@ public class HelpPage extends AndroidActions {
 	public By textFaqs = By.xpath("//android.widget.TextView[@text='FAQs']");
 	
 	// FAQs question locators
-	public static By question1By = By.xpath("//XCUIElementTypeStaticText[@name='" + CommonVariables.question1 + "']");
-	public static By question2By = By.xpath("//XCUIElementTypeStaticText[@name='" + CommonVariables.question2 + "']");
-	public static By question3By = By.xpath("//XCUIElementTypeStaticText[@name='" + CommonVariables.question3 + "']");
-	public static By question4By = By.xpath("//XCUIElementTypeStaticText[@name='" + CommonVariables.question4 + "']");
+	public By question1By = By.xpath("//XCUIElementTypeStaticText[@name='" + CommonVariables.question1 + "']");
+	public By question2By = By.xpath("//XCUIElementTypeStaticText[@name='" + CommonVariables.question2 + "']");
+	public By question3By = By.xpath("//XCUIElementTypeStaticText[@name='" + CommonVariables.question3 + "']");
+	public By question4By = By.xpath("//XCUIElementTypeStaticText[@name='" + CommonVariables.question4 + "']");
+	
+	public By listQuestions = By.xpath("//android.view.ViewGroup[@resource-id='help-screen-view']//android.widget.ScrollView//android.widget.ImageView//parent::android.view.ViewGroup//following-sibling::android.widget.TextView[@index=1]");
 	
 	// _________verify help page exists or not_______
 	public void validateHelpPage()
