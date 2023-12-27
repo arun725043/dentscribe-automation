@@ -73,7 +73,7 @@ public class AndroidBase extends CommonMethods {
 			options.setDeviceName(readData("Config", "deviceName")); // emulator
 			options.setPlatformName(readData("Config", "deviceType"));
 			options.setAppPackage(readData("Config", "packageName")).setAppActivity(readData("Config", "activityName"));
-			options.setNoReset(true);
+//			options.setNoReset(true);
 //			options.setApp(System.getProperty("user.dir") + "//apk_files//app-release.apk");
 //			driver = new AndroidDriver(service.getUrl(), options);
 			driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);

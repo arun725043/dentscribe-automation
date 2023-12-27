@@ -99,7 +99,8 @@ public class SettingsPage extends AndroidActions {
 	}
 	
 	// click logout link
-	public void clickOnLogout() {
+	public void clickOnLogout() throws InterruptedException {
+		scrollUntilElementIsVisible("Log Out");
 		click(driver, buttonLogOut, "Logout button");
 	}
 	

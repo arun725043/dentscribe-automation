@@ -137,11 +137,11 @@ public class CommonMethods {
 		for (WebElement option : options) 
 		{
 			String optionName = option.getText();
-			System.out.println("OPTION NAME ::- " + optionName);
+			ExtentManager.logInfoDetails("OPTION NAME ::- " + optionName);
 			if (optionName.equalsIgnoreCase(optionText))
 			{
 				flag = 1;
-				ExtentManager.logInfoDetails(optionText + " exists in list as expected.");
+				ExtentManager.logInfoDetails("<b>" + optionText + "<b> exists in list as expected.");
 				break;
 			}
 		}

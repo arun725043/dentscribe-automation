@@ -4,9 +4,7 @@ import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
 

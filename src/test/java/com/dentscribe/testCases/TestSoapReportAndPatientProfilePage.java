@@ -10,7 +10,6 @@ import com.dentscribe.base.AndroidBase;
 
 public class TestSoapReportAndPatientProfilePage extends AndroidBase 
 {
-	String patientName = null;
 	String readAppointmentsDate = readData("testData", "shortAppointmentDate");
 	
 	@Test (priority = 1)
@@ -26,6 +25,10 @@ public class TestSoapReportAndPatientProfilePage extends AndroidBase
 		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
+		
+		//skip tour pages and go to calendar view page
+		tourPages.skipTourPages();
+		calendarPage.validateCalendarPage();
 
 		// _____________select appointments date________________
 		Thread.sleep(5000);
@@ -81,6 +84,7 @@ public class TestSoapReportAndPatientProfilePage extends AndroidBase
 		recordingPage.clickPauseStopButton("stop");
 		calendarPage.verifyPatientButton(calendarPage.patientName, "In Progress");
 		calendarPage.verifyPatientButton(calendarPage.patientName, "Review");
+		calendarPage.clickVerifyPatientAppointmentButton(calendarPage.patientName, "Review");
 		soapReportPage.validateSoapReportPage();
 	}
 	

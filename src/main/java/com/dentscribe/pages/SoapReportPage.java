@@ -90,12 +90,12 @@ public class SoapReportPage extends AndroidActions {
 		case "edit":
 			click(driver, iconEditSoapReport, "Edit icon on Soap report page");
 			IsElementPresent(driver, iconSaveSoapReport, "Save icon on Soap report page");
-			ExtentManager.logInfoDetails("Save icon visible on Edit icon click as expected");
+			ExtentManager.logInfoDetails("<b>Save icon visible on Edit icon click as expected");
 			break;
 		case "save":
 			click(driver, iconSaveSoapReport, "Save icon on Soap report page");
 			IsElementPresent(driver, iconEditSoapReport, "Edit icon on Soap report page");
-			ExtentManager.logInfoDetails("Edit icon visible on Save icon click as expected");
+			ExtentManager.logInfoDetails("<b>Edit icon visible on Save icon click as expected");
 			break;
 
 		default:

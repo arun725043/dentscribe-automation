@@ -9,32 +9,30 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Suite</th></tr>
-<tr><td><a href="#t0">Test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">28,015</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Test</a></td><td class="num">4</td><td class="num attn">4</td><td class="num">0</td><td class="num attn">1</td><td class="num">193,569</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.dentscribe.testCases.TestSettingsPage</td><td><a href="#m0">verifyLogout</a></td><td rowspan="1">1703598005487</td><td rowspan="1">10796</td></tr><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">com.dentscribe.testCases.TestSettingsPage</td><td><a href="#m1">verifyFAQsInHelpPage</a></td><td rowspan="1">1703598002670</td><td rowspan="1">2814</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td><td><a href="#m0">verifyEditSoapReportAndAddSignatureDuringEditableReport</a></td><td rowspan="1">1703682340233</td><td rowspan="1">15155</td></tr><tr><th colspan="4">Test &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="4">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td><td><a href="#m1">updateUserDetailsAndVerifySame</a></td><td rowspan="1">1703682356445</td><td rowspan="1">1</td></tr><tr class="skippedeven"><td><a href="#m2">verifyBackIconPatientProfilePage</a></td><td rowspan="1">1703682356451</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m3">verifyBackIconSoapReport</a></td><td rowspan="1">1703682356448</td><td rowspan="1">0</td></tr><tr class="skippedeven"><td><a href="#m4">verifyPatientProfilePage</a></td><td rowspan="1">1703682356450</td><td rowspan="1">0</td></tr><tr><th colspan="4">Test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="4">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td><td><a href="#m5">verifyBackIconRecordingPage</a></td><td rowspan="1">1703682252782</td><td rowspan="1">14178</td></tr><tr class="passedeven"><td><a href="#m6">verifyEditIconSoapReport</a></td><td rowspan="1">1703682339995</td><td rowspan="1">236</td></tr><tr class="passedeven"><td><a href="#m7">verifyIsRecordingPageOpenedForExpectedPatient</a></td><td rowspan="1">1703682179480</td><td rowspan="1">73296</td></tr><tr class="passedeven"><td><a href="#m8">verifyIsSoapReportCreated</a></td><td rowspan="1">1703682266961</td><td rowspan="1">73031</td></tr></tbody>
 </table>
-<h2>Test</h2><h3 id="m0">com.dentscribe.testCases.TestSettingsPage#verifyLogout</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [86e15349-9694-46bf-8d0b-42fdeeef5c05, findElement {using=-android uiautomator, value=new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().description(&quot;By.xpath: //android.widget.TextView[@text=&apos;Log Out&apos;]&quot;))}]
-Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, noReset: true, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 86e15349-9694-46bf-8d0b-42fdeeef5c05
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at com.dentscribe.utils.AndroidActions.scrollByElement(AndroidActions.java:54)
-	at com.dentscribe.testCases.TestSettingsPage.verifyLogout(TestSettingsPage.java:157)
+<h2>Test</h2><h3 id="m0">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage#verifyEditSoapReportAndAddSignatureDuringEditableReport</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: null
+	at com.dentscribe.pages.SoapReportPage.clickAdoptSignature(SoapReportPage.java:83)
+	at com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyEditSoapReportAndAddSignatureDuringEditableReport(TestSoapReportAndPatientProfilePage.java:102)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">com.dentscribe.testCases.TestSettingsPage#verifyFAQsInHelpPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage#updateUserDetailsAndVerifySame</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.updateUserDetailsAndVerifySame()[pri:6, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage#verifyBackIconPatientProfilePage</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconPatientProfilePage()[pri:9, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage#verifyBackIconSoapReport</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconSoapReport()[pri:7, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage#verifyPatientProfilePage</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyPatientProfilePage()[pri:8, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage#verifyBackIconRecordingPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage#verifyEditIconSoapReport</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage#verifyIsRecordingPageOpenedForExpectedPatient</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage#verifyIsSoapReportCreated</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

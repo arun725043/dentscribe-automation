@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>4/1/4</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Dec 26 19:09:49 IST 2023</td>
+<td>Started on:</td><td>Wed Dec 27 18:32:43 IST 2023</td>
 </tr>
-<tr><td>Total time:</td><td>28 seconds (28015 ms)</td>
+<tr><td>Total time:</td><td>193 seconds (193569 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,54 +75,17 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.dentscribe.testCases.TestSettingsPage.verifyLogout()'><b>verifyLogout</b><br>Test class: com.dentscribe.testCases.TestSettingsPage</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [86e15349-9694-46bf-8d0b-42fdeeef5c05, findElement {using=-android uiautomator, value=new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().description(&quot;By.xpath: //android.widget.TextView[@text=&apos;Log Out&apos;]&quot;))}]
-Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, noReset: true, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 86e15349-9694-46bf-8d0b-42fdeeef5c05
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at com.dentscribe.utils.AndroidActions.scrollByElement(AndroidActions.java:54)
-	at com.dentscribe.testCases.TestSettingsPage.verifyLogout(TestSettingsPage.java:157)
+<td title='com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyEditSoapReportAndAddSignatureDuringEditableReport()'><b>verifyEditSoapReportAndAddSignatureDuringEditableReport</b><br>Test class: com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td>
+<td><div><pre>java.lang.AssertionError: null
+	at com.dentscribe.pages.SoapReportPage.clickAdoptSignature(SoapReportPage.java:83)
+	at com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyEditSoapReportAndAddSignatureDuringEditableReport(TestSoapReportAndPatientProfilePage.java:102)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace482877089", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace482877089'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [86e15349-9694-46bf-8d0b-42fdeeef5c05, findElement {using=-android uiautomator, value=new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().description(&quot;By.xpath: //android.widget.TextView[@text=&apos;Log Out&apos;]&quot;))}]
-Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, noReset: true, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 86e15349-9694-46bf-8d0b-42fdeeef5c05
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at com.dentscribe.utils.AndroidActions.scrollByElement(AndroidActions.java:54)
-	at com.dentscribe.testCases.TestSettingsPage.verifyLogout(TestSettingsPage.java:157)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace313719983", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace313719983'><pre>java.lang.AssertionError: null
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.fail(Assert.java:106)
+	at com.dentscribe.pages.SoapReportPage.clickAdoptSignature(SoapReportPage.java:83)
+	at com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyEditSoapReportAndAddSignatureDuringEditableReport(TestSoapReportAndPatientProfilePage.java:102)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -152,8 +115,8 @@ Session ID: 86e15349-9694-46bf-8d0b-42fdeeef5c05
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>10</td>
-<td>com.dentscribe.testCases.TestSettingsPage@338a4c61</td></tr>
+<td>15</td>
+<td>com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -163,10 +126,145 @@ Session ID: 86e15349-9694-46bf-8d0b-42fdeeef5c05
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.dentscribe.testCases.TestSettingsPage.verifyFAQsInHelpPage()'><b>verifyFAQsInHelpPage</b><br>Test class: com.dentscribe.testCases.TestSettingsPage</td>
+<td title='com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyIsRecordingPageOpenedForExpectedPatient()'><b>verifyIsRecordingPageOpenedForExpectedPatient</b><br>Test class: com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td>
 <td></td>
-<td>2</td>
-<td>com.dentscribe.testCases.TestSettingsPage@338a4c61</td></tr>
+<td>73</td>
+<td>com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyEditIconSoapReport()'><b>verifyEditIconSoapReport</b><br>Test class: com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td>
+<td></td>
+<td>0</td>
+<td>com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyIsSoapReportCreated()'><b>verifyIsSoapReportCreated</b><br>Test class: com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td>
+<td></td>
+<td>73</td>
+<td>com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyBackIconRecordingPage()'><b>verifyBackIconRecordingPage</b><br>Test class: com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td>
+<td></td>
+<td>14</td>
+<td>com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyBackIconSoapReport()'><b>verifyBackIconSoapReport</b><br>Test class: com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td>
+<td><div><pre>java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconSoapReport()[pri:7, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1694598017", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1694598017'><pre>java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconSoapReport()[pri:7, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyPatientProfilePage()'><b>verifyPatientProfilePage</b><br>Test class: com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td>
+<td><div><pre>java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyPatientProfilePage()[pri:8, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1100001553", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1100001553'><pre>java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyPatientProfilePage()[pri:8, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyBackIconPatientProfilePage()'><b>verifyBackIconPatientProfilePage</b><br>Test class: com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td>
+<td><div><pre>java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconPatientProfilePage()[pri:9, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace267486914", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace267486914'><pre>java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconPatientProfilePage()[pri:9, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.updateUserDetailsAndVerifySame()'><b>updateUserDetailsAndVerifySame</b><br>Test class: com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</td>
+<td><div><pre>java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.updateUserDetailsAndVerifySame()[pri:6, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace285226557", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace285226557'><pre>java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.updateUserDetailsAndVerifySame()[pri:6, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a</td></tr>
 </table><p>
 </body>
 </html>

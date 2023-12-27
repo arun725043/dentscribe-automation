@@ -18,26 +18,21 @@ public class TestChangePassword extends AndroidBase
 	@Test(priority = 1)
 	public void verifyChangePasswordFromSettingsPage() throws IOException, InterruptedException {
 		
-		//__________________Application Launched_____________________
+		//_______________verify Application Launched and login_______________
 		loginPage.verifyIsApplicationLaunched();
-		
-		// Perform Login
-		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "currentPassword"), "sms page");
-
-		// login with valid credentials
-		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
+		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "newPassword"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
-		//______________validate otp and verify expected opened page______________
+		//______________validate OTP and verify expected opened page______________
 		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 
-		//skip tour pages
+		// ______________skip tour pages______________
 		tourPages.skipTourPages();
 		calendarPage.validateCalendarPage();
 		
-		// to click on setting icon on calendar page and verify settings page
+		// ______________go to settings page and verify______________
 		calendarPage.clickSettingsIconCalendarPage();
 		settingPage.validateSettingsPage();
 		
@@ -94,7 +89,7 @@ public class TestChangePassword extends AndroidBase
 	public void verifyUserShouldLoginFromNewChangedPassword() throws IOException, InterruptedException
 	{	
 		// To verify that user is able to login with new id and password
-		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "currentPassword"), "sms page");
+		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "newPassword"), "valid");
 	}
 	
 }

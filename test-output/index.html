@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
+                    <span class="method-stats">9 methods, 1 failed,  4 skipped,  4 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -104,10 +104,39 @@
                     <div class="method-list-content failed suite-Suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSettingsPage" class="method navigator-link" hash-for-method="verifyLogout">verifyLogout</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" class="method navigator-link" hash-for-method="verifyEditSoapReportAndAddSignatureDuringEditableReport">verifyEditSoapReportAndAddSignatureDuringEditableReport</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title skipped">Skipped methods</span>
+                    <span class="show-or-hide-methods skipped">
+                      <a href="#" panel-name="suite-Suite" class="hide-methods skipped suite-Suite"> (hide)</a> <!-- hide-methods skipped suite-Suite -->
+                      <a href="#" panel-name="suite-Suite" class="show-methods skipped suite-Suite"> (show)</a> <!-- show-methods skipped suite-Suite -->
+                    </span>
+                    <div class="method-list-content skipped suite-Suite">
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" class="method navigator-link" hash-for-method="updateUserDetailsAndVerifySame">updateUserDetailsAndVerifySame</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" class="method navigator-link" hash-for-method="verifyBackIconPatientProfilePage">verifyBackIconPatientProfilePage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" class="method navigator-link" hash-for-method="verifyBackIconSoapReport">verifyBackIconSoapReport</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="skipped.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" class="method navigator-link" hash-for-method="verifyPatientProfilePage">verifyPatientProfilePage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content skipped suite-Suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -118,7 +147,22 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSettingsPage" class="method navigator-link" hash-for-method="verifyFAQsInHelpPage">verifyFAQsInHelpPage</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" class="method navigator-link" hash-for-method="verifyBackIconRecordingPage">verifyBackIconRecordingPage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" class="method navigator-link" hash-for-method="verifyEditIconSoapReport">verifyEditIconSoapReport</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" class="method navigator-link" hash-for-method="verifyIsRecordingPageOpenedForExpectedPatient">verifyIsRecordingPageOpenedForExpectedPatient</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" class="method navigator-link" hash-for-method="verifyIsSoapReportCreated">verifyIsSoapReportCreated</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -136,52 +180,108 @@
           <div class="suite-Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">com.dentscribe.testCases.TestSettingsPage</span>
+              <span class="class-name">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyLogout">
-                  </a> <!-- verifyLogout -->
-                  <span class="method-name">verifyLogout</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
-Driver info: io.appium.java_client.android.AndroidDriver
-Command: [86e15349-9694-46bf-8d0b-42fdeeef5c05, findElement {using=-android uiautomator, value=new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().description(&quot;By.xpath: //android.widget.TextView[@text=&apos;Log Out&apos;]&quot;))}]
-Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, noReset: true, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:noReset: true, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
-Session ID: 86e15349-9694-46bf-8d0b-42fdeeef5c05
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-	at com.dentscribe.utils.AndroidActions.scrollByElement(AndroidActions.java:54)
-	at com.dentscribe.testCases.TestSettingsPage.verifyLogout(TestSettingsPage.java:157)
+                  <a name="verifyEditSoapReportAndAddSignatureDuringEditableReport">
+                  </a> <!-- verifyEditSoapReportAndAddSignatureDuringEditableReport -->
+                  <span class="method-name">verifyEditSoapReportAndAddSignatureDuringEditableReport</span>
+                  <div class="stack-trace">java.lang.AssertionError: null
+	at com.dentscribe.pages.SoapReportPage.clickAdoptSignature(SoapReportPage.java:83)
+	at com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyEditSoapReportAndAddSignatureDuringEditableReport(TestSoapReportAndPatientProfilePage.java:102)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames
+... Removed 29 stack frames
 </div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Suite-class-failed -->
-          <div class="suite-Suite-class-passed">
+          <div class="suite-Suite-class-skipped">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">com.dentscribe.testCases.TestSettingsPage</span>
+              <img src="skipped.png"/>
+              <span class="class-name">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyFAQsInHelpPage">
-                  </a> <!-- verifyFAQsInHelpPage -->
-                  <span class="method-name">verifyFAQsInHelpPage</span>
+                  <a name="updateUserDetailsAndVerifySame">
+                  </a> <!-- updateUserDetailsAndVerifySame -->
+                  <span class="method-name">updateUserDetailsAndVerifySame</span>
+                  <div class="stack-trace">java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.updateUserDetailsAndVerifySame()[pri:6, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyBackIconPatientProfilePage">
+                  </a> <!-- verifyBackIconPatientProfilePage -->
+                  <span class="method-name">verifyBackIconPatientProfilePage</span>
+                  <div class="stack-trace">java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconPatientProfilePage()[pri:9, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyBackIconSoapReport">
+                  </a> <!-- verifyBackIconSoapReport -->
+                  <span class="method-name">verifyBackIconSoapReport</span>
+                  <div class="stack-trace">java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconSoapReport()[pri:7, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyPatientProfilePage">
+                  </a> <!-- verifyPatientProfilePage -->
+                  <span class="method-name">verifyPatientProfilePage</span>
+                  <div class="stack-trace">java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyPatientProfilePage()[pri:8, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 18 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Suite-class-skipped -->
+          <div class="suite-Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyBackIconRecordingPage">
+                  </a> <!-- verifyBackIconRecordingPage -->
+                  <span class="method-name">verifyBackIconRecordingPage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyEditIconSoapReport">
+                  </a> <!-- verifyEditIconSoapReport -->
+                  <span class="method-name">verifyEditIconSoapReport</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyIsRecordingPageOpenedForExpectedPatient">
+                  </a> <!-- verifyIsRecordingPageOpenedForExpectedPatient -->
+                  <span class="method-name">verifyIsRecordingPageOpenedForExpectedPatient</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyIsSoapReportCreated">
+                  </a> <!-- verifyIsSoapReportCreated -->
+                  <span class="method-name">verifyIsSoapReportCreated</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -201,7 +301,7 @@ Session ID: 86e15349-9694-46bf-8d0b-42fdeeef5c05
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;com.dentscribe.testCases.TestSettingsPage&quot;/&gt;
+      &lt;class name=&quot;com.dentscribe.testCases.TestSoapReportAndPatientProfilePage&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -241,20 +341,48 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(2);
+data.addRows(9);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyLogout')
-data.setCell(0, 2, 'com.dentscribe.testCases.TestSettingsPage')
-data.setCell(0, 3, 10796);
+data.setCell(0, 1, 'verifyIsRecordingPageOpenedForExpectedPatient')
+data.setCell(0, 2, 'com.dentscribe.testCases.TestSoapReportAndPatientProfilePage')
+data.setCell(0, 3, 73296);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'verifyFAQsInHelpPage')
-data.setCell(1, 2, 'com.dentscribe.testCases.TestSettingsPage')
-data.setCell(1, 3, 2814);
+data.setCell(1, 1, 'verifyIsSoapReportCreated')
+data.setCell(1, 2, 'com.dentscribe.testCases.TestSoapReportAndPatientProfilePage')
+data.setCell(1, 3, 73031);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'verifyEditSoapReportAndAddSignatureDuringEditableReport')
+data.setCell(2, 2, 'com.dentscribe.testCases.TestSoapReportAndPatientProfilePage')
+data.setCell(2, 3, 15155);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'verifyBackIconRecordingPage')
+data.setCell(3, 2, 'com.dentscribe.testCases.TestSoapReportAndPatientProfilePage')
+data.setCell(3, 3, 14178);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'verifyEditIconSoapReport')
+data.setCell(4, 2, 'com.dentscribe.testCases.TestSoapReportAndPatientProfilePage')
+data.setCell(4, 3, 236);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'updateUserDetailsAndVerifySame')
+data.setCell(5, 2, 'com.dentscribe.testCases.TestSoapReportAndPatientProfilePage')
+data.setCell(5, 3, 1);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'verifyBackIconSoapReport')
+data.setCell(6, 2, 'com.dentscribe.testCases.TestSoapReportAndPatientProfilePage')
+data.setCell(6, 3, 0);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'verifyPatientProfilePage')
+data.setCell(7, 2, 'com.dentscribe.testCases.TestSoapReportAndPatientProfilePage')
+data.setCell(7, 3, 0);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'verifyBackIconPatientProfilePage')
+data.setCell(8, 2, 'com.dentscribe.testCases.TestSoapReportAndPatientProfilePage')
+data.setCell(8, 3, 0);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 13 seconds</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -280,24 +408,52 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">com.dentscribe.testCases.TestSettingsPage</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">com.dentscribe.testCases.TestSoapReportAndPatientProfilePage</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">launchApplication</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">verifyFAQsInHelpPage</span>
-                <span class="method-start">13437 ms</span>
+                <span class="method-name">verifyIsRecordingPageOpenedForExpectedPatient</span>
+                <span class="method-start">16027 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyBackIconRecordingPage</span>
+                <span class="method-start">89329 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyIsSoapReportCreated</span>
+                <span class="method-start">103508 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyEditIconSoapReport</span>
+                <span class="method-start">176542 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">verifyLogout</span>
-                <span class="method-start">16254 ms</span>
+                <span class="method-name">verifyEditSoapReportAndAddSignatureDuringEditableReport</span>
+                <span class="method-start">176780 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">updateUserDetailsAndVerifySame</span>
+                <span class="method-start">192992 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyBackIconSoapReport</span>
+                <span class="method-start">192995 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyPatientProfilePage</span>
+                <span class="method-start">192997 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyBackIconPatientProfilePage</span>
+                <span class="method-start">192998 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">27638 ms</span>
+                <span class="method-start">193000 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

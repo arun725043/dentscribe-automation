@@ -55,16 +55,19 @@ public class HelpPage extends AndroidActions {
 	}
 
 	//verify whether all expected questions are available or not
-	public void verifyFAQsQuestions()
+	public void verifyFAQsQuestions() throws InterruptedException
 	{
-		scrollByElement(question1By);
-		IsElementPresent(driver, question1By, CommonVariables.question1);
-		scrollByElement(question2By);
-		IsElementPresent(driver, question2By, CommonVariables.question2);
-		scrollByElement(question3By);
-		IsElementPresent(driver, question3By, CommonVariables.question3);
-		scrollByElement(question4By);
-		IsElementPresent(driver, question4By, CommonVariables.question4);
+		scrollToText(CommonVariables.question1);
+		verifyListOption(driver, listQuestions, CommonVariables.question1);
+		scrollToText(CommonVariables.question2);
+		verifyListOption(driver, listQuestions, CommonVariables.question2);
+		scrollToText(CommonVariables.question3);
+		verifyListOption(driver, listQuestions, CommonVariables.question3);
+//		scrollToText(CommonVariables.question4);
+//		Thread.sleep(5000);
+		scrollToPartialText("pause your subscription");
+		verifyListOption(driver, listQuestions, CommonVariables.question4);
+		ExtentManager.logInfoDetails("All questions are available in Help page as expected");
 	}
 
 }

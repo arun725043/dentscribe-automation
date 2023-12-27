@@ -6,13 +6,21 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.dentscribe.testCases.TestSettingsPage">
+      <class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage">
         <methods>
+          <include name="updateUserDetailsAndVerifySame"/>
           <include name="tearDown"/>
+          <include name="verifyIsSoapReportCreated"/>
+          <include name="verifyPatientProfilePage"/>
+          <include name="verifyEditIconSoapReport"/>
           <include name="launchApplication"/>
-          <include name="verifyLogout"/>
+          <include name="verifyBackIconRecordingPage"/>
+          <include name="verifyIsRecordingPageOpenedForExpectedPatient"/>
+          <include name="verifyEditSoapReportAndAddSignatureDuringEditableReport"/>
+          <include name="verifyBackIconPatientProfilePage"/>
+          <include name="verifyBackIconSoapReport"/>
         </methods>
-      </class> <!-- com.dentscribe.testCases.TestSettingsPage -->
+      </class> <!-- com.dentscribe.testCases.TestSoapReportAndPatientProfilePage -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
