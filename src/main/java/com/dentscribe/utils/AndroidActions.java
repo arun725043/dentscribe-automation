@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
+import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.common.CommonMethods;
@@ -60,25 +61,32 @@ public class AndroidActions extends CommonMethods {
 	}
 
 	// scroll using text
-	public void scrollUntilElementIsVisible(String targetText) throws InterruptedException {
-		while (true) {
-			WebElement element = null;
-			try {
-				ExtentManager.logInfoDetails("Scrolling page to find the target element - <b>" + targetText);
-				element = driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().textContains(\"" + targetText + "\"));"));
-				Thread.sleep(1000);
-			} catch (Exception e) {
-				// Element not found, continue scrolling
-				break;
+	public void scrollUntilElementIsVisible(String targetText) throws InterruptedException 
+	{
+		try {
+			while (true) {
+				WebElement element = null;
+				try {
+					ExtentManager.logInfoDetails("Scrolling page to find the target element - <b>" + targetText);
+					element = driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(" + "new UiSelector().textContains(\"" + targetText + "\"));"));
+					Thread.sleep(1000);
+				} catch (Exception e) {
+					// Element not found, continue scrolling
+					break;
+				}
+	
+				if (element != null) {
+					ExtentManager.logInfoDetails("Successfully reached to element - <b>" + targetText);
+					break;
+				} else {
+					driver.pressKey(new KeyEvent(AndroidKey.PAGE_DOWN));
+					Thread.sleep(1000);
+				}
 			}
-
-			if (element != null && element.isDisplayed()) {
-				ExtentManager.logInfoDetails("Successfully reached to element - <b>" + targetText);
-				break;
-			} else {
-				driver.pressKey(new KeyEvent(AndroidKey.PAGE_DOWN));
-				Thread.sleep(1000);
-			}
+		}
+		catch (Exception e) {
+			ExtentManager.logFailureDetails("Failed to scroll to element - " + targetText);
+			Assert.fail();
 		}
 	}
 
@@ -116,6 +124,21 @@ public class AndroidActions extends CommonMethods {
 	// __________swipe action___________
 	public void swipeAction(String direction) {
 		((JavascriptExecutor) driver).executeScript("mobile: swipeGesture", ImmutableMap.of("left", 548, "top", 690, "width", 0, "height", 1000, "direction", direction, "percent", 0.75, "duration", 5000));
+	}
+	
+	// __________this is to refresh screen__________
+	public void pullToRefreshPage(){
+
+	    int deviceWidth = driver.manage().window().getSize().getWidth();
+	    int deviceHeight = driver.manage().window().getSize().getHeight();
+	    int midX = (deviceWidth / 2);
+	    int midY = (deviceHeight / 2);
+	    int bottomEdge = (int) (deviceHeight * 0.85f);
+	    new TouchAction(driver)
+	            .press(PointOption.point(midX,midY))
+	            .waitAction(WaitOptions.waitOptions(Duration.ofMillis(5000)))
+	            .moveTo(PointOption.point(midX, bottomEdge))
+	            .release().perform();
 	}
 
 	// check all match in list

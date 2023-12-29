@@ -60,9 +60,10 @@ public class TestSoapReportAndPatientProfilePage extends AndroidBase
 
 		// _______________click on back icon again and then click OK button this time_______________
 		recordingPage.clickVerifyBackIconRecordingPage("ok");
+		calendarPage.validateCalendarPage();
 		
 		// _______________Verify the continue button on calendar view page_______________
-		calendarPage.verifyPatientButton(calendarPage.patientName, "Continue");
+		calendarPage.verifyPatientAppointmentButton(calendarPage.patientName, "Continue");
 	}
 	
 	@Test (priority = 3, dependsOnMethods = { "verifyBackIconRecordingPage" })
@@ -82,8 +83,8 @@ public class TestSoapReportAndPatientProfilePage extends AndroidBase
 		// _______________Stop recording and verify Review status_______________
 		Thread.sleep(20000);
 		recordingPage.clickPauseStopButton("stop");
-		calendarPage.verifyPatientButton(calendarPage.patientName, "In Progress");
-		calendarPage.verifyPatientButton(calendarPage.patientName, "Review");
+		calendarPage.verifyPatientAppointmentButton(calendarPage.patientName, "In Progress");
+		calendarPage.verifyPatientAppointmentButton(calendarPage.patientName, "Review");
 		calendarPage.clickVerifyPatientAppointmentButton(calendarPage.patientName, "Review");
 		soapReportPage.validateSoapReportPage();
 	}
@@ -91,22 +92,22 @@ public class TestSoapReportAndPatientProfilePage extends AndroidBase
 	@Test (priority = 4, dependsOnMethods = { "verifyIsSoapReportCreated" })
 	public void verifyEditIconSoapReport()
 	{
-		//_____________verify edit icon soap report________
+		soapReportPage.validateSoapReportPage();
+		//_____________verify edit icon soap report_____________
 		soapReportPage.clickVerifyEditSaveIconSoapReport("edit");
 	}
 	
 	@Test (priority = 5, dependsOnMethods = { "verifyEditIconSoapReport" })
 	public void verifyEditSoapReportAndAddSignatureDuringEditableReport() throws InterruptedException
 	{
-		//_____________Update signature and verified reviewed button________
+		soapReportPage.validateSoapReportPage();
+		//_____________Update signature and verified reviewed button_____________
 		soapReportPage.clickAdoptSignature();
 		soapReportPage.addSignature();
-		soapReportPage.submitSoapReport();
-		calendarPage.validateCalendarPage();
 	}
 	
 	@Test (priority = 6, dependsOnMethods = { "verifyEditSoapReportAndAddSignatureDuringEditableReport" })
-	public void updateUserDetailsAndVerifySame()
+	public void updateUserDetailsAndVerifySame() throws InterruptedException
 	{
 		soapReportPage.updateUserDetails();
 		soapReportPage.clickVerifyEditSaveIconSoapReport("save");
@@ -134,7 +135,7 @@ public class TestSoapReportAndPatientProfilePage extends AndroidBase
 		
 		// To click on patient name and verify Profile page
 		searchPage.clickPatientDetailsToOpenProfilePage(readData("testData", "patientName"));
-		assertTrue(profilePage.validatePatientProfilePage());
+		profilePage.validatePatientProfilePage();
 		profilePage.verifyProfilePageDetails(readData("testData", "patientName"), readData("testData", "dobProfilePage"), readData("testData", "lastVisitProfilePage"));
 	
 	}

@@ -3,6 +3,7 @@ package com.dentscribe.pages;
 import static org.testng.Assert.assertEquals;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
@@ -28,14 +29,13 @@ public class PatientProfilePage extends AndroidActions {
 	public By iconBackPatientProfile = By.xpath("//android.widget.TextView[@text='Patient Profile']//preceding-sibling::android.view.ViewGroup//android.widget.ImageView[@index=0]");
 	
 	// _________verify patient profile exists or not_______
-	public boolean validatePatientProfilePage()
+	public void validatePatientProfilePage()
 	{
 		if (IsElementPresent(driver, profilePageHeader, "Profile page header")) {
 			ExtentManager.logInfoDetails("User is now on expected page - <b>" + getText(profilePageHeader) + "<b>");
-			return true;
 		} else {
 			ExtentManager.logFailureDetails("Either expected page not opened or not found. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	

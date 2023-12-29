@@ -2,32 +2,32 @@
 <testng-results ignored="0" total="9" passed="4" failed="1" skipped="4">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-27T18:32:43 IST" name="Suite" finished-at="2023-12-27T18:35:57 IST" duration-ms="193569">
+  <suite started-at="2023-12-29T19:04:04 IST" name="Suite" finished-at="2023-12-29T19:06:45 IST" duration-ms="160694">
     <groups>
     </groups>
-    <test started-at="2023-12-27T18:32:43 IST" name="Test" finished-at="2023-12-27T18:35:57 IST" duration-ms="193569">
-      <class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:32:43 IST" name="launchApplication" finished-at="2023-12-27T18:32:59 IST" duration-ms="16010" status="PASS">
+    <test started-at="2023-12-29T19:04:04 IST" name="Test" finished-at="2023-12-29T19:06:45 IST" duration-ms="160694">
+      <class name="com.dentscribe.testCases.TestAllAppointmentStatuses">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:04:04 IST" name="launchApplication" finished-at="2023-12-29T19:04:23 IST" duration-ms="18719" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="verifyIsRecordingPageOpenedForExpectedPatient()[pri:1, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:32:59 IST" name="verifyIsRecordingPageOpenedForExpectedPatient" finished-at="2023-12-27T18:34:12 IST" duration-ms="73296" status="PASS">
+        <test-method signature="goToCalendarPageAndSelectAppointmentDate()[pri:0, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:04:23 IST" name="goToCalendarPageAndSelectAppointmentDate" finished-at="2023-12-29T19:05:16 IST" duration-ms="53706" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyIsRecordingPageOpenedForExpectedPatient -->
-        <test-method signature="verifyBackIconRecordingPage()[pri:2, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:34:12 IST" name="verifyBackIconRecordingPage" finished-at="2023-12-27T18:34:26 IST" depends-on-methods="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyIsRecordingPageOpenedForExpectedPatient" duration-ms="14178" status="PASS">
+        </test-method> <!-- goToCalendarPageAndSelectAppointmentDate -->
+        <test-method signature="verifyIsPatientPopupAppearingOnStartButtonClick()[pri:1, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:05:16 IST" name="verifyIsPatientPopupAppearingOnStartButtonClick" finished-at="2023-12-29T19:05:33 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.goToCalendarPageAndSelectAppointmentDate" duration-ms="16728" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyBackIconRecordingPage -->
-        <test-method signature="verifyIsSoapReportCreated()[pri:3, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:34:26 IST" name="verifyIsSoapReportCreated" finished-at="2023-12-27T18:35:39 IST" depends-on-methods="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyBackIconRecordingPage" duration-ms="73031" status="PASS">
+        </test-method> <!-- verifyIsPatientPopupAppearingOnStartButtonClick -->
+        <test-method signature="verifyStartRecordingButtonOnPatientDetailsPopupAndClick()[pri:2, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:05:33 IST" name="verifyStartRecordingButtonOnPatientDetailsPopupAndClick" finished-at="2023-12-29T19:05:45 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsPatientPopupAppearingOnStartButtonClick" duration-ms="11919" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyIsSoapReportCreated -->
-        <test-method signature="verifyEditIconSoapReport()[pri:4, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:35:39 IST" name="verifyEditIconSoapReport" finished-at="2023-12-27T18:35:40 IST" depends-on-methods="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyIsSoapReportCreated" duration-ms="236" status="PASS">
+        </test-method> <!-- verifyStartRecordingButtonOnPatientDetailsPopupAndClick -->
+        <test-method signature="verifyIsAppointmentStatusContinueAfterPauseRecording()[pri:3, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:05:45 IST" name="verifyIsAppointmentStatusContinueAfterPauseRecording" finished-at="2023-12-29T19:06:23 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyStartRecordingButtonOnPatientDetailsPopupAndClick" duration-ms="37789" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyEditIconSoapReport -->
-        <test-method signature="verifyEditSoapReportAndAddSignatureDuringEditableReport()[pri:5, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:35:40 IST" name="verifyEditSoapReportAndAddSignatureDuringEditableReport" finished-at="2023-12-27T18:35:55 IST" depends-on-methods="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyEditIconSoapReport" duration-ms="15155" status="FAIL">
+        </test-method> <!-- verifyIsAppointmentStatusContinueAfterPauseRecording -->
+        <test-method signature="verifyIsPatientPopupAppearingOnContinueButtonClick()[pri:4, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:23 IST" name="verifyIsPatientPopupAppearingOnContinueButtonClick" finished-at="2023-12-29T19:06:43 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsAppointmentStatusContinueAfterPauseRecording" duration-ms="20510" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[null]]>
@@ -36,8 +36,8 @@
               <![CDATA[java.lang.AssertionError: null
 at org.testng.Assert.fail(Assert.java:99)
 at org.testng.Assert.fail(Assert.java:106)
-at com.dentscribe.pages.SoapReportPage.clickAdoptSignature(SoapReportPage.java:83)
-at com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyEditSoapReportAndAddSignatureDuringEditableReport(TestSoapReportAndPatientProfilePage.java:102)
+at com.dentscribe.pages.CalendarPage.clickVerifyPatientAppointmentButton(CalendarPage.java:321)
+at com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsPatientPopupAppearingOnContinueButtonClick(TestAllAppointmentStatuses.java:77)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -71,14 +71,14 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyEditSoapReportAndAddSignatureDuringEditableReport -->
-        <test-method signature="updateUserDetailsAndVerifySame()[pri:6, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:35:56 IST" name="updateUserDetailsAndVerifySame" finished-at="2023-12-27T18:35:56 IST" depends-on-methods="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyEditSoapReportAndAddSignatureDuringEditableReport" duration-ms="1" status="SKIP">
+        </test-method> <!-- verifyIsPatientPopupAppearingOnContinueButtonClick -->
+        <test-method signature="verifyContinueRecordingButtonOnPatientDetailsPopupAndClick()[pri:5, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="verifyContinueRecordingButtonOnPatientDetailsPopupAndClick" finished-at="2023-12-29T19:06:44 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsPatientPopupAppearingOnContinueButtonClick" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method TestSoapReportAndPatientProfilePage.updateUserDetailsAndVerifySame()[pri:6, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods]]>
+              <![CDATA[Method TestAllAppointmentStatuses.verifyContinueRecordingButtonOnPatientDetailsPopupAndClick()[pri:5, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.updateUserDetailsAndVerifySame()[pri:6, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+              <![CDATA[java.lang.Throwable: Method TestAllAppointmentStatuses.verifyContinueRecordingButtonOnPatientDetailsPopupAndClick()[pri:5, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods
 at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -103,14 +103,14 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.Throwable -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- updateUserDetailsAndVerifySame -->
-        <test-method signature="verifyBackIconSoapReport()[pri:7, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:35:56 IST" name="verifyBackIconSoapReport" finished-at="2023-12-27T18:35:56 IST" depends-on-methods="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.updateUserDetailsAndVerifySame" duration-ms="0" status="SKIP">
+        </test-method> <!-- verifyContinueRecordingButtonOnPatientDetailsPopupAndClick -->
+        <test-method signature="verifyIsAppointmentStatusReviewAfterStopRecording()[pri:6, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="verifyIsAppointmentStatusReviewAfterStopRecording" finished-at="2023-12-29T19:06:44 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyContinueRecordingButtonOnPatientDetailsPopupAndClick" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method TestSoapReportAndPatientProfilePage.verifyBackIconSoapReport()[pri:7, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods]]>
+              <![CDATA[Method TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewAfterStopRecording()[pri:6, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconSoapReport()[pri:7, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+              <![CDATA[java.lang.Throwable: Method TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewAfterStopRecording()[pri:6, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods
 at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -135,14 +135,14 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.Throwable -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyBackIconSoapReport -->
-        <test-method signature="verifyPatientProfilePage()[pri:8, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:35:56 IST" name="verifyPatientProfilePage" finished-at="2023-12-27T18:35:56 IST" depends-on-methods="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyBackIconSoapReport" duration-ms="0" status="SKIP">
+        </test-method> <!-- verifyIsAppointmentStatusReviewAfterStopRecording -->
+        <test-method signature="addSignatureInSoapReportAndSubmit()[pri:7, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="addSignatureInSoapReportAndSubmit" finished-at="2023-12-29T19:06:44 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewAfterStopRecording" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method TestSoapReportAndPatientProfilePage.verifyPatientProfilePage()[pri:8, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods]]>
+              <![CDATA[Method TestAllAppointmentStatuses.addSignatureInSoapReportAndSubmit()[pri:7, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyPatientProfilePage()[pri:8, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+              <![CDATA[java.lang.Throwable: Method TestAllAppointmentStatuses.addSignatureInSoapReportAndSubmit()[pri:7, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods
 at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -167,14 +167,14 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.Throwable -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyPatientProfilePage -->
-        <test-method signature="verifyBackIconPatientProfilePage()[pri:9, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:35:56 IST" name="verifyBackIconPatientProfilePage" finished-at="2023-12-27T18:35:56 IST" depends-on-methods="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage.verifyPatientProfilePage" duration-ms="0" status="SKIP">
+        </test-method> <!-- addSignatureInSoapReportAndSubmit -->
+        <test-method signature="verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt()[pri:8, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt" finished-at="2023-12-29T19:06:44 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.addSignatureInSoapReportAndSubmit" duration-ms="0" status="SKIP">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method TestSoapReportAndPatientProfilePage.verifyBackIconPatientProfilePage()[pri:9, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods]]>
+              <![CDATA[Method TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt()[pri:8, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestSoapReportAndPatientProfilePage.verifyBackIconPatientProfilePage()[pri:9, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a] depends on not successfully finished methods
+              <![CDATA[java.lang.Throwable: Method TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt()[pri:8, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods
 at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
@@ -199,12 +199,12 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </exception> <!-- java.lang.Throwable -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyBackIconPatientProfilePage -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.TestSoapReportAndPatientProfilePage@65ef9a0a]" started-at="2023-12-27T18:35:56 IST" name="tearDown" finished-at="2023-12-27T18:35:57 IST" duration-ms="553" status="PASS">
+        </test-method> <!-- verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="tearDown" finished-at="2023-12-29T19:06:45 IST" duration-ms="616" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.dentscribe.testCases.TestSoapReportAndPatientProfilePage -->
+      </class> <!-- com.dentscribe.testCases.TestAllAppointmentStatuses -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

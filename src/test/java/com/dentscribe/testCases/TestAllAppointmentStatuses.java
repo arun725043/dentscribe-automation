@@ -67,7 +67,7 @@ public class TestAllAppointmentStatuses extends AndroidBase
 		Thread.sleep(30000);
 		ExtentManager.logInfoDetails("<b>Pausing recording after approx 30 seconds using Pause button");
 		recordingPage.clickPauseStopButton("pause");
-		calendarPage.verifyPatientButton(calendarPage.patientName, "Continue");
+		calendarPage.verifyPatientAppointmentButton(calendarPage.patientName, "Continue");
 	}
 	
 	@Test (priority = 4, dependsOnMethods = { "verifyIsAppointmentStatusContinueAfterPauseRecording" })
@@ -95,8 +95,8 @@ public class TestAllAppointmentStatuses extends AndroidBase
 		// _______________Stop recording and verify Review status_______________
 		Thread.sleep(20000);
 		recordingPage.clickPauseStopButton("stop");
-		calendarPage.verifyPatientButton(calendarPage.patientName, "In Progress");
-		calendarPage.verifyPatientButton(calendarPage.patientName, "Review");
+		calendarPage.verifyPatientAppointmentButton(calendarPage.patientName, "In Progress");
+		calendarPage.verifyPatientAppointmentButton(calendarPage.patientName, "Review");
 	}
 	
 	@Test (priority = 7, dependsOnMethods = { "verifyIsAppointmentStatusReviewAfterStopRecording" })
@@ -114,7 +114,7 @@ public class TestAllAppointmentStatuses extends AndroidBase
 	@Test (priority = 8, dependsOnMethods = { "addSignatureInSoapReportAndSubmit" })
 	public void verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt() throws InterruptedException
 	{	
-		calendarPage.verifyPatientButton(calendarPage.patientName, "Reviewed");
+		calendarPage.verifyPatientAppointmentButton(calendarPage.patientName, "Reviewed");
 
 		// ___________verify Reviewed button and check whether SOAP Report page opened or not
 		calendarPage.clickVerifyPatientAppointmentButton(calendarPage.patientName, "Reviewed");

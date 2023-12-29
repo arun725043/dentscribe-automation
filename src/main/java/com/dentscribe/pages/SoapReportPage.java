@@ -2,8 +2,6 @@ package com.dentscribe.pages;
 
 import org.testng.Assert;
 
-import static org.testng.Assert.assertTrue;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -33,8 +31,8 @@ public class SoapReportPage extends AndroidActions {
 
 	// _________locators______
 	public By iconBackSoapReport = By.className("android.widget.ImageView");
-	public By iconEditSoapReport = By.className("android.widget.ImageView");
-	public By iconSaveSoapReport = By.className("android.widget.ImageView");
+	public By iconEditSoapReport = By.xpath("//android.widget.TextView[@text=' Review and sign the report.']//following-sibling::android.view.ViewGroup//android.widget.ImageView");
+	public By iconSaveSoapReport = By.xpath("//android.widget.TextView[@text=' Review and sign the report.']//following-sibling::android.view.ViewGroup//android.widget.TextView");
 
 	// Soap report locators
 	public By buttonAdoptSignature = By.xpath("//android.widget.TextView[@text='Adopt Signature']");
@@ -60,7 +58,7 @@ public class SoapReportPage extends AndroidActions {
 		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(CommonLocators.soapReportHeader));
 		if(IsElementPresent(driver, CommonLocators.soapReportHeader, "SOAP Report header"))
 		{
-			ExtentManager.logInfoDetails("User is now on <b>SOAP Report<b> page as expected");
+			ExtentManager.logInfoDetails("<b>User is now on SOAP Report page as expected");
 		}
 		else {
 			ExtentManager.logFailureDetails("Either expected SOAP report not opened or not exists or not found. Please check");
@@ -112,7 +110,7 @@ public class SoapReportPage extends AndroidActions {
 			click(driver, thirdSignature, "3rd Signature in list");
 			click(driver, buttonSubmitSignaturePopup, "Submit button signature popup");
 			scrollUntilElementIsVisible("Signature");
-			explicitWait(driver, labelSignature, 10);
+//			IsElementPresent(driver, labelSignature, "Signature");
 			ExtentManager.logInfoDetails("Signature added successfully and appearing on SOAP Report");
 		}
 		catch (Exception e) {
@@ -141,21 +139,28 @@ public class SoapReportPage extends AndroidActions {
 		}
 	}
 
-	public void updateUserDetails() {
+	public void updateUserDetails() throws InterruptedException {
+		scrollUntilElementIsVisible("License");
 		clear(name);
 		nameValue = CommonMethods.genrateRandomFirstName();
 		sendKeys(driver, name, "Name field", nameValue);
 
 		clear(title);
-		sendKeys(driver, title, "Title field", "BDS");
+		titleValue = "BDS";
+		sendKeys(driver, title, "Title field", titleValue);
 
 		clear(license);
 		licenseValue = CommonMethods.GenerateRandomNumber(5);
 		sendKeys(driver, license, "License field", licenseValue);
 	}
 
-	public void verifyUpdatedUserDetails() {
-		scrollToText("Submit");
+	public void verifyUpdatedUserDetails() throws InterruptedException {
+		scrollUntilElementIsVisible("Submit");
+		ExtentManager.logInfoDetails("saved name ::- " + nameValue + " and actual found ::-<b>" + getAttribute(name));
+		ExtentManager.logInfoDetails("saved license ::- " + licenseValue + " and actual found ::-<b>" + getAttribute(license));
+		ExtentManager.logInfoDetails("saved title ::- " + titleValue + " and actual found ::-<b>" + getAttribute(title));
+		
+		
 		if (nameValue.equals(getAttribute(name)) && licenseValue.equals(getAttribute(license))
 				&& titleValue.equals(getAttribute(title))) {
 			ExtentManager.logInfoDetails("All values updated successfully as expected");

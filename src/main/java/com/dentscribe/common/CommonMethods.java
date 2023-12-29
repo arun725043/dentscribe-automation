@@ -60,6 +60,18 @@ public class CommonMethods {
 		}
 	}
 	
+	// To return element present
+	public boolean IsElementNotPresentThenContinue(AppiumDriver driver, By locator, String expectedElement) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		try {
+			driver.findElement(locator);
+			ExtentManager.logInfoDetails("Expected element found :: - <b>'" + expectedElement + "'<b>.");
+			return true; // Success!
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 	// To return element present in sikka webview
 	public boolean IsAgreeButtonPresent(AppiumDriver driver, By locator, String expectedElement) {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));

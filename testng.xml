@@ -7,7 +7,7 @@
 	<test thread-count="5" name="Test">
 		<classes>		
 
-			<class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" />
+			<class name="com.dentscribe.testCases.TestAllAppointmentStatuses" />
 			
 			<!-- DONE TEST CASES -->
 			<!-- 
@@ -24,6 +24,7 @@
 			<class name="com.dentscribe.testCases.TestForgotPasswordPage" />
 			<class name="com.dentscribe.testCases.TestSettingsPage" />
 			<class name="com.dentscribe.testCases.TestChangePassword" />
+			<class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" />
 			-->
 			
 			<!-- 
