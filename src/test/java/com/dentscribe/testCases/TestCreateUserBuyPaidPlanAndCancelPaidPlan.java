@@ -36,7 +36,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 
 			// ________________Enter OTP__________________
 			assertTrue(signUpPage.clickSignupConfirmationPopupButtons("continue"));
-			getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+			getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 			smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 			practiceInfoPage.validatePracticeInfoPage();
 		} catch (Exception e) {
@@ -49,7 +49,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 	public void verifyCreatePracticeInfo() throws IOException, InterruptedException {
 		try {
 			// _________________fill Practice form and Navigate to Sikka page________________________
-			practiceInfoPage.fillPracticeInfo(readData("testData", "state"), readData("testData", "country"));
+			practiceInfoPage.fillPracticeInfo(readData(CommonVariables.inputFileTestData, "state"), readData(CommonVariables.inputFileTestData, "country"));
 			practiceInfoPage.clickContinueButtonPracticeInfo();
 			Thread.sleep(20000);
 			assertTrue(sikkaWebviewPage.validateSikkaWebViewPage());
@@ -82,7 +82,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		Thread.sleep(5000);
 
 		// __________________Fill the confirmation page______________________________
-		sikkaWebviewPage.enterExistingSikkaCredentials(readData("userDetails", "existingSikkaUser"), readData("userDetails", "existingSikkaPwd"));
+		sikkaWebviewPage.enterExistingSikkaCredentials(readData(CommonVariables.inputFileUserDetails, "existingSikkaUser"), readData(CommonVariables.inputFileUserDetails, "existingSikkaPwd"));
 		explicitWait(driver, loginPage.labelUsername, 60);
 		loginPage.validateLoginPage();
 		ExtentManager.logInfoDetails("<b>Practice created successfully");
@@ -95,7 +95,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 			loginPage.loginApplication(email, CommonVariables.actualPass, "spu popup");
 			
 			// _______________By pass the manual sikka refresh steps and refreshing sikka data_______________
-			GetOtp.updateOfficeId(email, readData("testData", "dentrix"));
+			GetOtp.updateOfficeId(email, readData(CommonVariables.inputFileTestData, "dentrix"));
 			ExtentManager.logInfoDetails("Sikka refresh done");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -112,7 +112,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 			// Click skip and verify tour page
 			assertTrue(loginPage.clickBiometricPopupButton("skip"));
 			
-			getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+			getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 			smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 			eulaPage.validateEulaAgreementPage();
 			eulaPage.clickContinueButtonEulaAgreementPage();
@@ -134,8 +134,8 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		
 		
 		String cardHolderName = CommonMethods.genrateRandomFirstName();
-		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
-				readData("testData", "cvc"), readData("testData", "zipcode"));
+		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData(CommonVariables.inputFileTestData, "cardNo"), readData(CommonVariables.inputFileTestData, "expiry"), 
+				readData(CommonVariables.inputFileTestData, "cvc"), readData(CommonVariables.inputFileTestData, "zipcode"));
 		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
 		manageSubscriptionPage.verifyCardHolderName(cardHolderName);
 		manageSubscriptionPage.clickContinueButtonSubscriptionPage();
@@ -154,6 +154,10 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 	@Test(priority = 6, dependsOnMethods = { "verifyCanUserBuyPaidPlan" })
 	public void verifyCanUserCancelSubscription() throws InterruptedException 
 	{
+		// ________________Save username and password for other test case________________
+		writeData(CommonVariables.inputFileUserDetails, "newUser", email);
+		writeData(CommonVariables.inputFileUserDetails, "newPassword", CommonVariables.actualPass);
+		
 		// ________________Cancel subscription________________
 		click(driver, settingPage.buttonCancel, "Cancel button");
 		
@@ -177,7 +181,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		// Click skip and verify tour page
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
-		getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 		
@@ -197,8 +201,8 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 		// ______________Fill payment details__________________
 		manageSubscriptionPage.clickPaymentMethodButton("edit");
 		String cardHolderName = CommonMethods.genrateRandomFirstName();
-		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), readData("testData", "expiry"), 
-				readData("testData", "cvc"), readData("testData", "zipcode"));
+		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData(CommonVariables.inputFileTestData, "cardNo"), readData(CommonVariables.inputFileTestData, "expiry"), 
+				readData(CommonVariables.inputFileTestData, "cvc"), readData(CommonVariables.inputFileTestData, "zipcode"));
 		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
 		manageSubscriptionPage.verifyCardHolderName(cardHolderName);
 	}

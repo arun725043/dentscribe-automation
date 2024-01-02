@@ -230,12 +230,10 @@ public class CalendarPage extends AndroidActions {
 		try 
 		{
 			listOfPatient = driver.findElements(By.xpath(startButtonBeforeName));
-			ExtentManager.logInfoDetails("START BUTTON BEFORE PATIENT NAME COUNT ::- " + listOfPatient.size());
+//			ExtentManager.logInfoDetails("START BUTTON BEFORE PATIENT NAME COUNT ::- " + listOfPatient.size());
 			if (listOfPatient.size() >= 1)
 			{
-				ExtentManager.logInfoDetails("I AM IN IF BLOCK");
-//				flag = true;
-				ExtentManager.logInfoDetails("after if size of list " + listOfPatient.size());
+//				ExtentManager.logInfoDetails("I AM IN IF BLOCK");
 				for (int i = 0; i < listOfPatient.size(); i++) {
 					patientName = listOfPatient.get(i).getText();
 					ExtentManager.logInfoDetails("Start button click for patient - <b>" + patientName);
@@ -245,12 +243,11 @@ public class CalendarPage extends AndroidActions {
 				}
 			}
 			else {
-				ExtentManager.logInfoDetails("I AM IN ELSE BLOCK");
+//				ExtentManager.logInfoDetails("I AM IN ELSE BLOCK");
 				listOfPatient = driver.findElements(By.xpath(startButtonAfterName));
 				ExtentManager.logInfoDetails("START BUTTON AFTER PATIENT NAME COUNT ::- " + listOfPatient.size());
 				if (listOfPatient.size() >= 1)
 				{
-//					flag = true;
 					for (int i = 0; i < listOfPatient.size(); i++) {
 						patientName = listOfPatient.get(i).getText();
 						if (patientName.equals("Start")) {
@@ -263,12 +260,6 @@ public class CalendarPage extends AndroidActions {
 					}
 				}
 			}
-			
-//			if (flag == false)
-//			{
-//				ExtentManager.logFailureDetails("No appointment found which has Start status");
-//				Assert.fail();
-//			}
 		}
 		catch (Exception e) {
 			ExtentManager.logFailureDetails("Either no appointments avalaible in calendar view or given locator is no more valid. please check");
@@ -278,64 +269,63 @@ public class CalendarPage extends AndroidActions {
 	
 	public void clickVerifyPatientAppointmentButton(String patient, String buttonName) throws InterruptedException
 	{
+		int check = 0;
 		String patientAppointmentStatusPath1 = "//android.widget.TextView[@text='" + patient
 				+ "']//parent::android.view.ViewGroup//preceding-sibling::android.view.ViewGroup//android.widget.TextView[@text='"
 				+ buttonName + "'][@index=1]";
 		String patientAppointmentStatusPath2 = "//android.widget.TextView[@text='" + patient
-				+ "']//parent::android.view.ViewGroup//following-sibling::android.view.ViewGroup[@index=1]//android.view.ViewGroup//android.widget.TextView[@text='"
+				+ "']//parent::android.view.ViewGroup[@index=0]//following-sibling::android.view.ViewGroup[@index=1]//android.view.ViewGroup//android.widget.TextView[@text='"
 				+ buttonName + "'][@index=1]";
 		
-		ExtentManager.logInfoDetails(patientAppointmentStatusPath1);
-		ExtentManager.logInfoDetails(patientAppointmentStatusPath2);
-		
-		try {
-			if (IsElementPresent(driver, By.xpath(patientAppointmentStatusPath1), buttonName + " button"))
-			{
-				ExtentManager.logInfoDetails("HELLO-1");
-				click(driver, By.xpath(patientAppointmentStatusPath1), buttonName + " button of patient - " + patient);
-			}
+		if (IsElementNotPresentThenContinue(driver, By.xpath(patientAppointmentStatusPath1), buttonName + " button"))
+		{
+			click(driver, By.xpath(patientAppointmentStatusPath1), buttonName + " button of patient - " + patient);
+			check = 1;
 		}
-		catch (Exception e) {
-			ExtentManager.logInfoDetails("IN CATCH BLOCK");
-			if (IsElementPresent(driver, By.xpath(patientAppointmentStatusPath2), buttonName + " button"))
-			{
-				ExtentManager.logInfoDetails("HELLO-2");
-				click(driver, By.xpath(patientAppointmentStatusPath2), buttonName + " button of patient - " + patient);
-			}
-			else {
-				ExtentManager.logFailureDetails(buttonName + " not found. please check");
-				Assert.fail();
-			}
+		else if (IsElementNotPresentThenContinue(driver, By.xpath(patientAppointmentStatusPath2), buttonName + " button"))
+		{
+			click(driver, By.xpath(patientAppointmentStatusPath2), buttonName + " button of patient - " + patient);
+			check = 1;
+		}
+		else {
+			ExtentManager.logFailureDetails(buttonName + " not found. please check");
+			Assert.fail();
 		}
 		
-//		ExtentManager.logInfoDetails(buttonName + " button click for patient name - " + pName);
-		Thread.sleep(10000);
-		if (buttonName == "Continue")
+		if (check == 1)
 		{
-			if (IsElementPresent(driver, popupPatientDetails, "Patient Details popup"))
+			Thread.sleep(10000);
+			if (buttonName == "Continue")
 			{
-				ExtentManager.logInfoDetails("Expected <b>Patient Deatils<b> popup opened for patient name - <b>" + patient);
+				if (IsElementPresent(driver, popupPatientDetails, "Patient Details popup"))
+				{
+					ExtentManager.logInfoDetails("Expected <b>Patient Deatils<b> popup opened for patient name - <b>" + patient);
+				}
+				else {
+					ExtentManager.logFailureDetails("Either <b>Patient Details<b> popup not opened/found or verifying value not matched. please check");
+					Assert.fail();
+				}
+			}
+			else if (buttonName == "Review" || buttonName == "Reviewed")
+			{
+				ExtentManager.logInfoDetails("<b> Button name is " + buttonName +" for patient " + patient + " as expected on Calendar View");
+				AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(CommonLocators.soapReportSubjectiveHeader));
+				if (IsElementPresent(driver, CommonLocators.soapReportHeader, "SOAP Report") && IsElementPresent(driver, CommonLocators.soapReportSubjectiveHeader, "Subjective"))
+				{
+					ExtentManager.logInfoDetails("<b>Expected SOAP Report page opened for patient name - <b>" + patient);
+				}
+				else {
+					ExtentManager.logFailureDetails("Either <b>SOAP Report<b> page not opened/found or Subjective header is missing. please check");
+					Assert.fail();
+				}
 			}
 			else {
-				ExtentManager.logFailureDetails("Either <b>Patient Deatils<b> popup not opened/found or verifying value not matched. please check");
-				Assert.fail();
-			}
-		}
-		else if (buttonName == "Review" || buttonName == "Reviewed")
-		{
-			ExtentManager.logInfoDetails("<b> Button name is " + buttonName +" for patient " + patient + " as expected on Calendar View");
-			AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(CommonLocators.soapReportSubjectiveHeader));
-			if (IsElementPresent(driver, CommonLocators.soapReportHeader, "SOAP Report") && IsElementPresent(driver, CommonLocators.soapReportSubjectiveHeader, "Subjective"))
-			{
-				ExtentManager.logInfoDetails("<b>Expected SOAP Report page opened for patient name - <b>" + patient);
-			}
-			else {
-				ExtentManager.logFailureDetails("Either <b>SOAP Report<b> page not opened/found or Subjective header is missing. please check");
+				ExtentManager.logFailureDetails("Expected button name not found. Button name could be only Continue/Review/Reviewed. please check");
 				Assert.fail();
 			}
 		}
 		else {
-			ExtentManager.logFailureDetails("Expected button name not found. Button name could be only Continue/Review/Reviewed. please check");
+			ExtentManager.logFailureDetails("Failed to find '" + buttonName + "' on calender view. please check");
 			Assert.fail();
 		}
 	}

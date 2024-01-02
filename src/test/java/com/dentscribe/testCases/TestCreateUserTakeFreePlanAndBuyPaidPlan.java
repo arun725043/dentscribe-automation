@@ -37,12 +37,12 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 
 			// ________________Enter OTP__________________
 			assertTrue(signUpPage.clickSignupConfirmationPopupButtons("continue"));
-			getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+			getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 			smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 			practiceInfoPage.validatePracticeInfoPage();
 			
 			// _________________fill Practice form and Navigate to Sikka page________________________
-			practiceInfoPage.fillPracticeInfo(readData("testData", "state"), readData("testData", "country"));
+			practiceInfoPage.fillPracticeInfo(readData(CommonVariables.inputFileTestData, "state"), readData(CommonVariables.inputFileTestData, "country"));
 			practiceInfoPage.clickContinueButtonPracticeInfo();
 			Thread.sleep(20000);
 			assertTrue(sikkaWebviewPage.validateSikkaWebViewPage());
@@ -68,7 +68,7 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 			Thread.sleep(5000);
 
 			// __________________Fill the confirmation page______________________________
-			sikkaWebviewPage.enterExistingSikkaCredentials(readData("userDetails", "existingSikkaUser"), readData("userDetails", "existingSikkaPwd"));
+			sikkaWebviewPage.enterExistingSikkaCredentials(readData(CommonVariables.inputFileUserDetails, "existingSikkaUser"), readData(CommonVariables.inputFileUserDetails, "existingSikkaPwd"));
 			explicitWait(driver, loginPage.labelUsername, 60);
 			loginPage.validateLoginPage();
 			ExtentManager.logInfoDetails("<b>Practice created successfully");
@@ -77,7 +77,7 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 			loginPage.loginApplication(email, CommonVariables.actualPass, "spu popup");
 			
 			// _______________By pass the manual sikka refresh steps and refreshing sikka data_______________
-			GetOtp.updateOfficeId(email, readData("testData", "dentrix"));
+			GetOtp.updateOfficeId(email, readData(CommonVariables.inputFileTestData, "dentrix"));
 			ExtentManager.logInfoDetails("Sikka refresh done");
 			
 			// ___________login application again and go to subscription page_________________
@@ -86,7 +86,7 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 			// Click skip and verify tour page
 			assertTrue(loginPage.clickBiometricPopupButton("skip"));
 			
-			getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+			getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 			smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 			eulaPage.validateEulaAgreementPage();
 			eulaPage.clickContinueButtonEulaAgreementPage();
@@ -110,12 +110,12 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 	{
 		addPaymentMethodPage.validateMandatoryFieldsErrorMessages();
 		String cardHolderName = CommonMethods.genrateRandomFirstName();
-		addPaymentMethodPage.addPaymentMethod(cardHolderName, "4242 4242 4242 4243", readData("testData", "expiry"), readData("testData", "cvc"), readData("testData", "zipcode"));
+		addPaymentMethodPage.addPaymentMethod(cardHolderName, "4242 4242 4242 4243", readData(CommonVariables.inputFileTestData, "expiry"), readData(CommonVariables.inputFileTestData, "cvc"), readData(CommonVariables.inputFileTestData, "zipcode"));
 		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
 		wait.until(ExpectedConditions.visibilityOfElementLocated(CommonLocators.errorMessageCardDetailsNotAdded));
 		verifyTexts(getText(CommonLocators.errorMessageCardDetailsNotAdded), CommonVariables.errorMsgTextCardDetailsNotAdded);
 		
-		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData("testData", "cardNo"), "12/75", readData("testData", "cvc"), readData("testData", "zipcode"));
+		addPaymentMethodPage.addPaymentMethod(cardHolderName, readData(CommonVariables.inputFileTestData, "cardNo"), "12/75", readData(CommonVariables.inputFileTestData, "cvc"), readData(CommonVariables.inputFileTestData, "zipcode"));
 		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
 		ExtentManager.logInfoDetails(CommonVariables.errorMsgTextInvalidCardExpiry);
 	}
@@ -157,8 +157,8 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 		addPaymentMethodPage.validateAddPaymentMethodPage();
 
 		// ______________Fill payment details__________________
-		addPaymentMethodPage.addPaymentMethod(CommonMethods.genrateRandomFirstName(), readData("testData", "cardNo"), readData("testData", "expiry"), 
-				readData("testData", "cvc"), readData("testData", "zipcode"));
+		addPaymentMethodPage.addPaymentMethod(CommonMethods.genrateRandomFirstName(), readData(CommonVariables.inputFileTestData, "cardNo"), readData(CommonVariables.inputFileTestData, "expiry"), 
+				readData(CommonVariables.inputFileTestData, "cvc"), readData(CommonVariables.inputFileTestData, "zipcode"));
 		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
 		ExtentManager.logInfoDetails("payment successful! subscription active.");
 		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());

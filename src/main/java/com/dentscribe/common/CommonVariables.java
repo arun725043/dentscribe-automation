@@ -10,6 +10,12 @@ public class CommonVariables
 	public static String generateSMS_OtpApi = "https://api-dev.dentscribe.ai/api/otp/sendSms";
 	public static String updateOfficeIdApi = "https://api-dev.dentscribe.ai/api/practice/emailId";
 	
+	// Test Data properties files
+	public static String inputFileConfig = "Config";
+	public static String inputFileUserDetails = "UserDetails";
+	public static String inputFileTestData = "TestData";
+	public static String inputFileChangePassword = "ChangePassword";	
+	
 	//Common variables
 	public static String email = null;
 	public static String actualPass = null;

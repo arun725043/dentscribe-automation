@@ -22,7 +22,7 @@ public class TestSignupAndLoginWithoutRegisterPractice extends AndroidBase {
 		signUpPage.validateSignupPage();
 
 		// ________fill form and verify confirmation popup___________
-		signUpPage.fillSignupForm(genrateRandomFirstName(), "", readData("testData", "countryCode"), readData("testData", "mobile"), emailString, 
+		signUpPage.fillSignupForm(genrateRandomFirstName(), "", readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"), emailString, 
 				"", "", "", String.valueOf(GenerateRandomNumber(6)), passwordString, passwordString, "Eaglesoft");
 		signUpPage.clickVerifySignUpContinueButton("sorry popup");
 		
@@ -52,7 +52,7 @@ public class TestSignupAndLoginWithoutRegisterPractice extends AndroidBase {
 		signUpPage.clickSignupConfirmationPopupButtons("continue");
 		smsVerificationPage.validateSmsVerificationPage();
 		//______________validate otp and verify expected opened page______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		// verify whether practice info page opened
 		practiceInfoPage.validatePracticeInfoPage();

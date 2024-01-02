@@ -346,7 +346,6 @@ public class CommonMethods {
 	{
 		 DateFormat df = new SimpleDateFormat("dd-MMMM-yyyy");
 	     String formattedDate = df.format(new Date());
-	     
 	     System.out.println("Formated Date:" + formattedDate);
 	     
 	     String[] seperateDate = formattedDate.split("-");
@@ -354,20 +353,16 @@ public class CommonMethods {
 	     String month = seperateDate[1];
 	     String year = seperateDate[2];
 	     
-	     
 		String monthYear = month + " " + year;
 		return monthYear;
 	}
 	
-	public static void recordingTime(int minutes) throws InterruptedException
+	//Wait for minutes
+	public void doRecordingForMinutes(AppiumDriver driver, int minutes) throws InterruptedException
 	{
-		long time = 1000 * 60 * minutes;
-		Thread.sleep(time);
 		ExtentManager.logInfoDetails("<b>Recording is running for " + minutes + " minutes");
+		int seconds = minutes * 60000;
+		Thread.sleep(seconds);
+		
 	}
-	
-	//perform wait till loader disappear
-//	public void waitUntilLoaderDisappear(AppiumDriver driver) {
-//		new WebDriverWait(driver, Duration.ofSeconds(120)).until(ExpectedConditions.invisibilityOfElementLocated(locator));
-//	}
 }

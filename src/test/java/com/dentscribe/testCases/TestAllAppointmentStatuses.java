@@ -9,10 +9,11 @@ import org.testng.annotations.Test;
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
+import com.dentscribe.common.CommonVariables;
 
 public class TestAllAppointmentStatuses extends AndroidBase 
 {	
-	String readAppointmentsDate = readData("testData", "shortAppointmentDate");
+	String readAppointmentsDate = readData(CommonVariables.inputFileTestData, "appointmentDate");
 	
 	@Test (priority = 0)
 	public void goToCalendarPageAndSelectAppointmentDate() throws IOException, InterruptedException 
@@ -21,11 +22,11 @@ public class TestAllAppointmentStatuses extends AndroidBase
 		loginPage.verifyIsApplicationLaunched();
 		
 		// _______________login with valid credentials_______________
-		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), readData(CommonVariables.inputFileUserDetails, "password"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		// _______________validate otp and verify expected opened page_______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 		
@@ -67,6 +68,7 @@ public class TestAllAppointmentStatuses extends AndroidBase
 		Thread.sleep(30000);
 		ExtentManager.logInfoDetails("<b>Pausing recording after approx 30 seconds using Pause button");
 		recordingPage.clickPauseStopButton("pause");
+		calendarPage.validateCalendarPage();
 		calendarPage.verifyPatientAppointmentButton(calendarPage.patientName, "Continue");
 	}
 	

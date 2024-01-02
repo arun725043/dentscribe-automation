@@ -1,7 +1,6 @@
 package com.dentscribe.pages;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
 import java.util.List;
@@ -39,16 +38,27 @@ public class PatientSearchPage extends AndroidActions {
 	public By iconBackPatientSearch = By.xpath("//*[contains(@text,'Welcome,')]//parent::android.view.ViewGroup//preceding-sibling::android.view.ViewGroup/android.view.ViewGroup//android.widget.ImageView");
 	
 
-	// _________verify calendar page exists or not_______
-	public boolean validatePatientSearchPage()
+	// _________verify patient search page before search value__________
+	public void validatePatientSearchPage()
 	{
 		fetchingPatientLoader();
 		if (IsElementPresent(driver, inputSearchTextbox, "Search patient textbox")) {
 			ExtentManager.logInfoDetails("User is now on <b> Patient Search page <b> as expected");
-			return true;
 		} else {
-			ExtentManager.logFailureDetails("Either expected search patient textbox not found or not exists. please check");
-			return false;
+			ExtentManager.logFailureDetails("Either both expected search patient textbox and search note not found or not exists. please check");
+			Assert.fail();
+		}
+	}
+	
+	// _________verify patient search page after search value exists or not_______
+	public void validateSearchFormatNoteSearchPage()
+	{
+		fetchingPatientLoader();
+		if (IsElementPresent(driver, searchNote, "Search note")) {
+			ExtentManager.logInfoDetails("User is now on <b> Patient Search page <b> as expected");
+		} else {
+			ExtentManager.logFailureDetails("Either both expected search patient textbox and search note not found or not exists. please check");
+			Assert.fail();
 		}
 	}
 	

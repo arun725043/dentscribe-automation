@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
+import com.dentscribe.common.CommonVariables;
 
 
 public class TestSmsVerificationPageAfterLogin extends AndroidBase 
@@ -15,7 +16,7 @@ public class TestSmsVerificationPageAfterLogin extends AndroidBase
 	{
 		loginPage.verifyIsApplicationLaunched();
 		// login with valid credentials
-		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), readData(CommonVariables.inputFileUserDetails, "password"), "valid");
 	}
 	
 	@Test (priority = 2, dependsOnMethods = { "verifyIsSmsVerificationPageExistsAfterLogin" })
@@ -32,7 +33,7 @@ public class TestSmsVerificationPageAfterLogin extends AndroidBase
 	public void verifySmsVerificationWithWrongOtp() throws InterruptedException
 	{
 		// ____________validate OTP with wrong value_____________
-		smsVerificationPage.validateErrorMessageForBlankWrongOTP(readData("testData", "otp"));
+		smsVerificationPage.validateErrorMessageForBlankWrongOTP(readData(CommonVariables.inputFileTestData, "otp"));
 		Thread.sleep(5000);
 	}
 	
@@ -56,11 +57,11 @@ public class TestSmsVerificationPageAfterLogin extends AndroidBase
 	public void verifySmsVerificationWithValidOtp() throws IOException, InterruptedException
 	{
 		// login with valid credentials
-		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), readData(CommonVariables.inputFileUserDetails, "password"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		//______________validate otp and verify expected opened page______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 	}

@@ -4,16 +4,14 @@
 	<listeners>
 		<listener class-name="com.dentscribe.ExtentReport.TestListeners" />
 	</listeners>
-	<test thread-count="5" name="Test">
-		<classes>		
-
-			<class name="com.dentscribe.testCases.TestAllAppointmentStatuses" />
+	<test thread-count="1" name="Test">
+		<classes>
 			
 			<!-- DONE TEST CASES -->
-			<!-- 
 			<class name="com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan" />
 			<class name="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan" />
 			<class name="com.dentscribe.testCases.TestAllAppointmentStatuses" />
+			<class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" />
 			<class name="com.dentscribe.testCases.TestLoginPage" />
 			<class name="com.dentscribe.testCases.TestSmsVerificationPageAfterLogin" />
 			<class name="com.dentscribe.testCases.TestSignUpPage" />
@@ -24,17 +22,10 @@
 			<class name="com.dentscribe.testCases.TestForgotPasswordPage" />
 			<class name="com.dentscribe.testCases.TestSettingsPage" />
 			<class name="com.dentscribe.testCases.TestChangePassword" />
-			<class name="com.dentscribe.testCases.TestSoapReportAndPatientProfilePage" />
-			-->
-			
-			<!-- 
-			iOS XML FILE
-			<class name="com.dentscribe.testCases_iOS.TestFeedbackAndNewFeedbackPages" />
-			<class name="com.dentscribe.testCases_iOS.TestRecordingfor10mintsAndGenerateSoapReport" />
-			
-			<class name="com.dentscribe.testCases_iOS.TestRecordingfor30mintsAndGenerateSoapReport" /> 
-			<class name="com.dentscribe.testCases_iOS.TestRecordingfor50mintsAndGenerateSoapReport" />
-			-->
+			<class name="com.dentscribe.testCases.TestFeedbackAndNewFeedbackPages" />
+			<class name="com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport" />
+			<class name="com.dentscribe.testCases.TestRecordingfor30mintsAndGenerateSoapReport" />
+			<class name="com.dentscribe.testCases.TestRecordingfor50mintsAndGenerateSoapReport" />
 			
 		</classes>
 	</test>

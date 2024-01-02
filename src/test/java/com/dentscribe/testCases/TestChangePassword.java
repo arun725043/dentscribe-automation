@@ -10,6 +10,7 @@ import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
 import com.dentscribe.common.CommonLocators;
 import com.dentscribe.common.CommonMethods;
+import com.dentscribe.common.CommonVariables;
 
 public class TestChangePassword extends AndroidBase
 {	
@@ -20,11 +21,11 @@ public class TestChangePassword extends AndroidBase
 		
 		//_______________verify Application Launched and login_______________
 		loginPage.verifyIsApplicationLaunched();
-		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "newPassword"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileChangePassword, "username"), readData(CommonVariables.inputFileChangePassword, "newPassword"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		//______________validate OTP and verify expected opened page______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 
@@ -66,30 +67,30 @@ public class TestChangePassword extends AndroidBase
 		// _________________input old password______________________
 		actions.scrollToPartialText("Current Password");
 		clear(settingPage.inputCurrentPassword);
-		sendKeys(driver, settingPage.inputCurrentPassword, "Old Password field", readData("ChangePassword", "newPassword"));
+		sendKeys(driver, settingPage.inputCurrentPassword, "Old Password field", readData(CommonVariables.inputFileChangePassword, "newPassword"));
 		ExtentManager.logInfoDetails("Entered value in current password input field : " + getAttribute(settingPage.inputCurrentPassword));
-		writeData("ChangePassword", "oldPassword", readData("ChangePassword", "newPassword"));
+		writeData(CommonVariables.inputFileChangePassword, "oldPassword", readData(CommonVariables.inputFileChangePassword, "newPassword"));
 
 		// ________________input new password___________________
 		actions.scrollToPartialText("New Password");
 		clear(settingPage.inputNewPassword);
 		sendKeys(driver, settingPage.inputNewPassword, "New password field", newPasswordString);
 		ExtentManager.logInfoDetails("Entered value in New password input field : " + getAttribute(settingPage.inputNewPassword));
-		writeData("ChangePassword", "newPassword", newPasswordString);
+		writeData(CommonVariables.inputFileChangePassword, "newPassword", newPasswordString);
 		actions.scrollToPartialText("Save");
 		click(driver, settingPage.buttonSave, "Save button");
 		explicitWait(driver, loginPage.labelUsername, 20);
 		loginPage.validateLoginPage();
 				
 		// To verify that user is not able to login with invalid id and password
-		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "oldPassword"), "invalid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileChangePassword, "username"), readData(CommonVariables.inputFileChangePassword, "oldPassword"), "invalid");
 	}
 	
 	@Test(priority = 4, dependsOnMethods = { "verifyChangePasswordFromSettingsPage" })
 	public void verifyUserShouldLoginFromNewChangedPassword() throws IOException, InterruptedException
 	{	
 		// To verify that user is able to login with new id and password
-		loginPage.loginApplication(readData("ChangePassword", "username"), readData("ChangePassword", "newPassword"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileChangePassword, "username"), readData(CommonVariables.inputFileChangePassword, "newPassword"), "valid");
 	}
 	
 }

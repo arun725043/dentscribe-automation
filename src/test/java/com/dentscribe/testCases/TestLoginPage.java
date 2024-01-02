@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
 import com.dentscribe.common.CommonLocators;
+import com.dentscribe.common.CommonVariables;
 
 
 public class TestLoginPage extends AndroidBase {
@@ -40,7 +41,7 @@ public class TestLoginPage extends AndroidBase {
 	{	
 		// ______________verify login with valid credentials______________
 		Thread.sleep(10000);
-		loginPage.loginApplication(readData("userDetails", "username"), "kapoor@123", "invalid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), "kapoor@123", "invalid");
 	}
 	
 	@Test (priority = 5, dependsOnMethods = { "verifyLoginWithInvalidPassword" })
@@ -48,8 +49,8 @@ public class TestLoginPage extends AndroidBase {
 	{	
 		// ______________verify login with invalid credentials______________
 		Thread.sleep(5000);
-		loginPage.loginApplication(readData("userDetails", "username"), "kapoor@123", "invalid");
-		loginPage.enterUsernamePassword(readData("userDetails", "username"), "kapoor@123");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), "kapoor@123", "invalid");
+		loginPage.enterUsernamePassword(readData(CommonVariables.inputFileUserDetails, "username"), "kapoor@123");
 		actions.scrollableClick("Continue");
 		IsElementPresent(driver, CommonLocators.errorMessageForThreeFailAttempts, "Error message");
 		ExtentManager.logInfoDetails("User not able to login because expected error message found - <b>" + getText(CommonLocators.errorMessageForThreeFailAttempts) + "<b>");
@@ -64,6 +65,6 @@ public class TestLoginPage extends AndroidBase {
 	public void verifyLoginWithValidCredentials() throws IOException, InterruptedException
 	{
 		// login with valid credentials
-		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), readData(CommonVariables.inputFileUserDetails, "password"), "valid");
 	}
 }

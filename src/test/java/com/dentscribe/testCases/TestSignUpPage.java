@@ -46,7 +46,7 @@ public class TestSignUpPage extends AndroidBase
 	public void verifyExistingAndDuplicateEmailId() throws InterruptedException {
 		// __________verify duplicate email error should display______________
 		actions.scrollUntilElementIsVisible("First Name");
-		signUpPage.fillSignupForm(signUpPage.getSignupDetail(), readData("userDetails", "username"));
+		signUpPage.fillSignupForm(signUpPage.getSignupDetail(), readData(CommonVariables.inputFileUserDetails, "username"));
 		signUpPage.clickVerifySignUpContinueButton("duplicate email");
 	}
 
@@ -58,8 +58,8 @@ public class TestSignUpPage extends AndroidBase
 		
 		// _________fill only mandatory values and verify continue button click_________
 		String password = CommonVariables.generatePassword;
-		signUpPage.fillSignupForm(genrateRandomFirstName(), "", readData("testData", "countryCode"), readData("testData", "mobile"), CommonVariables.generateEmailId, 
-				"", otpTextboxes, "", String.valueOf(GenerateRandomNumber(6)), password, password, readData("testData", "pmsName"));
+		signUpPage.fillSignupForm(genrateRandomFirstName(), "", readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"), 
+				CommonVariables.generateEmailId, "", otpTextboxes, "", String.valueOf(GenerateRandomNumber(6)), password, password, readData(CommonVariables.inputFileTestData, "pmsName"));
 		signUpPage.clickVerifySignUpContinueButton("confirmation popup");
 	}
 	

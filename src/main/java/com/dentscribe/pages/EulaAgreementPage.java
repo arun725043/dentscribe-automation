@@ -5,7 +5,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
-import com.dentscribe.common.CommonLocators;
 import com.dentscribe.utils.AndroidActions;
 
 import io.appium.java_client.android.AndroidDriver;

@@ -35,7 +35,11 @@ public class SettingsPage extends AndroidActions {
 	public By headerSettingsPage = By.xpath("//android.view.ViewGroup[@resource-id='setting screen-view']//android.widget.TextView[@text='Settings']");
 	public By backIconSettingsPage = By.xpath("//android.widget.TextView[@text='Settings']//preceding-sibling::android.view.ViewGroup//android.widget.ImageView[@index=0]");
 	public By iconHelp = By.xpath("//android.widget.TextView[@text='Settings']//following-sibling::android.view.ViewGroup//android.widget.ImageView");
+	
+	public By generalSettingsOptionsList = By.xpath("//android.view.ViewGroup[@resource-id='general-settings-option-cards']//android.view.ViewGroup[@index=1]//android.widget.TextView");
+	
 	public By buttonHelp = By.xpath("//android.widget.TextView[@text='Help']");
+	public By buttonFeedback = By.xpath("//android.widget.TextView[@text='Feedback']");
 	public By buttonLogOut = By.xpath("//android.widget.TextView[@text='Log Out']");
 	public By textFreeTrial = By.xpath("//android.widget.TextView[contains(@text,'30-Day Free Trial Selected')]");
 	public By buttonManageSubscription = By.xpath("//android.widget.TextView[@text='Manage Subscription']");

@@ -1,39 +1,42 @@
-package com.dentscribe.testCases_iOS;
+package com.dentscribe.testCases;
+
+import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 import org.testng.annotations.Test;
 
-import com.dentscribe.base.iOSBase;
-import Api.GenerateOTP;
+import com.dentscribe.apis.GetOtp;
+import com.dentscribe.base.AndroidBase;
+import com.dentscribe.common.CommonVariables;
 
-public class TestFeedbackAndNewFeedbackPages extends iOSBase
+public class TestFeedbackAndNewFeedbackPages extends AndroidBase
 {
 	String titleString = "Testing Feedback Title - " + GenerateRandomNumber(6); 
 	String descriptionString = "Testing Feedback Description - " + GenerateRandomNumber(6);
 	
 	@Test(priority = 1)
-	public void verifyIsFeedbackPageExists() throws IOException, InterruptedException {
-		
-		//__________________Application Launched_____________________
+	public void verifyIsFeedbackPageExists() throws IOException, InterruptedException
+	{	
+		//_______________verify Application Launched and login_______________
 		loginPage.verifyIsApplicationLaunched();
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "newUser"), readData(CommonVariables.inputFileUserDetails, "newPassword"), "valid");
+		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
-		// Perform Login
-		loginPage.loginApplication(readData("UserDetails", "newuser"), readData("UserDetails", "newpassword"), "valid");
+		//______________validate OTP and verify expected opened page______________
+		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
+		tourPages.validateTourPageCalendarScheduleView();
 
-		// To fill the OTP
-		GenerateOTP.fillOtp(driver, GenerateOTP.getOTP());
-		click(driver, loginPage.continueButtonSMSVerification, "Contiune on sms verification screen");
-
-		//skip tour pages
+		// ______________skip tour pages______________
 		tourPages.skipTourPages();
 		calendarPage.validateCalendarPage();
 		
-		// to click on setting icon on calendar page
-		calendarPage.clickSettingIconButton();
+		// ______________go to settings page and verify______________
+		calendarPage.clickSettingsIconCalendarPage();
 		settingPage.validateSettingsPage();
 		
-		// ________________validate Feedback option in General Setting_____________
-		settingPage.clickOnFeedbackOption();
+		// _____________click Feedback option and validate____________
+		verifyClickListOption(driver, settingPage.generalSettingsOptionsList, "Feedback");
 		feedbackPage.validateFeedbackPage();
 	}
 	
@@ -45,7 +48,7 @@ public class TestFeedbackAndNewFeedbackPages extends iOSBase
 		IsElementPresent(driver, feedbackPage.iconBackFeedbackPageBy, "Back icon on feedback page");
 		IsElementPresent(driver, feedbackPage.msgNoFeedbacksBy, "No feedback found. message on feedback page");
 	}
-	
+
 	@Test (priority = 3, dependsOnMethods = { "verifyIsExpectedFieldsExistsOnFeedbackPage" })
 	public void verifyIsNewFeedbackPageExists()
 	{

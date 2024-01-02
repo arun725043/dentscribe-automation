@@ -10,6 +10,7 @@ import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
 import com.dentscribe.common.CommonLocators;
+import com.dentscribe.common.CommonVariables;
 
 public class TestSettingsPage extends AndroidBase {
 	
@@ -23,11 +24,11 @@ public class TestSettingsPage extends AndroidBase {
 		
 		//_______________verify Application Launched and login_______________
 		loginPage.verifyIsApplicationLaunched();
-		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), readData(CommonVariables.inputFileUserDetails, "password"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		//______________validate OTP and verify expected opened page______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 

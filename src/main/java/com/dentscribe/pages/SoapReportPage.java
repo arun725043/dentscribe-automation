@@ -9,6 +9,7 @@ import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
 import com.dentscribe.common.CommonLocators;
 import com.dentscribe.common.CommonMethods;
+import com.dentscribe.common.CommonVariables;
 import com.dentscribe.utils.AndroidActions;
 
 import io.appium.java_client.AppiumBy;
@@ -131,7 +132,7 @@ public class SoapReportPage extends AndroidActions {
 		try {
 			scrollUntilElementIsVisible("Submit");
 			click(driver, buttonSubmitReport, "Submit button soap report");
-			getText(CommonLocators.successMessageSoapReportSubmit);
+			ExtentManager.logInfoDetails(CommonVariables.successMsgTextSubmitSoapReport);
 		}
 		catch (Exception e) {
 			ExtentManager.logFailureDetails("Either expected 'Submit' button not found/available or its disabled. Please check");

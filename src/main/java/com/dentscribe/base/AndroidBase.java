@@ -12,6 +12,7 @@ import com.dentscribe.common.CommonMethods;
 import com.dentscribe.pages.AddPaymentMethodPage;
 import com.dentscribe.pages.CalendarPage;
 import com.dentscribe.pages.EulaAgreementPage;
+import com.dentscribe.pages.FeedbackPage;
 import com.dentscribe.pages.ForgotPasswordPage;
 import com.dentscribe.pages.HelpPage;
 import com.dentscribe.pages.LoginPage;
@@ -59,6 +60,7 @@ public class AndroidBase extends CommonMethods {
 	public EulaAgreementPage eulaPage;
 	public AddPaymentMethodPage addPaymentMethodPage;
 	public HelpPage helpPage;
+	public FeedbackPage feedbackPage;
 
 //	@BeforeTest
 	public void startServer() {
@@ -73,6 +75,7 @@ public class AndroidBase extends CommonMethods {
 			options.setDeviceName(readData("Config", "deviceName")); // emulator
 			options.setPlatformName(readData("Config", "deviceType"));
 			options.setAppPackage(readData("Config", "packageName")).setAppActivity(readData("Config", "activityName"));
+			options.setNewCommandTimeout(Duration.ofMinutes(90));
 //			options.setNoReset(true);
 //			options.setApp(System.getProperty("user.dir") + "//apk_files//app-release.apk");
 //			driver = new AndroidDriver(service.getUrl(), options);
@@ -119,5 +122,6 @@ public class AndroidBase extends CommonMethods {
 		eulaPage = new EulaAgreementPage(driver);
 		addPaymentMethodPage = new AddPaymentMethodPage(driver);
 		helpPage = new HelpPage(driver);
+		feedbackPage = new FeedbackPage(driver);
 	}
 }

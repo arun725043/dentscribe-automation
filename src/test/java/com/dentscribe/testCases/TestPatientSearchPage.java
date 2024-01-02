@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
+import com.dentscribe.common.CommonVariables;
 
 
 public class TestPatientSearchPage extends AndroidBase {
@@ -18,12 +19,12 @@ public class TestPatientSearchPage extends AndroidBase {
 		loginPage.verifyIsApplicationLaunched();
 		
 		// Fill the login form and go to SMS verification
-		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), readData(CommonVariables.inputFileUserDetails, "password"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		smsVerificationPage.validateSmsVerificationPage();
 		
 		//______________validate otp and go to tour page______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 
@@ -50,28 +51,28 @@ public class TestPatientSearchPage extends AndroidBase {
 	public void verifyPatientSearchByPatientName() throws InterruptedException
 	{
 		// Search By patientName and verify
-		searchPage.verifySearchPatientResults("name", readData("testData", "patientName"));
+		searchPage.verifySearchPatientResults("name", readData(CommonVariables.inputFileTestData, "patientName"));
 	}
 	
 	@Test (priority = 5, dependsOnMethods = { "verifyIsPatientSearchPageExists" } )
 	public void verifyPatientSearchByPatientPhoneNumber() throws InterruptedException
 	{
 		// Search By patientMobile and verify
-		searchPage.verifySearchPatientResults("phone", readData("testData", "patientPhone"));
+		searchPage.verifySearchPatientResults("phone", readData(CommonVariables.inputFileTestData, "patientPhone"));
 	}
 	
 	@Test (priority = 6, dependsOnMethods = { "verifyIsPatientSearchPageExists" } )
 	public void verifyPatientSearchByPatientDOB() throws InterruptedException
 	{
 		// Search By dob and verify
-		searchPage.verifySearchPatientResults("dob", readData("testData", "dobSearchPage"));
+		searchPage.verifySearchPatientResults("dob", readData(CommonVariables.inputFileTestData, "dobSearchPage"));
 	}
 
 	@Test (priority = 7, dependsOnMethods = { "verifyIsPatientSearchPageExists" } )
 	public void verifyPatientSearchByPatientInsurance() throws InterruptedException
 	{
 		// Search By insurance and verify
-		searchPage.verifySearchPatientResults("insurance", readData("testData", "insurance"));
+		searchPage.verifySearchPatientResults("insurance", readData(CommonVariables.inputFileTestData, "insurance"));
 	}
 	
 	@Test(priority = 8, dependsOnMethods = { "verifyIsPatientSearchPageExists" } )

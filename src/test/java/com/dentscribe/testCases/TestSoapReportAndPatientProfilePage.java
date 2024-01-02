@@ -7,10 +7,11 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
+import com.dentscribe.common.CommonVariables;
 
 public class TestSoapReportAndPatientProfilePage extends AndroidBase 
 {
-	String readAppointmentsDate = readData("testData", "shortAppointmentDate");
+	String readAppointmentsDate = readData(CommonVariables.inputFileTestData, "appointmentDate");
 	
 	@Test (priority = 1)
 	public void verifyIsRecordingPageOpenedForExpectedPatient() throws InterruptedException, IOException 
@@ -18,11 +19,11 @@ public class TestSoapReportAndPatientProfilePage extends AndroidBase
 		// _____________Open application_____________
 		loginPage.verifyIsApplicationLaunched();
 		// _____________login with valid credentials_____________
-		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), readData(CommonVariables.inputFileUserDetails, "password"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		//______________validate otp and verify expected opened page______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 		
@@ -130,13 +131,13 @@ public class TestSoapReportAndPatientProfilePage extends AndroidBase
 		searchPage.validatePatientSearchPage();
 
 		// Search By patientName and verify
-		searchPage.verifySearchPatientResults("name", readData("testData", "patientName"));
+		searchPage.verifySearchPatientResults("name", readData(CommonVariables.inputFileTestData, "patientName"));
 		Thread.sleep(10000);
 		
 		// To click on patient name and verify Profile page
-		searchPage.clickPatientDetailsToOpenProfilePage(readData("testData", "patientName"));
+		searchPage.clickPatientDetailsToOpenProfilePage(readData(CommonVariables.inputFileTestData, "patientName"));
 		profilePage.validatePatientProfilePage();
-		profilePage.verifyProfilePageDetails(readData("testData", "patientName"), readData("testData", "dobProfilePage"), readData("testData", "lastVisitProfilePage"));
+		profilePage.verifyProfilePageDetails(readData(CommonVariables.inputFileTestData, "patientName"), readData(CommonVariables.inputFileTestData, "dobProfilePage"), readData(CommonVariables.inputFileTestData, "lastVisitProfilePage"));
 	
 	}
 	
@@ -144,6 +145,6 @@ public class TestSoapReportAndPatientProfilePage extends AndroidBase
 	public void verifyBackIconPatientProfilePage() throws InterruptedException
 	{
 		profilePage.clickBackIconPatientProfilePage();
-		searchPage.validatePatientSearchPage();
+		searchPage.validateSearchFormatNoteSearchPage();
 	}
 }

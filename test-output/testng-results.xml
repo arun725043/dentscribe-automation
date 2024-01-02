@@ -1,210 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="9" passed="4" failed="1" skipped="4">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-29T19:04:04 IST" name="Suite" finished-at="2023-12-29T19:06:45 IST" duration-ms="160694">
+  <suite started-at="2024-01-02T18:40:17 IST" name="Suite" finished-at="2024-01-02T18:56:36 IST" duration-ms="979071">
     <groups>
     </groups>
-    <test started-at="2023-12-29T19:04:04 IST" name="Test" finished-at="2023-12-29T19:06:45 IST" duration-ms="160694">
-      <class name="com.dentscribe.testCases.TestAllAppointmentStatuses">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:04:04 IST" name="launchApplication" finished-at="2023-12-29T19:04:23 IST" duration-ms="18719" status="PASS">
+    <test started-at="2024-01-02T18:40:17 IST" name="Test" finished-at="2024-01-02T18:56:36 IST" duration-ms="979071">
+      <class name="com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport@71d99732]" started-at="2024-01-02T18:40:17 IST" name="launchApplication" finished-at="2024-01-02T18:40:38 IST" duration-ms="20699" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="goToCalendarPageAndSelectAppointmentDate()[pri:0, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:04:23 IST" name="goToCalendarPageAndSelectAppointmentDate" finished-at="2023-12-29T19:05:16 IST" duration-ms="53706" status="PASS">
+        <test-method signature="verifyWhetherSoapReportCreatedFor10mintsRecording()[pri:1, instance:com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport@71d99732]" started-at="2024-01-02T18:40:38 IST" name="verifyWhetherSoapReportCreatedFor10mintsRecording" finished-at="2024-01-02T18:56:36 IST" duration-ms="957722" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- goToCalendarPageAndSelectAppointmentDate -->
-        <test-method signature="verifyIsPatientPopupAppearingOnStartButtonClick()[pri:1, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:05:16 IST" name="verifyIsPatientPopupAppearingOnStartButtonClick" finished-at="2023-12-29T19:05:33 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.goToCalendarPageAndSelectAppointmentDate" duration-ms="16728" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyIsPatientPopupAppearingOnStartButtonClick -->
-        <test-method signature="verifyStartRecordingButtonOnPatientDetailsPopupAndClick()[pri:2, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:05:33 IST" name="verifyStartRecordingButtonOnPatientDetailsPopupAndClick" finished-at="2023-12-29T19:05:45 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsPatientPopupAppearingOnStartButtonClick" duration-ms="11919" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyStartRecordingButtonOnPatientDetailsPopupAndClick -->
-        <test-method signature="verifyIsAppointmentStatusContinueAfterPauseRecording()[pri:3, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:05:45 IST" name="verifyIsAppointmentStatusContinueAfterPauseRecording" finished-at="2023-12-29T19:06:23 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyStartRecordingButtonOnPatientDetailsPopupAndClick" duration-ms="37789" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyIsAppointmentStatusContinueAfterPauseRecording -->
-        <test-method signature="verifyIsPatientPopupAppearingOnContinueButtonClick()[pri:4, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:23 IST" name="verifyIsPatientPopupAppearingOnContinueButtonClick" finished-at="2023-12-29T19:06:43 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsAppointmentStatusContinueAfterPauseRecording" duration-ms="20510" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[null]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: null
-at org.testng.Assert.fail(Assert.java:99)
-at org.testng.Assert.fail(Assert.java:106)
-at com.dentscribe.pages.CalendarPage.clickVerifyPatientAppointmentButton(CalendarPage.java:321)
-at com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsPatientPopupAppearingOnContinueButtonClick(TestAllAppointmentStatuses.java:77)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyIsPatientPopupAppearingOnContinueButtonClick -->
-        <test-method signature="verifyContinueRecordingButtonOnPatientDetailsPopupAndClick()[pri:5, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="verifyContinueRecordingButtonOnPatientDetailsPopupAndClick" finished-at="2023-12-29T19:06:44 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsPatientPopupAppearingOnContinueButtonClick" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method TestAllAppointmentStatuses.verifyContinueRecordingButtonOnPatientDetailsPopupAndClick()[pri:5, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestAllAppointmentStatuses.verifyContinueRecordingButtonOnPatientDetailsPopupAndClick()[pri:5, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyContinueRecordingButtonOnPatientDetailsPopupAndClick -->
-        <test-method signature="verifyIsAppointmentStatusReviewAfterStopRecording()[pri:6, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="verifyIsAppointmentStatusReviewAfterStopRecording" finished-at="2023-12-29T19:06:44 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyContinueRecordingButtonOnPatientDetailsPopupAndClick" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewAfterStopRecording()[pri:6, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewAfterStopRecording()[pri:6, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyIsAppointmentStatusReviewAfterStopRecording -->
-        <test-method signature="addSignatureInSoapReportAndSubmit()[pri:7, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="addSignatureInSoapReportAndSubmit" finished-at="2023-12-29T19:06:44 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewAfterStopRecording" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method TestAllAppointmentStatuses.addSignatureInSoapReportAndSubmit()[pri:7, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestAllAppointmentStatuses.addSignatureInSoapReportAndSubmit()[pri:7, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- addSignatureInSoapReportAndSubmit -->
-        <test-method signature="verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt()[pri:8, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt" finished-at="2023-12-29T19:06:44 IST" depends-on-methods="com.dentscribe.testCases.TestAllAppointmentStatuses.addSignatureInSoapReportAndSubmit" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt()[pri:8, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method TestAllAppointmentStatuses.verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt()[pri:8, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999] depends on not successfully finished methods
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:102)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyIsAppointmentStatusReviewedAndSoapReportAfterClickIt -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.TestAllAppointmentStatuses@25216999]" started-at="2023-12-29T19:06:44 IST" name="tearDown" finished-at="2023-12-29T19:06:45 IST" duration-ms="616" status="PASS">
+        </test-method> <!-- verifyWhetherSoapReportCreatedFor10mintsRecording -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport@71d99732]" started-at="2024-01-02T18:56:36 IST" name="tearDown" finished-at="2024-01-02T18:56:36 IST" duration-ms="613" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.dentscribe.testCases.TestAllAppointmentStatuses -->
+      </class> <!-- com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

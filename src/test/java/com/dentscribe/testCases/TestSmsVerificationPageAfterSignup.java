@@ -19,8 +19,8 @@ public class TestSmsVerificationPageAfterSignup extends AndroidBase
 		
 		// ____________________Fill SignUp form and verify confirmation PopUp button_________________
 		String password = CommonVariables.generatePassword;
-		signUpPage.fillSignupForm(genrateRandomFirstName(), "", readData("testData", "countryCode"), readData("testData", "mobile"), CommonVariables.generateEmailId, 
-				"", otpTextboxes, "", String.valueOf(GenerateRandomNumber(6)), password, password, readData("testData", "pmsName"));
+		signUpPage.fillSignupForm(genrateRandomFirstName(), "", readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"), 
+				CommonVariables.generateEmailId, "", otpTextboxes, "", String.valueOf(GenerateRandomNumber(6)), password, password, readData(CommonVariables.inputFileTestData, "pmsName"));
 		signUpPage.clickVerifySignUpContinueButton("confirmation popup");
 		
 		//___________Click on Confirmation PopUp button______________
@@ -40,7 +40,7 @@ public class TestSmsVerificationPageAfterSignup extends AndroidBase
 	public void verifySmsVerificationWithWrongOtp() throws InterruptedException
 	{
 		// ____________validate OTP with wrong value_____________
-		smsVerificationPage.validateErrorMessageForBlankWrongOTP(readData("testData", "otp"));
+		smsVerificationPage.validateErrorMessageForBlankWrongOTP(readData(CommonVariables.inputFileTestData, "otp"));
 		Thread.sleep(5000);
 	}
 	
@@ -70,7 +70,7 @@ public class TestSmsVerificationPageAfterSignup extends AndroidBase
 		smsVerificationPage.validateSmsVerificationPage();
 		// To fill the otp
 		//______________validate otp and verify expected opened page______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		// verify whether practice info page opened
 		practiceInfoPage.validatePracticeInfoPage();

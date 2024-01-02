@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import com.dentscribe.apis.GetOtp;
 import com.dentscribe.base.AndroidBase;
+import com.dentscribe.common.CommonVariables;
 
 public class TestTourPages extends AndroidBase {
 
@@ -18,11 +19,11 @@ public class TestTourPages extends AndroidBase {
 		loginPage.verifyIsApplicationLaunched();
 		
 		// Fill the login form
-		loginPage.loginApplication(readData("UserDetails", "username"), readData("UserDetails", "password"), "valid");
+		loginPage.loginApplication(readData(CommonVariables.inputFileUserDetails, "username"), readData(CommonVariables.inputFileUserDetails, "password"), "valid");
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		//______________validate otp and verify expected opened page______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 	}
