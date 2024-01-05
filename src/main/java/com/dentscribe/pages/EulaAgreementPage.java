@@ -2,6 +2,7 @@ package com.dentscribe.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.base.AndroidBase;
@@ -24,18 +25,17 @@ public class EulaAgreementPage extends AndroidActions {
 	public By buttonContinue = By.xpath("//android.widget.TextView[@text='Continue']");
 	
 	// _______verify whether Eula Agreement page exists or not________
-	public boolean validateEulaAgreementPage()
+	public void validateEulaAgreementPage()
 	{
 		AndroidBase.wait.until(ExpectedConditions.visibilityOfElementLocated(headerTextEulaAgreementPage));
 		String headerText = getText(headerTextEulaAgreementPage);
 		if(headerText.trim().equalsIgnoreCase(textHeader))
 		{
 			ExtentManager.logInfoDetails("<b>User is now on Practice Info page as expected");
-			return true;
 		}
 		else {
 			ExtentManager.logFailureDetails("Either expected Practice Info page verified element not found or page not exists. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	

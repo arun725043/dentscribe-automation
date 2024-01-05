@@ -6,13 +6,19 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport">
+      <class name="com.dentscribe.testCases.TestPlanAndNewPlanPages">
         <methods>
           <include name="tearDown"/>
+          <include name="verifyIsPlanPageExists"/>
           <include name="launchApplication"/>
-          <include name="verifyWhetherSoapReportCreatedFor10mintsRecording"/>
+          <include name="verifyIsExpectedFieldsExistsOnPlanPage"/>
+          <include name="verifyIsExpectedFieldsExistsOnNewPlanPage"/>
+          <include name="verifyBackIconPlanPage"/>
+          <include name="verifyIsNewPlanPageExists"/>
+          <include name="verifyBackIconNewPlanPage"/>
+          <include name="createNewPlanAndVerify"/>
         </methods>
-      </class> <!-- com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport -->
+      </class> <!-- com.dentscribe.testCases.TestPlanAndNewPlanPages -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

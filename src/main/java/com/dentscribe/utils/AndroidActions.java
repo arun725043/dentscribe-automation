@@ -1,8 +1,10 @@
 package com.dentscribe.utils;
 
 import java.time.Duration;
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
@@ -59,7 +61,39 @@ public class AndroidActions extends CommonMethods {
 	public void dragAndDrop(By source, int x, int y) {
 		((JavascriptExecutor) driver).executeScript("mobile: dragGesture", ImmutableMap.of("elementId", ((RemoteWebElement) driver.findElement(source)).getId(), "endX", x, "endY", y));
 	}
+	
+	public void ScrollToElementText(String option, String targetText) {
+	    WebElement element = null;
+	    int numberOfTimes = 10;
+	    Dimension size = driver.manage().window().getSize();
+	    int anchor = (int) (size.width / 2);
+	    // Swipe up to scroll down
+	    int startPoint = (int) (size.height - 10);
+	    int endPoint = 0;
+	    if (option == "account")
+	    {
+	    	endPoint = 10;
+	    }
+	    if (option == "practice")
+	    {
+	    	endPoint = (int) (size.height * 0.25);
+	    }
 
+	    for (int i = 0; i < numberOfTimes; i++) {
+	        try {
+	            new TouchAction(driver)
+	                .longPress(PointOption.point(anchor, startPoint))
+	                .moveTo(PointOption.point(anchor, endPoint))
+	                .release().perform();
+	            element = driver.findElement(By.xpath("//android.widget.TextView[@text='" + targetText + "']"));
+	            i = numberOfTimes;
+	        } catch (NoSuchElementException ex) {
+	            Assert.fail(String.format("Element not available. Scrolling (%s) times...", i + 1));
+	        }
+	    }
+//	    return element;
+	}
+	
 	// scroll using text
 	public void scrollUntilElementIsVisible(String targetText) throws InterruptedException 
 	{
@@ -91,9 +125,7 @@ public class AndroidActions extends CommonMethods {
 	}
 
 	public void sendKeysUsingResourceId(String resourceId, String text) {
-
 		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId(\"" + resourceId + "\"));")).sendKeys(text);
-
 	}
 
 	public String getAttributeUsingResourceId(String resourceId) {
@@ -103,12 +135,10 @@ public class AndroidActions extends CommonMethods {
 	}
 	public String getTextUsingResourceId(String resourceId) {
 		return driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId(\"" + resourceId + "\"));")).getText();
-
 	}
 
 	public void clickUsingResourceId(String resourceId) {
 		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().resourceId(\"" + resourceId + "\"));")).click();
-
 	}
 
 	@SuppressWarnings("deprecation")
@@ -118,7 +148,6 @@ public class AndroidActions extends CommonMethods {
 			new TouchAction(driver).press(PointOption.point(startX, startY)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(3000))) // Optional: Add a short delay for visibility
 					.moveTo(PointOption.point(endX, endY)).release().perform();
 		}
-
 	}
 
 	// __________swipe action___________
@@ -140,11 +169,4 @@ public class AndroidActions extends CommonMethods {
 	            .moveTo(PointOption.point(midX, bottomEdge))
 	            .release().perform();
 	}
-
-	// check all match in list
-//	public boolean allMatch(By locator, String expected) {
-//		List<WebElement> list = driver.findElements(locator);
-//		return list.stream().allMatch((s) -> s.getText().trim().contains(expected));
-//	}
-
 }

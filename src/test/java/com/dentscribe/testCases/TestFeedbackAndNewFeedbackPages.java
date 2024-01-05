@@ -23,7 +23,7 @@ public class TestFeedbackAndNewFeedbackPages extends AndroidBase
 		assertTrue(loginPage.clickBiometricPopupButton("skip"));
 		
 		//______________validate OTP and verify expected opened page______________
-		String getOtp = GetOtp.generateOTP(readData("testData", "countryCode"), readData("testData", "mobile"));
+		String getOtp = GetOtp.generateOTP(readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"));
 		smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 		tourPages.validateTourPageCalendarScheduleView();
 

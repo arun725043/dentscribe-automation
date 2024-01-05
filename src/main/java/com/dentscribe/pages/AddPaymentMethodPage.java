@@ -1,6 +1,7 @@
 package com.dentscribe.pages;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.common.CommonLocators;
@@ -36,15 +37,14 @@ public class AddPaymentMethodPage extends AndroidActions {
 
 	
 	// _________verify whether user is on Add Payment Method page or not_______
-	public boolean validateAddPaymentMethodPage()
+	public void validateAddPaymentMethodPage()
 	{
 		if (IsElementPresent(driver, headerTextPaymentMethodPage, "Add Payment Method header") && IsElementPresent(driver, headerCardDetailsSection, "Card Details section header")) 
 		{
 			ExtentManager.logInfoDetails("<b>User is now on Add Payement Method page as expected");
-			return true;
 		} else {
 			ExtentManager.logFailureDetails("Either expected Add Payement Method verified element not found or not exists. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	

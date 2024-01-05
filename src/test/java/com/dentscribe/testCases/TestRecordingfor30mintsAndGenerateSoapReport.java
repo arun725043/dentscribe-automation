@@ -4,6 +4,7 @@ import static org.testng.Assert.assertTrue;
 
 import java.io.IOException;
 import java.time.LocalTime;
+
 import org.testng.annotations.Test;
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.apis.GetOtp;
@@ -12,7 +13,7 @@ import com.dentscribe.common.CommonVariables;
 
 public class TestRecordingfor30mintsAndGenerateSoapReport extends AndroidBase 
 {
-	String readAppointmentsDate = readData(CommonVariables.inputFileTestData, "appointmentDate");
+String readAppointmentsDate = readData(CommonVariables.inputFileTestData, "appointmentDate");
 	
 	@Test
 	public void verifyWhetherSoapReportCreatedFor30mintsRecording() throws InterruptedException, IOException 

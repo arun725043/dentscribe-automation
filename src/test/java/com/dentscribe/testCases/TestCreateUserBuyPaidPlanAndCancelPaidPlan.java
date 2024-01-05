@@ -52,7 +52,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 			practiceInfoPage.fillPracticeInfo(readData(CommonVariables.inputFileTestData, "state"), readData(CommonVariables.inputFileTestData, "country"));
 			practiceInfoPage.clickContinueButtonPracticeInfo();
 			Thread.sleep(20000);
-			assertTrue(sikkaWebviewPage.validateSikkaWebViewPage());
+			sikkaWebviewPage.validateSikkaWebViewPage();
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
@@ -124,9 +124,9 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 	
 	@Test(priority = 5, dependsOnMethods = { "verifyEulaAgreementPageAndAcceptAgreement" })
 	public void verifyCanUserBuyPaidPlan() throws InterruptedException
-	{
+	{			
 		// _____________select paid plan_____________
-		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
+		manageSubscriptionPage.validateManageSubscriptionPage();
 		manageSubscriptionPage.selectPlan("paid");
 
 		// ______________Fill payment details__________________
@@ -196,7 +196,7 @@ public class TestCreateUserBuyPaidPlanAndCancelPaidPlan extends AndroidBase {
 
 		// _____________select paid plan_____________
 		click(driver, settingPage.buttonManageSubscription, "Manage subscription button on settings page");
-		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
+		manageSubscriptionPage.validateManageSubscriptionPage();
 
 		// ______________Fill payment details__________________
 		manageSubscriptionPage.clickPaymentMethodButton("edit");

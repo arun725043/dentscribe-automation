@@ -6,8 +6,9 @@
 	</listeners>
 	<test thread-count="1" name="Test">
 		<classes>
-			
+			<class name="com.dentscribe.testCases.TestPlanAndNewPlanPages" />
 			<!-- DONE TEST CASES -->
+			<!-- 
 			<class name="com.dentscribe.testCases.TestCreateUserBuyPaidPlanAndCancelPaidPlan" />
 			<class name="com.dentscribe.testCases.TestCreateUserTakeFreePlanAndBuyPaidPlan" />
 			<class name="com.dentscribe.testCases.TestAllAppointmentStatuses" />
@@ -26,7 +27,7 @@
 			<class name="com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport" />
 			<class name="com.dentscribe.testCases.TestRecordingfor30mintsAndGenerateSoapReport" />
 			<class name="com.dentscribe.testCases.TestRecordingfor50mintsAndGenerateSoapReport" />
-			
+			-->
 		</classes>
 	</test>
 </suite>

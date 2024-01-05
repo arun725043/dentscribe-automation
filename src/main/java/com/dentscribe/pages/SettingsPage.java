@@ -108,26 +108,14 @@ public class SettingsPage extends AndroidActions {
 		click(driver, buttonLogOut, "Logout button");
 	}
 	
-	// Click Help options
-	public void clickHelpOptions(String helpOptionType) throws InterruptedException
+	// Click Help icon
+	public void clickHelpIcon()
 	{
-		scrollUntilElementIsVisible("General Settings");
-		switch (helpOptionType.toLowerCase()) {
-		case "help icon":
-			click(driver, iconHelp, "Help icon on settings page");
-			break;
-		case "help button":
-			click(driver, buttonHelp, "Help button on settings page");
-			break;
-		default:
-			ExtentManager.logFailureDetails(helpOptionType + " is not valid option. It could be 'help icon' or 'help button'. Please check");
-			Assert.fail();
-			break;
-		}
+		click(driver, iconHelp, "Help icon on settings page");
 	}
 
 	// ____________verify whether selected plan and its related button exists or not_____________
-	public boolean verifyBuyPlanOnSettingsPage(String plan) {
+	public void verifyBuyPlanOnSettingsPage(String plan) {
 		switch (plan) {
 		case "free":
 			assertTrue(IsElementPresent(driver, buttonManageSubscription, "Manage Subscription button"));
@@ -138,9 +126,9 @@ public class SettingsPage extends AndroidActions {
 			assertTrue(IsElementPresent(driver, text699Selected, "$699/Month plan option"));
 			break;
 		default:
-			break;
+			ExtentManager.logFailureDetails(plan + " not valid. It could be only free/paid. Please check");
+			Assert.fail();
 		}
-		return IsElementPresent(driver, textFreeTrial, "Free Trial text");
 	}
 
 	// _______generate new password_________
@@ -221,7 +209,7 @@ public class SettingsPage extends AndroidActions {
 
 		if (address2 != "")
 		{
-			scrollUntilElementIsVisible("Address Line 2");
+			scrollUntilElementIsVisible("City");
 			clear(inputAddressLine2);
 			sendKeys(driver, inputAddressLine2, "Address Line 2", address2);
 		}
@@ -296,6 +284,7 @@ public class SettingsPage extends AndroidActions {
 		}
 		if (address2 != "")
 		{
+			scrollToPartialText("City");
 			verifyTexts(getText(inputAddressLine2), address2);
 		}
 		else {

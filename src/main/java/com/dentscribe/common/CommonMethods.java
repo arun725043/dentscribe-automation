@@ -149,7 +149,7 @@ public class CommonMethods {
 		for (WebElement option : options) 
 		{
 			String optionName = option.getText();
-			ExtentManager.logInfoDetails("OPTION NAME ::- " + optionName);
+//			ExtentManager.logInfoDetails("OPTION NAME ::- " + optionName);
 			if (optionName.equalsIgnoreCase(optionText))
 			{
 				flag = 1;

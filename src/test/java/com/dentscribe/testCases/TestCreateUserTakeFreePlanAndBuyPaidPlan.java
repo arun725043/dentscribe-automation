@@ -45,7 +45,7 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 			practiceInfoPage.fillPracticeInfo(readData(CommonVariables.inputFileTestData, "state"), readData(CommonVariables.inputFileTestData, "country"));
 			practiceInfoPage.clickContinueButtonPracticeInfo();
 			Thread.sleep(20000);
-			assertTrue(sikkaWebviewPage.validateSikkaWebViewPage());
+			sikkaWebviewPage.validateSikkaWebViewPage();
 			
 			// _________________register practice on sikka________________________
 			click(driver, sikkaWebviewPage.buttonRegister, "Register button");
@@ -90,7 +90,7 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 			smsVerificationPage.enterOtpAndClickContinueButton(getOtp);
 			eulaPage.validateEulaAgreementPage();
 			eulaPage.clickContinueButtonEulaAgreementPage();
-			assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
+			manageSubscriptionPage.validateManageSubscriptionPage();
 		} catch (Exception e) {
 			e.printStackTrace();
 			Assert.fail();
@@ -100,9 +100,9 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 	@Test(priority = 1, dependsOnMethods = { "createNewUserAndGoToManageSubscriptionPage" })
 	public void verifyIsAddPaymentMethodPageExists() throws InterruptedException
 	{
-		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
+		manageSubscriptionPage.validateManageSubscriptionPage();
 		manageSubscriptionPage.clickPaymentMethodButton("add");
-		assertTrue(addPaymentMethodPage.validateAddPaymentMethodPage());
+		addPaymentMethodPage.validateAddPaymentMethodPage();
 	}
 	
 	@Test(priority = 2, dependsOnMethods = { "verifyIsAddPaymentMethodPageExists" })
@@ -131,7 +131,7 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 	public void verifyCanUserTake30DaysFreeTrialPlan() throws InterruptedException
 	{
 		// _____________select paid plan_____________
-		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
+		manageSubscriptionPage.validateManageSubscriptionPage();
 		manageSubscriptionPage.selectPlan("free");
 		manageSubscriptionPage.clickContinueButtonSubscriptionPage();
 		tourPages.validateTourPageCalendarScheduleView();
@@ -151,7 +151,7 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 		click(driver, settingPage.buttonManageSubscription, "Manage Subscription button");
 		
 		// _____________select paid plan_____________
-		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
+		manageSubscriptionPage.validateManageSubscriptionPage();
 		manageSubscriptionPage.selectPlan("paid");
 		manageSubscriptionPage.clickPaymentMethodButton("add");
 		addPaymentMethodPage.validateAddPaymentMethodPage();
@@ -161,7 +161,7 @@ public class TestCreateUserTakeFreePlanAndBuyPaidPlan extends AndroidBase
 				readData(CommonVariables.inputFileTestData, "cvc"), readData(CommonVariables.inputFileTestData, "zipcode"));
 		addPaymentMethodPage.clickContinueButtonAddPaymentMethod();
 		ExtentManager.logInfoDetails("payment successful! subscription active.");
-		assertTrue(manageSubscriptionPage.validateManageSubscriptionPage());
+		manageSubscriptionPage.validateManageSubscriptionPage();
 		
 		// _______________buy plan and verify it_______________
 		manageSubscriptionPage.clickContinueButtonSubscriptionPage();		

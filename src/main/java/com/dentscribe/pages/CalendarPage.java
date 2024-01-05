@@ -250,13 +250,10 @@ public class CalendarPage extends AndroidActions {
 				{
 					for (int i = 0; i < listOfPatient.size(); i++) {
 						patientName = listOfPatient.get(i).getText();
-						if (patientName.equals("Start")) {
-							continue;
-						} else {
-							listOfPatient.get(i).click();
-							ExtentManager.logInfoDetails("Clicked on patient name : <b> " + patientName + " </b>");
-							break;
-						}
+						ExtentManager.logInfoDetails("Start button click for patient - <b>" + patientName);
+						listOfPatient.get(i).click();
+						ExtentManager.logInfoDetails("Clicked on patient name : <b> " + patientName + " </b>");
+						break;
 					}
 				}
 			}

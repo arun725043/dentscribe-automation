@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
 
 import com.dentscribe.ExtentReport.ExtentManager;
 import com.dentscribe.utils.AndroidActions;
@@ -37,15 +38,14 @@ public class SikkaWebviewPage extends AndroidActions {
 
 	
 	// _______________verify whether signup page exists or not_______________
-	public boolean validateSikkaWebViewPage()
+	public void validateSikkaWebViewPage()
 	{
 		scrollableClick("Proceed");
 		if (IsElementPresent(driver, buttonRegister, "Register button on webview")) {
 			ExtentManager.logInfoDetails("<b>User is now on Sikka Webview page as expected");
-			return true;
 		} else {
 			ExtentManager.logFailureDetails("Either expected Sikka Webview page verified element not found or page not exists. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	

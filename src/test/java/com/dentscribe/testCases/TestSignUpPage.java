@@ -59,7 +59,7 @@ public class TestSignUpPage extends AndroidBase
 		// _________fill only mandatory values and verify continue button click_________
 		String password = CommonVariables.generatePassword;
 		signUpPage.fillSignupForm(genrateRandomFirstName(), "", readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"), 
-				CommonVariables.generateEmailId, "", otpTextboxes, "", String.valueOf(GenerateRandomNumber(6)), password, password, readData(CommonVariables.inputFileTestData, "pmsName"));
+				CommonVariables.generateEmailId, "", "", "", String.valueOf(GenerateRandomNumber(6)), password, password, readData(CommonVariables.inputFileTestData, "pmsName"));
 		signUpPage.clickVerifySignUpContinueButton("confirmation popup");
 	}
 	

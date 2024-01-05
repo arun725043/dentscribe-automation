@@ -34,8 +34,8 @@ eaglesoft=D22072
 openDental=D46103
 dentrix=D46381
 
-//____________recordings date_____________
-appointmentDate=01-08-2023
+//____________recordings date (dd-mm-yyyy)_____________
+appointmentDate=01-02-2023
 
 //__________Office Ids___________________
 eaglesoft=D22072

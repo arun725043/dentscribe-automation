@@ -20,7 +20,7 @@ public class TestSmsVerificationPageAfterSignup extends AndroidBase
 		// ____________________Fill SignUp form and verify confirmation PopUp button_________________
 		String password = CommonVariables.generatePassword;
 		signUpPage.fillSignupForm(genrateRandomFirstName(), "", readData(CommonVariables.inputFileTestData, "countryCode"), readData(CommonVariables.inputFileTestData, "mobile"), 
-				CommonVariables.generateEmailId, "", otpTextboxes, "", String.valueOf(GenerateRandomNumber(6)), password, password, readData(CommonVariables.inputFileTestData, "pmsName"));
+				CommonVariables.generateEmailId, "", "", "", String.valueOf(GenerateRandomNumber(6)), password, password, readData(CommonVariables.inputFileTestData, "pmsName"));
 		signUpPage.clickVerifySignUpContinueButton("confirmation popup");
 		
 		//___________Click on Confirmation PopUp button______________

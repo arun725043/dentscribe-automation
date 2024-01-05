@@ -44,6 +44,7 @@ public class TourPages extends AndroidActions {
 	// _________validate whether user is on tour page or not_______
 	public void validateTourPageCalendarScheduleView()
 	{
+		explicitWait(driver, textCalendarSchecule, 60);
 		if (IsElementPresent(driver, textCalendarSchecule, "Calendar Schedue View")) {
 			ExtentManager.logInfoDetails("<b>User is now on Calendar Schedue View tour page as expected");
 		} else {

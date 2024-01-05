@@ -19,6 +19,7 @@ import com.dentscribe.pages.LoginPage;
 import com.dentscribe.pages.ManageSubscriptionPage;
 import com.dentscribe.pages.PatientProfilePage;
 import com.dentscribe.pages.PatientSearchPage;
+import com.dentscribe.pages.PlanPage;
 import com.dentscribe.pages.PracticeInfoPage;
 import com.dentscribe.pages.RecordingPage;
 import com.dentscribe.pages.SettingsPage;
@@ -61,6 +62,7 @@ public class AndroidBase extends CommonMethods {
 	public AddPaymentMethodPage addPaymentMethodPage;
 	public HelpPage helpPage;
 	public FeedbackPage feedbackPage;
+	public PlanPage planPage;
 
 //	@BeforeTest
 	public void startServer() {
@@ -123,5 +125,6 @@ public class AndroidBase extends CommonMethods {
 		addPaymentMethodPage = new AddPaymentMethodPage(driver);
 		helpPage = new HelpPage(driver);
 		feedbackPage = new FeedbackPage(driver);
+		planPage = new PlanPage(driver);
 	}
 }

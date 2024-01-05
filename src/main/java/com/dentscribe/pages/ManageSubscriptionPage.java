@@ -26,15 +26,14 @@ public class ManageSubscriptionPage extends AndroidActions {
 	public By iconEditPaymentMethod = By.xpath("//android.widget.TextView[@text='Payment Method']//following-sibling::android.view.ViewGroup//android.widget.ImageView");
 	
 	// _________verify signup note to validate whether user is on signup page or not_______
-	public boolean validateManageSubscriptionPage()
+	public 	void validateManageSubscriptionPage()
 	{
 		explicitWait(driver, textSelectSubscription, 10);
 		if (IsElementPresent(driver, textSelectSubscription, "text - Select Subscription Tier")) {
 			ExtentManager.logInfoDetails("User is now on <b> Manage Subscription page as expected");
-			return true;
 		} else {
 			ExtentManager.logFailureDetails("Either expected Manage Subscription page verified element not found or not exists. please check");
-			return false;
+			Assert.fail();
 		}
 	}
 	

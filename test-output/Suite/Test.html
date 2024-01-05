@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>6/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Jan 02 18:40:17 IST 2024</td>
+<td>Started on:</td><td>Fri Jan 05 18:28:14 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>979 seconds (979071 ms)</td>
+<tr><td>Total time:</td><td>94 seconds (94060 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,96 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.dentscribe.testCases.TestPlanAndNewPlanPages.verifyBackIconPlanPage()'><b>verifyBackIconPlanPage</b><br>Test class: com.dentscribe.testCases.TestPlanAndNewPlanPages</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [09661f5c-6646-48bc-88f9-48cbf3a6b469, findElement {using=xpath, value=//android.view.ViewGroup[@resource-id=&apos;header-view&apos;]//android.view.ViewGroup[@index=0]//android.widget.android.widget.ImageView}]
+Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, newCommandTimeout: 5400, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:newCommandTimeout: 5400, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 09661f5c-6646-48bc-88f9-48cbf3a6b469
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at com.dentscribe.common.CommonMethods.click(CommonMethods.java:111)
+	at com.dentscribe.pages.PlanPage.clickBackIconPlanPage(PlanPage.java:73)
+	at com.dentscribe.testCases.TestPlanAndNewPlanPages.verifyBackIconPlanPage(TestPlanAndNewPlanPages.java:94)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 32 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace367553828", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace367553828'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.13.0&apos;, revision: &apos;ba948ece5b*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.4.1&apos;
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [09661f5c-6646-48bc-88f9-48cbf3a6b469, findElement {using=xpath, value=//android.view.ViewGroup[@resource-id=&apos;header-view&apos;]//android.view.ViewGroup[@index=0]//android.widget.android.widget.ImageView}]
+Capabilities {appium:appActivity: com.dentscribe.dev.MainActi..., appium:appPackage: com.dentscribe.dev, appium:automationName: UIAutomator2, appium:databaseEnabled: false, appium:desired: {appActivity: com.dentscribe.dev.MainActi..., appPackage: com.dentscribe.dev, automationName: UIAutomator2, deviceName: 47544c4538573398, newCommandTimeout: 5400, platformName: ANDROID}, appium:deviceApiLevel: 29, appium:deviceManufacturer: samsung, appium:deviceModel: SM-G960U, appium:deviceName: 47544c4538573398, appium:deviceScreenDensity: 450, appium:deviceScreenSize: 1080x2220, appium:deviceUDID: 47544c4538573398, appium:javascriptEnabled: true, appium:locationContextEnabled: false, appium:networkConnectionEnabled: true, appium:newCommandTimeout: 5400, appium:pixelRatio: 2.8125, appium:platformVersion: 10, appium:statBarHeight: 68, appium:takesScreenshot: true, appium:viewportRect: {height: 2017, left: 0, top: 68, width: 1080}, appium:warnings: {}, appium:webStorageEnabled: false, platformName: ANDROID}
+Session ID: 09661f5c-6646-48bc-88f9-48cbf3a6b469
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:250)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at com.dentscribe.common.CommonMethods.click(CommonMethods.java:111)
+	at com.dentscribe.pages.PlanPage.clickBackIconPlanPage(PlanPage.java:73)
+	at com.dentscribe.testCases.TestPlanAndNewPlanPages.verifyBackIconPlanPage(TestPlanAndNewPlanPages.java:94)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>5</td>
+<td>com.dentscribe.testCases.TestPlanAndNewPlanPages@18cbc3c2</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -75,10 +165,35 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport.verifyWhetherSoapReportCreatedFor10mintsRecording()'><b>verifyWhetherSoapReportCreatedFor10mintsRecording</b><br>Test class: com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport</td>
+<td title='com.dentscribe.testCases.TestPlanAndNewPlanPages.verifyIsPlanPageExists()'><b>verifyIsPlanPageExists</b><br>Test class: com.dentscribe.testCases.TestPlanAndNewPlanPages</td>
 <td></td>
-<td>957</td>
-<td>com.dentscribe.testCases.TestRecordingfor10mintsAndGenerateSoapReport@71d99732</td></tr>
+<td>34</td>
+<td>com.dentscribe.testCases.TestPlanAndNewPlanPages@18cbc3c2</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestPlanAndNewPlanPages.verifyIsExpectedFieldsExistsOnNewPlanPage()'><b>verifyIsExpectedFieldsExistsOnNewPlanPage</b><br>Test class: com.dentscribe.testCases.TestPlanAndNewPlanPages</td>
+<td></td>
+<td>2</td>
+<td>com.dentscribe.testCases.TestPlanAndNewPlanPages@18cbc3c2</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestPlanAndNewPlanPages.createNewPlanAndVerify()'><b>createNewPlanAndVerify</b><br>Test class: com.dentscribe.testCases.TestPlanAndNewPlanPages</td>
+<td></td>
+<td>21</td>
+<td>com.dentscribe.testCases.TestPlanAndNewPlanPages@18cbc3c2</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestPlanAndNewPlanPages.verifyIsExpectedFieldsExistsOnPlanPage()'><b>verifyIsExpectedFieldsExistsOnPlanPage</b><br>Test class: com.dentscribe.testCases.TestPlanAndNewPlanPages</td>
+<td></td>
+<td>6</td>
+<td>com.dentscribe.testCases.TestPlanAndNewPlanPages@18cbc3c2</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestPlanAndNewPlanPages.verifyBackIconNewPlanPage()'><b>verifyBackIconNewPlanPage</b><br>Test class: com.dentscribe.testCases.TestPlanAndNewPlanPages</td>
+<td></td>
+<td>2</td>
+<td>com.dentscribe.testCases.TestPlanAndNewPlanPages@18cbc3c2</td></tr>
+<tr>
+<td title='com.dentscribe.testCases.TestPlanAndNewPlanPages.verifyIsNewPlanPageExists()'><b>verifyIsNewPlanPageExists</b><br>Test class: com.dentscribe.testCases.TestPlanAndNewPlanPages</td>
+<td></td>
+<td>1</td>
+<td>com.dentscribe.testCases.TestPlanAndNewPlanPages@18cbc3c2</td></tr>
 </table><p>
 </body>
 </html>
